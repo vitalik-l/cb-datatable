@@ -1,1 +1,1 @@
-export default './components/DataTable';
+export default from './components/DataTable';
