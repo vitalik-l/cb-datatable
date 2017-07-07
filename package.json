@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "React DataTable component",
   "files": [
-    "lib/*"
+    "lib"
   ],
-  "directories": {
-    "lib": "lib"
-  },
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "prop-types": "^15.5.10",
