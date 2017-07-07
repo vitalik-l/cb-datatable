@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "React DataTable component",
   "files": [
-    "lib/"
+    "lib/*"
   ],
   "main": "index.js",
   "dependencies": {
