@@ -5,6 +5,9 @@
   "files": [
     "lib/*"
   ],
+  "directories": {
+    "lib": "lib"
+  },
   "main": "index.js",
   "dependencies": {
     "classnames": "^2.2.5",
