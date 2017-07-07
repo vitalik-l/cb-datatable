@@ -1,0 +1,27 @@
+.content {
+  position: relative;
+
+  .datatable {
+    overflow: auto;
+  }
+
+  .data-table {
+    width: 100%;
+
+    .data-table-header {
+      .column-header {
+        border: 1px solid #131217;
+        text-align: center;
+        cursor: pointer;
+        color: rgba(0, 0, 0, .54);
+        background-image: linear-gradient(to bottom, #fafafa 2%, #efefef 98%);
+      }
+    }
+
+    .table-cell {
+      border: 1px solid #131217;
+      white-space: nowrap;
+      padding: 5px;
+    }
+  }
+}
