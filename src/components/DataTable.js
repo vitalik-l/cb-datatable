@@ -1,31 +1,24 @@
-/* @flow */
-
-// $FlowSkipCheck
 import React, {Component} from 'react';
-// $FlowSkipCheck
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import * as _ from '../utils';
-// import type {ColumnT, DataT} from './Types';
 
 import TableBody from './TableBody';
 import TableHeader from './TableHeader';
 import Pager from './Pager';
 
-// type Props = {
-//     data: DataT,
-//     columns: Array<ColumnT>,
-//     rowsPerPage: number,
-//     orderBy: {[key: string]: string},
-// 	className: string,
-// 	fixedHeader: bool,
-// 	displayAllData: bool,
-// 	onClick: any,
-// 	onRowRender: any
-// };
-type Props = {};
-
 class DataTable extends Component {
-    props: Props;
+    static propTypes = {
+        data: PropTypes.array,
+        columns: PropTypes.array,
+        rowsPerPage: PropTypes.number,
+        orderBy: PropTypes.object,
+        className: PropTypes.string,
+        fixedHeader: PropTypes.bool,
+        displayAllData: PropTypes.bool,
+        onClick: PropTypes.func,
+        onRowRender: PropTypes.func
+    };
 
     static defaultProps = {
         rowsPerPage: 5,
@@ -34,7 +27,7 @@ class DataTable extends Component {
         firstIndex: 0
     };
 
-    constructor(props: Props) {
+    constructor(props) {
         super(props);
         this.state = {
             currentPage: 1,
@@ -59,7 +52,7 @@ class DataTable extends Component {
         console.log(e);
     };
 
-    componentWillUpdate(nextProps: Props, nextState: any) {
+    componentWillUpdate(nextProps, nextState) {
     	// console.time('datatable');
         let pageChanged = this.state.currentPage !== nextState.currentPage,
             sortingChanged = this.state.orderBy !== nextState.orderBy;
@@ -84,21 +77,17 @@ class DataTable extends Component {
         }
     }
 
-	getPagesCount(data?: Array<any>): number {
+	getPagesCount(data) {
 		let _data = data || this.props.data;
         return Math.ceil(_data.length / this.props.rowsPerPage);
     }
 
-    initPagesArray(data?: Array<any>): void {
+    initPagesArray(data) {
     	let _data =  data || this.props.data;
         this.pages = Array.from(new Array(this.getPagesCount(_data)), (val, index) => index + 1);
     }
 
-    setTableDataByFirstIndex() {
-
-    }
-
-    setTableData({data, page, orderBy, rowsPerPage, displayAllData = this.props.displayAllData}: {data?: Array<any>, page?: number|null, orderBy: any} = {}): void {
+    setTableData({data, page, orderBy, rowsPerPage, displayAllData = this.props.displayAllData}) {
     	let numberRows = rowsPerPage || this.props.rowsPerPage;
         let toPage = page || this.state.currentPage,
             indexStart = displayAllData ? 0 : (toPage - 1) * numberRows,
@@ -113,18 +102,18 @@ class DataTable extends Component {
 		// console.log('set table data', this.props.data, this.tableData);
     }
 
-    setPage(page: number): void {
+    setPage(page) {
         if (page === 0 || page > this.pages.length) return;
         this.setState({currentPage: page});
     }
 
-	selectPageHandler = (e:any) => {
+	selectPageHandler = (e) => {
 		e.preventDefault();
 		let toPage = e.target.value;
 		this.setState({currentPage: +toPage});
 	};
 
-    onHeaderAction = (type: string, params: any) => {
+    onHeaderAction = (type, params) => {
         switch (type) {
             case 'sort':
                 const newSorting = {[params.column.name]: params.orderBy};

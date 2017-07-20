@@ -1,30 +1,30 @@
-// @flow
-// $FlowSkipCheck
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import type {DataT, ColumnT} from './Types';
 import TableRow from './TableRow';
 
-type
-Props = {
-    columns: Array<ColumnT>,
-    data: DataT,
-	fixedHeader: bool,
-	onRowRender: any
-};
-
 class TableBody extends Component {
-	constructor(props:Props) {
+	static propTypes = {
+		columns: PropTypes.array,
+		data: PropTypes.array,
+		fixedHeader: PropTypes.bool,
+		onRowRender: PropTypes.func
+	};
+
+	constructor(props) {
 		super(props);
 		this.tableBodyNode = null;
 		this.table = null;
 	}
+
 	componentDidMount() {
 		if (this.props.fixedHeader) this.tableBodyNode.addEventListener('scroll', this.scrollHandler);
 	}
-	scrollHandler = (e:Event) => {
+
+	scrollHandler = (e) => {
 		this.props.scrollHandler && this.props.scrollHandler(e);
 	};
+
 	render() {
 		const {columns, data, fixedHeader, onRowRender} = this.props;
 		const style = {};

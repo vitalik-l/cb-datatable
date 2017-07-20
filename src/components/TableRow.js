@@ -4,15 +4,17 @@ import classNames from 'classnames';
 class TableRow extends Component {
 	constructor(props) {
 		super(props);
-		//
 		this.tableRowNode = null;
 	}
+
 	componentDidMount() {
 		this.props.onRowRender && this.props.onRowRender(this.tableRowNode, this.props.row);
 	}
+
 	componentDidUpdate() {
 		this.props.onRowRender && this.props.onRowRender(this.tableRowNode, this.props.row);
 	}
+
 	render() {
 		return (
 			<div className="table-row" ref={node => this.tableRowNode = node}>
