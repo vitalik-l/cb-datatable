@@ -7,6 +7,7 @@ finder.on('directory', function (dir, stat, stop) {
     const dirname = path.parse(dir).name;
     if (dirname === 'styles' || dirname === 'img') {
         const buildPath = dir.replace('src', 'lib');
+        console.log('build path is ', buildPath);
         fse.copy(dir, buildPath)
             .then(() => console.log(`Copied ${dir} to ${buildPath}`))
             .catch(err => console.error(err));

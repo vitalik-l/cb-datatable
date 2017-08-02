@@ -1,0 +1,9 @@
+.fixed-header-table {
+  width: 500px;
+  overflow: hidden;
+
+  .fixed-header-table__body {
+    height: 200px;
+    overflow: auto;
+  }
+}

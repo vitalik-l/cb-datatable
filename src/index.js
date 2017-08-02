@@ -1,1 +1,1 @@
-export default from './components/DataTable';
+export default from './DataTableContainer';

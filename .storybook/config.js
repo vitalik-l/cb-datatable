@@ -12,7 +12,7 @@ setOptions({
 //   require('../stories');
 // }
 
-const req = require.context('../src', true, /.+\.story\.js?x/);
+const req = require.context('../stories', true, /.+\.story\.js?x/);
 
 function loadStories() {
   req.keys().forEach(req)
