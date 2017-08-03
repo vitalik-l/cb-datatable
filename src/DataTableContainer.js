@@ -45,9 +45,7 @@ class DataTableContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps: DataTableContainerProps) {
-    if (this.props.data !== nextProps.data) {
-      this.data = nextProps.data;
-    }
+    this.data = this.setTableData(nextProps.data);
   }
 
   get displayData(): Array<Object> {
@@ -87,6 +85,15 @@ class DataTableContainer extends Component {
         currentPage: this.state.currentPage
       }
     )
+  }
+
+  /**
+   * For change data array with applying ordering, filter, etc.
+   * Using when data is changed from props
+   * @param data
+     */
+  setTableData(data) {
+      return orderBy(data, this.state.orderBy);
   }
 
   setOrderBy = (type: Object) => {

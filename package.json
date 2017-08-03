@@ -1,6 +1,6 @@
 {
   "name": "cb-datatable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React DataTable component",
   "main": "./index.js",
   "dependencies": {
@@ -37,7 +37,8 @@
     "prebuild": "rimraf lib",
     "storybook": "start-storybook -p 6006",
     "deploy-storybook": "storybook-to-ghpages",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "release": "babel-node ./scripts/release.js"
   },
   "pre-commit": [ "test" ],
   "repository": {

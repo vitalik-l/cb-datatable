@@ -69,4 +69,16 @@ describe('DataTable', () => {
     const tree = renderer.create(<DataTable columns={columns} data={data} orderBy={{column0: 'desc'}} PagerComponent={null}/>);
     expect(tree.toJSON()).toMatchSnapshot();
   });
+
+  it('Should update data when data from props is changed, orderBy should be applied', () => {
+    let {columns, data} = generateMockData({columnsNumber: 1, rowsNumber: 3});
+    const tree = shallow(<DataTable columns={columns} data={data} orderBy={{column0: 'desc'}} PagerComponent={null}/>);
+    const instance = tree.instance();
+    const newData = generateMockData({columnsNumber: 1, rowsNumber: 4});
+    data.push(newData.data[newData.data.length - 1]);
+    tree.setProps({data: data});
+    expect(instance.data[0]).toEqual({
+      column0: 'column0 3'
+    });
+  });
 });
