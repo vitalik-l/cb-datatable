@@ -19,4 +19,7 @@ console.log('=> Pushing tag');
 publishUtils.exec('git push origin ' + TAG_NAME);
 
 console.log('=> Publish');
-publishUtils.exec('yarn build && npm publish --tag next');
+publishUtils.exec('yarn build');
+console.log('cd lib');
+shell.cd('lib');
+publishUtils.exec('npm publish --tag next');
