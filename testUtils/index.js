@@ -1,10 +1,10 @@
-const generateMockData = ({columnsNumber = 4, columnName = 'column', rowsNumber = 100}) => {
+const generateMockData = ({columnsNumber = 4, columnLabel = 'column', rowsNumber = 100, dataFunc = false}) => {
   let columns = [];
   for (let i = 0; i < columnsNumber; i++) {
-    let _columnName = typeof columnName === 'function' ? columnName(i) : columnName;
+    let _columnLabel = typeof columnLabel === 'function' ? columnLabel(i) : columnLabel + ' ' + i;
     columns.push({
-      name: _columnName + i,
-      label: _columnName + ' ' + i
+      name: 'column' + i,
+      label: _columnLabel
     })
   }
 
@@ -12,7 +12,7 @@ const generateMockData = ({columnsNumber = 4, columnName = 'column', rowsNumber 
   for (let i = 0; i < rowsNumber; i++) {
     let row = {};
     columns.forEach(column => {
-      row[column.name] = column.name + ' ' + i;
+      row[column.name] = dataFunc ? dataFunc(column, i) : column.name + ' ' + i;
     });
     data.push(row);
   }
