@@ -4,17 +4,17 @@ import Table from './Table';
 import Pager from './Pager';
 import {orderBy} from './utils';
 import classNames from 'classnames';
-import type {DataTableContainerProps, TableProps} from './types';
+import type {DataTableContainerProps, TableProps, DataType} from './types';
 
 type State = {
-  data: Array<Object>,
+  data: DataType,
   currentPage: number,
   orderBy: Object
 };
 
 class DataTableContainer extends Component {
   props: DataTableContainerProps;
-  data: Array<Object>;
+  data: DataType;
   state: State;
 
   static defaultProps = {
@@ -92,7 +92,7 @@ class DataTableContainer extends Component {
    * Using when data is changed from props
    * @param data
      */
-  setTableData(data) {
+  setTableData(data: DataType): DataType {
       return orderBy(data, this.state.orderBy);
   }
 

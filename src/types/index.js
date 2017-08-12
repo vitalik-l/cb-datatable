@@ -1,3 +1,6 @@
+/**
+ * Main DataTable container props
+ */
 type DataTableContainerProps = {
   /**
    * data
@@ -36,6 +39,10 @@ type DataTableContainerProps = {
   PagerComponent: Class<React$Component<*, *, *>>
 };
 
+//----------------------------------------------------------
+/**
+ * Props for the Table component
+ */
 type TableProps = {
   /**
    *
@@ -63,7 +70,16 @@ type TableProps = {
   setOrderBy: Function,
 };
 
+//------------------------------------------
+/**
+ * data array type
+ */
+type DataType = {
+  data: Array<Object>
+};
+
 export {
   TableProps,
-  DataTableContainerProps
+  DataTableContainerProps,
+  DataType
 }

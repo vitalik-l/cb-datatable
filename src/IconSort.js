@@ -2,7 +2,7 @@
 import React from 'react';
 
 type Props = {
-  type: 'asc|desc'
+  type: 'asc'|'desc'|''
 };
 
 function IconSort({type}: Props) {
