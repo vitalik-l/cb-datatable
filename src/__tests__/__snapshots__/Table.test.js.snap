@@ -12,10 +12,20 @@ exports[`DataTable orderBy asc Snapshot: should apply sort class and icon 1`] = 
           className="sortable sort-asc"
           onClick={[Function]}
         >
-          column 0
-          <span>
-             ▲
-          </span>
+          <div
+            className="th-content"
+          >
+            <div
+              className="th-content__label"
+            >
+              column 0
+            </div>
+            <span
+              className="icon-sort icon-sort-asc"
+            >
+               ▲
+            </span>
+          </div>
         </th>
       </tr>
     </thead>
@@ -70,10 +80,20 @@ exports[`DataTable orderBy desc Snapshot: should apply sort class and icon 1`] =
           className="sortable sort-desc"
           onClick={[Function]}
         >
-          column 0
-          <span>
-             ▼
-          </span>
+          <div
+            className="th-content"
+          >
+            <div
+              className="th-content__label"
+            >
+              column 0
+            </div>
+            <span
+              className="icon-sort icon-sort-desc"
+            >
+               ▼
+            </span>
+          </div>
         </th>
       </tr>
     </thead>
@@ -124,7 +144,11 @@ exports[`DataTable should apply renderLayout prop, it displays only table 1`] = 
         className="sortable"
         onClick={[Function]}
       >
-        column 0
+        <div
+          className="th-content"
+        >
+          column 0
+        </div>
       </th>
     </tr>
   </thead>

@@ -27,6 +27,7 @@ class FixedHeaderHelper {
       const tableHeaderCell = this.tableHeader.rows[0].cells[i];
       const tableBodyCellWidth = tableBodyCells[i].getBoundingClientRect().width;
       const tableHeaderCellWidth = tableHeaderCell.getBoundingClientRect().width;
+      if (tableBodyCellWidth === tableHeaderCellWidth) continue;
       const newWidth = Math.max(tableBodyCellWidth, tableHeaderCellWidth);
       this.tableHeader.rows[0].cells[i].style['min-width'] = newWidth + 'px';
       tableBodyCells[i].style['min-width'] = newWidth + 'px';

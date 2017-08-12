@@ -6,4 +6,18 @@
     height: 200px;
     overflow: auto;
   }
+
+  .th-content {
+    display: flex;
+    position: relative;
+    padding-right: 15px;
+
+    .icon-sort {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8em;
+    }
+  }
 }

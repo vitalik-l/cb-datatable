@@ -32,8 +32,10 @@ class HeaderColumn extends React.Component {
     const {label, sortable} = this.props;
     return (
       <th className={classNames({sortable, ['sort-' + this.sorting]: this.sorting})} onClick={this.onColumnClick}>
-        {label}
-        {this.sorting ? <IconSort type={this.sorting} /> : null}
+        <div className="th-content">
+          {this.sorting ? <div className="th-content__label">{label}</div> : label}
+          {this.sorting ? <IconSort type={this.sorting} /> : null}
+        </div>
       </th>
     )
   }

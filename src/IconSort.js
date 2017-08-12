@@ -8,10 +8,10 @@ type Props = {
 function IconSort({type}: Props) {
   return type === 'asc' ?
     (
-      <span> ▲</span>
+      <span className="icon-sort icon-sort-asc"> ▲</span>
     ) :
     (
-      <span> ▼</span>
+      <span className="icon-sort icon-sort-desc"> ▼</span>
     )
 }
 
