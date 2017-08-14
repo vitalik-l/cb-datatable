@@ -14,8 +14,17 @@ class Table extends React.Component {
   render() {
     return (
       <table>
-        <TableHeader orderBy={this.props.orderBy} setOrderBy={this.props.setOrderBy} columns={this.props.columns} />
-        <TableBody BodyRowRenderer={this.props.BodyRowRenderer} columns={this.props.columns} data={this.props.displayData} />
+        <TableHeader
+          orderBy={this.props.orderBy}
+          setOrderBy={this.props.setOrderBy}
+          columns={this.props.columns}
+        />
+        <TableBody
+          BodyRowRenderer={this.props.BodyRowRenderer}
+          columns={this.props.columns}
+          data={this.props.displayData}
+          onRowClick={this.props.onRowClick}
+        />
       </table>
     )
   }

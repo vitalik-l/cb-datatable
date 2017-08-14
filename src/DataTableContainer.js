@@ -68,6 +68,7 @@ class DataTableContainer extends Component {
       setOrderBy: this.setOrderBy,
       loading: this.props.loading,
       Loader: this.props.Loader,
+      onRowClick: this.props.onRowClick
     };
   }
 
@@ -92,7 +93,7 @@ class DataTableContainer extends Component {
   }
 
   /**
-   * For change data array with applying ordering, filter, etc.
+   * For changing data array with applying ordering, filter, etc.
    * Using when data is changed from props
    * @param data
      */
@@ -101,7 +102,7 @@ class DataTableContainer extends Component {
   }
 
   /**
-   * Using when clicked the sortable header column
+   * Using when the sortable header column is clicked
    * @param type
    */
   setOrderBy = (type: Object) => {
@@ -109,7 +110,6 @@ class DataTableContainer extends Component {
       this.props.onSort(type);
       return;
     }
-
     this.data = orderBy(this.data, type);
     this.setState({orderBy: type});
   };

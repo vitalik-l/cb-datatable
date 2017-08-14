@@ -1,3 +1,4 @@
+import type Column from './Column.type';
 /**
  * Props for the Table component
  */
@@ -10,7 +11,7 @@ type TableProps = {
   /**
    * @public
    */
-  columns: Array<Object>,
+  columns: Array<Column>,
 
   /**
    * @public
@@ -35,9 +36,16 @@ type TableProps = {
   Loader: React$Element<*>,
 
   /**
+   * @public
    * Render function for table component. Can be used for organize your own table container layout
    */
   renderTableLayout: (Body: React$Element<*>, Header: React$Element<*>) => {},
+
+  /**
+   * @public
+   * Row click event
+   */
+  onRowClick: Function,
 
   /**
    * @private

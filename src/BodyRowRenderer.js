@@ -1,17 +1,11 @@
 // @flow
 import React from 'react';
-import Cell from './Cell';
+import Row from './Row';
+import type {RowProps} from './types';
 
-function BodyRowRenderer(row: Object, columns: Array<Object>) {
+function BodyRowRenderer(props: RowProps) {
   return [
-    <tr>
-      {columns.map((column, i) =>
-        <Cell
-          column={column}
-          row={row}
-          key={i} />
-      )}
-    </tr>
+    <Row {...props} />
   ]
 }
 

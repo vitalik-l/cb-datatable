@@ -14,7 +14,7 @@ stories.add('default', () => {
   const {columns, data} = generateMockData({columnsNumber: 10, rowsNumber: 50});
   return (
     <span>
-      <DataTable columns={columns} data={data} orderBy={{column1: 'asc'}}/>
+      <DataTable columns={columns} data={data} orderBy={{column1: 'asc'}} onRowClick={action('onRowClick')} />
     </span>
   );
 });

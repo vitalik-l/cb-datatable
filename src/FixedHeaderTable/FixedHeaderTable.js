@@ -40,7 +40,12 @@ class FixedHeaderTable extends React.Component {
     return (
       <div className="fixed-header-table__body" ref={el => this.tableBodyContainer = el}>
         <table ref={el => this.tableBody = el}>
-          <TableBody BodyRowRenderer={this.props.BodyRowRenderer} columns={this.props.columns} data={this.props.displayData} />
+          <TableBody
+            BodyRowRenderer={this.props.BodyRowRenderer}
+            columns={this.props.columns}
+            data={this.props.displayData}
+            onRowClick={this.props.onRowClick}
+          />
         </table>
       </div>
     )
