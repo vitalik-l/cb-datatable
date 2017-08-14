@@ -17,4 +17,19 @@ describe('Cell', () => {
 
     expect(tree.hasClass('test')).toBeTruthy();
   });
+
+  it('Visibility. Should return null if column visible prop is false', () => {
+    const tree = shallow(
+      <Cell
+        column={{
+          className: 'test',
+          name: 'test',
+          visible: false
+        }}
+        row={{test: 'This is a test'}}
+      />
+    );
+
+    expect(tree.getNode()).toBeNull();
+  })
 });
