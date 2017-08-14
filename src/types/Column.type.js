@@ -17,7 +17,12 @@ type Column = {
   /**
    * @public
    */
-  orderBy: Object
+  orderBy: Object,
+
+  /**
+   * @public
+   */
+  visible: bool
 };
 
 export default Column;

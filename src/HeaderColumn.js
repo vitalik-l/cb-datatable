@@ -25,7 +25,8 @@ class HeaderColumn extends React.Component {
   };
 
   render() {
-    const {label, sortable} = this.props;
+    const {label, sortable, visible} = this.props;
+    if (visible === false) return null;
     return (
       <th className={classNames({sortable, ['sort-' + this.sorting]: this.sorting})} onClick={this.onColumnClick}>
         <div className="th-content">

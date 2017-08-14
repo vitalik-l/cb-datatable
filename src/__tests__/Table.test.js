@@ -1,5 +1,5 @@
 import React from 'react';
-import {generateMockData} from '../../testUtils';
+import {generateMockData, generateDataForColumns} from '../../testUtils';
 import sinon from 'sinon';
 import renderer from 'react-test-renderer';
 import {shallow} from 'enzyme';
@@ -80,5 +80,26 @@ describe('DataTable', () => {
     expect(instance.data[0]).toEqual({
       column0: 'column0 3'
     });
+  });
+
+  it('Columns visibility. Column 1 should be hidden', () => {
+    let columns = [];
+    for (let i=0; i < 5; i++) {
+      if (i === 1) {
+        columns.push({
+          name: 'column' + i,
+          label: 'column' + i,
+          visible: false
+        });
+        continue;
+      }
+      columns.push({
+        name: 'column' + i,
+        label: 'column' + i
+      });
+    }
+    const data = generateDataForColumns(columns, 1);
+    const tree = renderer.create(<DataTable columns={columns} data={data} PagerComponent={null}/>);
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 });
