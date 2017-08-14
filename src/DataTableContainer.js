@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import Table from './Table';
 import Pager from './Pager';
+import Loader from './Loader';
 import {orderBy} from './utils';
 import classNames from 'classnames';
 import type {DataTableContainerProps, TableProps, DataType} from './types';
@@ -20,6 +21,7 @@ class DataTableContainer extends Component {
   static defaultProps = {
     TableComponent: Table,
     PagerComponent: Pager,
+    Loader: <Loader />,
     orderBy: {},
     rowsPerPage: 20
   };
@@ -63,7 +65,9 @@ class DataTableContainer extends Component {
       columns: this.props.columns,
       orderBy: this.state.orderBy,
       displayData: this.displayData,
-      setOrderBy: this.setOrderBy
+      setOrderBy: this.setOrderBy,
+      loading: this.props.loading,
+      Loader: this.props.Loader,
     };
   }
 

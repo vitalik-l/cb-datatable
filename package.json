@@ -29,7 +29,7 @@
     "sinon": "^2.4.1"
   },
   "scripts": {
-    "build": "yarn test && yarn run build:babel && yarn run build:copy-styles && yarn run build:copy-files",
+    "build": "flow && yarn test && yarn run build:babel && yarn run build:copy-styles && yarn run build:copy-files",
     "build:copy-styles": "babel-node ./scripts/copy-styles.js",
     "build:copy-files": "babel-node ./scripts/copy-files.js",
     "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./lib --ignore __test__,__tests__,stories,types",

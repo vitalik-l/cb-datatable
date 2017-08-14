@@ -5,12 +5,8 @@ import TableBody from '../TableBody';
 import FixedHeaderHelper from './FixedHeaderHelper';
 import type {TableProps} from '../types';
 
-type Props = TableProps & {
-  renderTableLayout: Function
-};
-
 class FixedHeaderTable extends React.Component {
-  props: Props;
+  props: TableProps;
   fixedHeaderHelper: FixedHeaderHelper;
   tableBodyContainer: Element;
   tableBody: Element;
@@ -50,10 +46,17 @@ class FixedHeaderTable extends React.Component {
     )
   }
 
+  get Loader(): ?React$Element<*> {
+    console.log('loading', this.props.loading);
+    if (!this.props.loading) return;
+    return this.props.Loader;
+  }
+
   renderLayout() {
     return (
       <div className="fixed-header-table">
         {this.Header}
+        {this.Loader}
         {this.Body}
       </div>
     )
