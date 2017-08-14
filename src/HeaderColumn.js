@@ -1,14 +1,10 @@
 // @flow
-
 import React from 'react';
 import classNames from 'classnames';
 import IconSort from './IconSort';
+import type {ColumnType} from './types';
 
-type Props = {
-  name: string,
-  sortable: boolean,
-  label: any,
-  orderBy: Object,
+type Props = ColumnType & {
   setOrderBy: Function
 };
 

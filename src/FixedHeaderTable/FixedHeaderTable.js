@@ -23,7 +23,7 @@ class FixedHeaderTable extends React.Component {
   }
 
   componentDidUpdate() {
-    this.fixedHeaderHelper.adjustHeader();
+    this.fixedHeaderHelper.adjustColumns();
   }
 
   get Header() {
@@ -47,7 +47,6 @@ class FixedHeaderTable extends React.Component {
   }
 
   get Loader(): ?React$Element<*> {
-    console.log('loading', this.props.loading);
     if (!this.props.loading) return;
     return this.props.Loader;
   }

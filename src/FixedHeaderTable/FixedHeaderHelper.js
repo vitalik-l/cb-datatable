@@ -11,7 +11,7 @@ class FixedHeaderHelper {
       this.tableHeader = tableHeader;
 
       this.tableBodyContainer.addEventListener('scroll', this.tableBodyScrollHandler);
-      this.adjustHeader();
+      this.adjustColumns();
   }
 
   tableBodyScrollHandler = ({target}) => {
@@ -19,7 +19,7 @@ class FixedHeaderHelper {
       this.tableHeaderContainer.style.transform = 'translate3d(' + (-1 * scrollLeft) + 'px, 0, 0)';
   };
 
-  adjustHeader() {
+  adjustColumns() {
     if (!this.tableBody.rows.length) return;
     const tableBodyCells = this.tableBody.rows[0].cells;
 
