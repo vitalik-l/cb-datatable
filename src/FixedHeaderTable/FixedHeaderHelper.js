@@ -10,7 +10,7 @@ class FixedHeaderHelper {
       this.tableHeaderContainer = tableHeaderContainer;
       this.tableHeader = tableHeader;
 
-      this.tableBodyContainer.addEventListener('scroll', this.tableBodyScrollHandler);
+      this.tableBodyContainer && this.tableBodyContainer.addEventListener('scroll', this.tableBodyScrollHandler);
       this.adjustColumns();
   }
 
@@ -20,7 +20,7 @@ class FixedHeaderHelper {
   };
 
   adjustColumns() {
-    if (!this.tableBody.rows.length) return;
+    if (!this.tableBody || !this.tableBody.rows.length) return;
     const tableBodyCells = this.tableBody.rows[0].cells;
 
     for (let i = 0; i < tableBodyCells.length; i++) {

@@ -55,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/logvi/cb-datatable/issues"
   },
-  "homepage": "https://github.com/logvi/cb-datatable#readme"
+  "homepage": "https://github.com/logvi/cb-datatable#readme",
+  "jest": {
+    "testMatch": ["**/?(*.)(spec|test).js?(x)"]
+  }
 }
