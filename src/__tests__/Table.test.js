@@ -2,7 +2,7 @@ import React from 'react';
 import {generateMockData, generateDataForColumns} from '../../testUtils';
 import sinon from 'sinon';
 import renderer from 'react-test-renderer';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import DataTable from '../';
 
 describe('DataTable', () => {
@@ -101,5 +101,16 @@ describe('DataTable', () => {
     const data = generateDataForColumns(columns, 1);
     const tree = renderer.create(<DataTable columns={columns} data={data} PagerComponent={null}/>);
     expect(tree.toJSON()).toMatchSnapshot();
+  });
+
+  it('Custom onSort event', () => {
+    const defaultSorting = {column0: 'desc'};
+    const onSort = sinon.spy();
+    let {columns, data} = generateMockData({columnsNumber: 2, rowsNumber: 1});
+    const tree = mount(<DataTable columns={columns} data={data} orderBy={defaultSorting} onSort={onSort}/>);
+    const HeaderColumns = tree.find('th');
+    HeaderColumns.at(1).simulate('click');
+    expect(onSort.called).toBeTruthy();
+    expect(tree.props().orderBy).toEqual(defaultSorting);
   });
 });

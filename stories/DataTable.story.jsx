@@ -43,3 +43,17 @@ stories.add('Hidden column', () => {
     </span>
   );
 });
+
+stories.add('Custom onSort action', () => {
+  const {columns, data} = generateMockData({columnsNumber: 10, rowsNumber: 50});
+  return (
+    <span>
+      <DataTable
+        columns={columns}
+        data={data}
+        orderBy={{column1: 'asc'}}
+        onSort={action('onSort')}
+      />
+    </span>
+  );
+});

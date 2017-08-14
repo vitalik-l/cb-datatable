@@ -100,11 +100,24 @@ class DataTableContainer extends Component {
       return orderBy(data, this.state.orderBy);
   }
 
+  /**
+   * Using when clicked the sortable header column
+   * @param type
+   */
   setOrderBy = (type: Object) => {
+    if (this.props.onSort) {
+      this.props.onSort(type);
+      return;
+    }
+
     this.data = orderBy(this.data, type);
     this.setState({orderBy: type});
   };
 
+  /**
+   *
+   * @param page
+   */
   setCurrentPage = (page: number) => {
     if (this.state.page !== page) {
       this.setState({
