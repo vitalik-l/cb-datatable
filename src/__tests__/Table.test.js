@@ -113,4 +113,13 @@ describe('DataTable', () => {
     expect(onSort.called).toBeTruthy();
     expect(tree.props().orderBy).toEqual(defaultSorting);
   });
+
+  it('onRowClick event', () => {
+    const onRowClick = sinon.spy();
+    let {columns, data} = generateMockData({columnsNumber: 1, rowsNumber: 1});
+    const tree = mount(<DataTable columns={columns} data={data} onRowClick={onRowClick} />);
+    const Rows = tree.find('tbody tr');
+    Rows.at(0).simulate('click');
+    expect(onRowClick.called).toBeTruthy();
+  });
 });
