@@ -5,20 +5,14 @@ import Pager from './Pager';
 import Loader from './Loader';
 import {orderBy} from './utils';
 import classNames from 'classnames';
-import type {DataTableContainerProps, TableProps, DataType} from './types';
-
-type State = {
-  data: DataType,
-  currentPage: number,
-  orderBy: Object
-};
+import type {DataTableContainerProps, DataTableContainerState, TableProps, DataType} from './types';
 
 class DataTableContainer extends Component {
   props: DataTableContainerProps;
   data: DataType;
-  state: State;
+  state: DataTableContainerState;
 
-  static defaultProps = {
+  static defaultProps: Object = {
     TableComponent: Table,
     PagerComponent: Pager,
     Loader: <Loader />,

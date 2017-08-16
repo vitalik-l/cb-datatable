@@ -4,6 +4,27 @@ import sinon from 'sinon';
 import renderer from 'react-test-renderer';
 import {shallow, mount} from 'enzyme';
 
+function createNodeMock(element) {
+  if (~['div', 'table'].indexOf(element.type)) {
+    // This is your fake DOM node for <p>.
+    // Feel free to add any stub methods, e.g. focus() or any
+    // other methods necessary to prevent crashes in your components.
+    return {
+      offsetHeight: 0,
+      rows: {
+        length: 0
+      },
+      style: {
+        height: 0
+      },
+      addEventListener: () => {}
+    };
+  }
+  // You can return any object from this method for any type of DOM component.
+  // React will use it as a ref instead of a DOM node when snapshot testing.
+  return null;
+}
+
 export default function GeneralTableTests(TableComponent) {
   return () => {
     const {columns, data} = generateMockData({columnsNumber: 10, rowsNumber: 50});
@@ -32,7 +53,7 @@ export default function GeneralTableTests(TableComponent) {
       };
       const tree = renderer.create(
         <TableComponent columns={columns} data={data} renderLayout={tableLayout}/>
-      );
+      , {createNodeMock});
       expect(tree.toJSON()).toMatchSnapshot();
     });
 
@@ -49,8 +70,14 @@ export default function GeneralTableTests(TableComponent) {
 
     it('orderBy asc Snapshot: should apply sort class and icon', () => {
       const {columns, data} = generateMockData({columnsNumber: 1, rowsNumber: 3});
-      const tree = renderer.create(<TableComponent columns={columns} data={data} orderBy={{column0: 'asc'}}
-                                                   PagerComponent={null}/>);
+      const tree = renderer.create(
+        <TableComponent
+          columns={columns}
+          data={data}
+          orderBy={{column0: 'asc'}}
+          PagerComponent={null}
+        />
+      , {createNodeMock});
       expect(tree.toJSON()).toMatchSnapshot();
     });
 
@@ -67,8 +94,14 @@ export default function GeneralTableTests(TableComponent) {
 
     it('orderBy desc Snapshot: should apply sort class and icon', () => {
       const {columns, data} = generateMockData({columnsNumber: 1, rowsNumber: 3});
-      const tree = renderer.create(<TableComponent columns={columns} data={data} orderBy={{column0: 'desc'}}
-                                                   PagerComponent={null}/>);
+      const tree = renderer.create(
+        <TableComponent
+          columns={columns}
+          data={data}
+          orderBy={{column0: 'desc'}}
+          PagerComponent={null}
+        />
+      , {createNodeMock});
       expect(tree.toJSON()).toMatchSnapshot();
     });
 
@@ -102,7 +135,9 @@ export default function GeneralTableTests(TableComponent) {
         });
       }
       const data = generateDataForColumns(columns, 1);
-      const tree = renderer.create(<TableComponent columns={columns} data={data} PagerComponent={null}/>);
+      const tree = renderer.create(
+        <TableComponent columns={columns} data={data} PagerComponent={null}/>,
+        {createNodeMock});
       expect(tree.toJSON()).toMatchSnapshot();
     });
 

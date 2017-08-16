@@ -1,22 +1,22 @@
 class FixedHeaderHelper {
   constructor({
-      tableBodyContainer,
-      tableBody,
-      tableHeaderContainer,
-      tableHeader
+    tableBodyContainer,
+    tableBody,
+    tableHeaderContainer,
+    tableHeader
   }) {
-      this.tableBodyContainer = tableBodyContainer;
-      this.tableBody = tableBody;
-      this.tableHeaderContainer = tableHeaderContainer;
-      this.tableHeader = tableHeader;
+    this.tableBodyContainer = tableBodyContainer;
+    this.tableBody = tableBody;
+    this.tableHeaderContainer = tableHeaderContainer;
+    this.tableHeader = tableHeader;
 
-      this.tableBodyContainer && this.tableBodyContainer.addEventListener('scroll', this.tableBodyScrollHandler);
-      this.adjustColumns();
+    this.tableBodyContainer && this.tableBodyContainer.addEventListener('scroll', this.tableBodyScrollHandler);
+    this.adjustColumns();
   }
 
   tableBodyScrollHandler = ({target}) => {
-      const {scrollLeft} = target;
-      this.tableHeaderContainer.style.transform = 'translate3d(' + (-1 * scrollLeft) + 'px, 0, 0)';
+    const {scrollLeft} = target;
+    this.tableHeaderContainer.style.transform = 'translate3d(' + (-1 * scrollLeft) + 'px, 0, 0)';
   };
 
   adjustColumns() {

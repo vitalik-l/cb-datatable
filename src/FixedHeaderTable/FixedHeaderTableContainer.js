@@ -1,3 +1,4 @@
+// @flow
 import DataTableContainer from '../DataTableContainer';
 import FixedHeaderTable from './FixedHeaderTable';
 

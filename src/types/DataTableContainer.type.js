@@ -1,9 +1,10 @@
 import type TableProps from './TableProps.type';
+import type DataType from './Data.type';
 
 /**
  * Main DataTable container props
  */
-type DataTableContainerProps = TableProps & {
+export type DataTableContainerProps = TableProps & {
   /**
    * number of rows per page
    */
@@ -35,4 +36,8 @@ type DataTableContainerProps = TableProps & {
   renderLayout: (Table: React$Element<*>, Pager: React$Element<*>) => {},
 };
 
-export default DataTableContainerProps;
+export type DataTableContainerState = {
+  data: DataType,
+  currentPage: number,
+  orderBy: Object
+};
