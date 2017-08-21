@@ -8,7 +8,7 @@ type Props = ColumnType & {
   setOrderBy: Function
 };
 
-class HeaderColumn extends React.Component {
+class HeaderColumn extends React.Component<Props> {
   props: Props;
 
   static defaultProps = {

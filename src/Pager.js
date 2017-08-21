@@ -9,7 +9,7 @@ type Props = {
   setCurrentPage: Function
 };
 
-class Pager extends React.Component {
+class Pager extends React.Component<Props> {
   props: Props;
 
   static defaultProps = {
@@ -36,7 +36,7 @@ class Pager extends React.Component {
     this.goToPage(this.props.currentPage - 1);
   };
 
-  selectPageHandler = (e: SyntheticInputEvent) => {
+  selectPageHandler = (e: SyntheticInputEvent<*>) => {
     e.preventDefault();
     this.goToPage(+e.target.value);
   };

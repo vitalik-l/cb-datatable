@@ -4,7 +4,7 @@ import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import type {TableProps} from './types';
 
-class Table extends React.Component {
+class Table extends React.Component<TableProps> {
   props: TableProps;
 
   static defaultProps = {

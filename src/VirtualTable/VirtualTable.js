@@ -3,15 +3,13 @@ import React, {Component} from 'react';
 import FixedHeaderTable from '../FixedHeaderTable/FixedHeaderTable';
 import type VirtualTableProps from './VirtualTable.type';
 
-class VirtualTable extends Component {
+class VirtualTable extends Component<VirtualTableProps> {
   props: VirtualTableProps;
   tableComponent: FixedHeaderTable;
   transformY: number;
   tableLayout: Function;
-  scrollArea: HTMLElement;
-  fullArea: HTMLElement;
-  tableBody: HTMLElement;
-  tableBodyScrollHandler: MouseEventListener;
+  scrollArea: any;
+  fullArea: any;
 
   constructor(props: VirtualTableProps) {
     super(props);
@@ -30,7 +28,7 @@ class VirtualTable extends Component {
   componentDidUpdate() {
     this.transformY = this.props.startIndex * this.avgRowHeight;
     // if height of loaded table + offset top more than full container height, update full container height
-    const innerTableHeight = this.transformY + this.tableComponent.tableBodyContainer.offsetHeight;
+    const innerTableHeight = this.transformY + this.tableBodyContainerHeight;
     if (
       innerTableHeight > this.fullArea.offsetHeight ||
       (this.props.data.length === this.props.endIndex + 1 &&
@@ -41,34 +39,52 @@ class VirtualTable extends Component {
     }
 
     // apply transform for table
-    this.tableComponent.tableBodyContainer.style.transform = `translate3d(0, ${this.transformY}px, 0)`;
+    if (this.tableComponent.tableBodyContainer) {
+      this.tableComponent.tableBodyContainer.style.transform = `translate3d(0, ${this.transformY}px, 0)`;
+    }
+  }
+
+  get tableBodyContainerHeight(): number {
+    if (this.tableComponent.tableBodyContainer) return this.tableComponent.tableBodyContainer.offsetHeight;
+    return 0;
+  }
+
+  get tableBodyHeight(): number {
+    if (this.tableComponent.tableBody) return this.tableComponent.tableBody.offsetHeight;
+    return 0;
   }
 
   get avgRowHeight(): number {
-    const tableBodyHeight = this.tableComponent.tableBody.offsetHeight;
+    const tableBodyHeight = this.tableBodyHeight;
     return tableBodyHeight / this.props.displayData.length;
   }
 
   initRows() {
-    if (this.scrollArea.offsetHeight > this.tableComponent.tableBodyContainer.offsetHeight) {
+    if (this.scrollArea.offsetHeight > this.tableBodyContainerHeight) {
       const displayedEndIndex = Math.floor(this.scrollArea.offsetHeight / this.avgRowHeight);
       this.props.setIndex(0, displayedEndIndex + 2);
     }
   }
 
   setFullHeight(value: number) {
-    this.fullArea.style.height = `${value}px`;
-    this.fullArea.style.maxHeight = `${value}px`;
+    if (this.fullArea) {
+      this.fullArea.style.height = `${value}px`;
+      this.fullArea.style.maxHeight = `${value}px`;
+    }
   }
 
-  tableBodyScrollHandler = (e: EventHandler & {target: HTMLElement}) => {
+
+  tableBodyScrollHandler = (e: any) => {
     // scroll horizontal
     const {target} = e;
     const {scrollLeft} = target;
-    this.tableComponent.tableHeaderContainer.style.transform = 'translate3d(' + (-1 * scrollLeft) + 'px, 0, 0)';
+
+    if (this.tableComponent.tableHeaderContainer) {
+      this.tableComponent.tableHeaderContainer.style.transform = 'translate3d(' + (-1 * scrollLeft) + 'px, 0, 0)';
+    }
 
     // scroll vertical
-    if (target.scrollTop + this.scrollArea.offsetHeight > this.tableComponent.tableBodyContainer.offsetHeight + this.transformY) {
+    if (target.scrollTop + this.scrollArea.offsetHeight > this.tableBodyContainerHeight + this.transformY) {
       // load down
       const displayedStartIndex = Math.floor(target.scrollTop / this.avgRowHeight);
       const displayedEndIndex = displayedStartIndex + Math.floor(this.scrollArea.offsetHeight / this.avgRowHeight);

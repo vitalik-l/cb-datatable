@@ -7,7 +7,7 @@ import {orderBy} from './utils';
 import classNames from 'classnames';
 import type {DataTableContainerProps, DataTableContainerState, TableProps, DataType} from './types';
 
-class DataTableContainer extends Component {
+class DataTableContainer extends Component<DataTableContainerProps,DataTableContainerState>  {
   props: DataTableContainerProps;
   data: DataType;
   state: DataTableContainerState;

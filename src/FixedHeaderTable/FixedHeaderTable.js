@@ -5,13 +5,13 @@ import TableBody from '../TableBody';
 import FixedHeaderHelper from './FixedHeaderHelper';
 import type {TableProps} from '../types';
 
-class FixedHeaderTable extends React.Component {
+class FixedHeaderTable extends React.Component<TableProps> {
   props: TableProps;
   fixedHeaderHelper: FixedHeaderHelper;
-  tableBodyContainer: HTMLElement;
-  tableBody: HTMLElement;
-  tableHeaderContainer: HTMLElement;
-  tableHeader: HTMLElement;
+  tableBodyContainer: ?HTMLElement;
+  tableBody: ?HTMLElement;
+  tableHeaderContainer: ?HTMLElement;
+  tableHeader: ?HTMLElement;
 
   componentDidMount() {
     this.fixedHeaderHelper = new FixedHeaderHelper({
@@ -26,7 +26,7 @@ class FixedHeaderTable extends React.Component {
     this.fixedHeaderHelper.adjustColumns();
   }
 
-  get Header() {
+  get Header(): React$Element<*> {
     return (
       <div className="fixed-header-table__header" ref={el => this.tableHeaderContainer = el}>
         <table ref={el => this.tableHeader = el}>
@@ -36,7 +36,7 @@ class FixedHeaderTable extends React.Component {
     )
   }
 
-  get Body() {
+  get Body(): React$Element<*> {
     return (
       <div className="fixed-header-table__body" ref={el => this.tableBodyContainer = el}>
         <table ref={el => this.tableBody = el}>
