@@ -3,7 +3,6 @@
 exports[`FixedHeaderTable Columns visibility. Column 1 should be hidden 1`] = `
 <div
   className="cb-datatable"
-  onClick={undefined}
 >
   <div
     className="fixed-header-table"
@@ -113,7 +112,6 @@ exports[`FixedHeaderTable Columns visibility. Column 1 should be hidden 1`] = `
 exports[`FixedHeaderTable orderBy asc Snapshot: should apply sort class and icon 1`] = `
 <div
   className="cb-datatable"
-  onClick={undefined}
 >
   <div
     className="fixed-header-table"
@@ -201,7 +199,6 @@ exports[`FixedHeaderTable orderBy asc Snapshot: should apply sort class and icon
 exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and icon 1`] = `
 <div
   className="cb-datatable"
-  onClick={undefined}
 >
   <div
     className="fixed-header-table"

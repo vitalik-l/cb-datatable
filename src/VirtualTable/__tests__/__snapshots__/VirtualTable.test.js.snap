@@ -3,7 +3,6 @@
 exports[`VirtualTable Columns visibility. Column 1 should be hidden 1`] = `
 <div
   className="cb-datatable"
-  onClick={undefined}
 >
   <div
     className="fixed-header-table virtual-data-table"
@@ -121,7 +120,6 @@ exports[`VirtualTable Columns visibility. Column 1 should be hidden 1`] = `
 exports[`VirtualTable orderBy asc Snapshot: should apply sort class and icon 1`] = `
 <div
   className="cb-datatable"
-  onClick={undefined}
 >
   <div
     className="fixed-header-table virtual-data-table"
@@ -191,7 +189,6 @@ exports[`VirtualTable orderBy asc Snapshot: should apply sort class and icon 1`]
 exports[`VirtualTable orderBy desc Snapshot: should apply sort class and icon 1`] = `
 <div
   className="cb-datatable"
-  onClick={undefined}
 >
   <div
     className="fixed-header-table virtual-data-table"
