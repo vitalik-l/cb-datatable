@@ -27,7 +27,7 @@ stories.add('test data', () => {
       return 'column' + i;
     },
     columnsNumber: 6,
-    rowsNumber: 5,
+    rowsNumber: 30,
     dataFunc: (column, i) => {
       if (column.name === 'column3') return '';
       return column.name + ' long data' + i;

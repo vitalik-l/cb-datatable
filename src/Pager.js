@@ -5,8 +5,8 @@ import classNames from 'classnames';
 type Props = {
   data: Array<Object>,
   rowsPerPage: number,
-  currentPage: number,
-  setCurrentPage: Function
+  currentPage?: number,
+  setCurrentPage?: Function
 };
 
 class Pager extends React.Component<Props> {
@@ -42,6 +42,8 @@ class Pager extends React.Component<Props> {
   };
 
   render() {
+    if (!this.pagesCount) return null;
+
     const currentPage = this.props.currentPage;
     const pagesCount = this.pagesCount;
     const pages = this.pages;
