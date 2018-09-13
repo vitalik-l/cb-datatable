@@ -20,23 +20,53 @@ stories.add('default', () => {
   );
 });
 
-stories.add('with empty column', () => {
-  const {columns, data} = generateMockData({
+stories.add('test data', () => {
+  const mockData = generateMockData({
     columnLabel: i => {
       if (i === 3) return 'longstringlongstring';
       return 'column' + i;
     },
-    columnsNumber: 10,
-    rowsNumber: 50,
+    columnsNumber: 6,
+    rowsNumber: 5,
     dataFunc: (column, i) => {
       if (column.name === 'column3') return '';
-      return column.name + ' ' + i;
+      return column.name + ' long data' + i;
     }
   });
+
+  class Test extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        ...mockData
+      };
+    }
+
+    onClearData = () => {
+      this.setState({
+        data: []
+      });
+    };
+
+    onSetData = () => {
+      this.setState({
+        data: mockData.data
+      });
+    };
+
+    render() {
+      return (
+        <span>
+          <button onClick={this.onSetData}>Set data</button>
+          <button onClick={this.onClearData}>Clear data</button>
+          <FixedHeaderTable columns={this.state.columns} data={this.state.data} />
+        </span>
+      );
+    }
+  }
+
   return (
-    <span>
-      <FixedHeaderTable columns={columns} data={data} />
-    </span>
+    <Test />
   );
 });
 

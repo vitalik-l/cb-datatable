@@ -22,4 +22,4 @@ console.log('=> Publish');
 publishUtils.exec('npm run build');
 console.log('cd lib');
 shell.cd('lib');
-publishUtils.exec('npm publish --tag next');
+publishUtils.exec('npm publish');

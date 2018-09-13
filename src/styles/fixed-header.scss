@@ -1,10 +1,14 @@
 .fixed-header-table {
-  width: 500px;
+  width: 700px;
   overflow: hidden;
 
   .fixed-header-table__body {
     height: 200px;
     overflow: auto;
+  }
+
+  .table-cell-content {
+    white-space: nowrap;
   }
 
   .th-content {
