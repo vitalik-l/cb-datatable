@@ -3,8 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
-import '../src/styles/table.scss';
-import '../src/styles/virtual-table.scss';
 import {generateMockData} from '../testUtils';
 import VirtualTable from '../src/VirtualTable';
 

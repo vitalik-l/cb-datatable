@@ -24,7 +24,7 @@ class InfiniteTable extends React.Component {
   }
 
   tableBodyScrollHandler({target}) {
-    if (this.props.data.length == this.props.displayData.length) return;
+    if (this.props.data.length === this.props.displayData.length) return;
     const {scrollHeight, scrollTop, offsetHeight} = target;
     const firePoint = Math.min(offsetHeight * 0.15, 50);
     if ((scrollTop + offsetHeight) + firePoint > scrollHeight) {

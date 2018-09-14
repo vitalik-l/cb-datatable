@@ -29,7 +29,7 @@ class InfiniteTableContainer extends DataTableContainer {
     }
 
     setCountRows = (value) => {
-      if (this.state.countRows == value) return;
+      if (this.state.countRows === value) return;
       this.setState({countRows: value});
     };
 

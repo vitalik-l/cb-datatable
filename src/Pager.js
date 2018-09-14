@@ -58,15 +58,15 @@ class Pager extends React.Component<Props> {
     };
 
     return (
-      <div className="data-table-pager">
-        <button className={classNames('data-table-pager__previous')} style={styles.previous} onClick={this.previousClickHandler}>Previous</button>
-        <div className="data-table-pager__select">
+      <div className="cb-datatable-pager">
+        <button className={classNames('cb-datatable-pager__previous')} style={styles.previous} onClick={this.previousClickHandler}>Previous</button>
+        <div className="cb-datatable-pager__select">
           <select onChange={this.selectPageHandler} value={currentPage}>
             {pages.map(pageNumber => <option value={pageNumber} key={pageNumber}>{pageNumber}</option>)}
           </select>
           <span> / {pagesCount}</span>
         </div>
-        <button className={classNames('data-table-pager__next')} style={styles.next} onClick={this.nextClickHandler}>Next</button>
+        <button className={classNames('cb-datatable-pager__next')} style={styles.next} onClick={this.nextClickHandler}>Next</button>
       </div>
     )
   }

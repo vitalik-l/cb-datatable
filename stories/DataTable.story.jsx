@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
-import '../src/styles/table.scss';
+import '../src/styles/index.scss';
 import {generateMockData, generateDataForColumns} from '../testUtils';
 import DataTable from '../src';
 

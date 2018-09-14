@@ -70,7 +70,7 @@ class FixedHeaderTable extends React.Component<TableProps> {
 
   render() {
     return (
-      <span className="table-layout" ref={el => this.tableContainer = el}>
+      <span className="cb-datatable__table" ref={el => this.tableContainer = el}>
         {this.props.renderTableLayout ?
         this.props.renderTableLayout({Body: this.Body, Header: this.Header, Loader: this.Loader})
         : this.renderLayout()}

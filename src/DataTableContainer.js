@@ -13,7 +13,11 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
   state: DataTableContainerState;
 
   static defaultProps: Object = {
-    TableComponent: Table,
+    TableComponent: props => (
+      <div className="cb-datatable__table">
+        <Table {...props}/>
+      </div>
+    ),
     PagerComponent: Pager,
     Loader: <Loader />,
     orderBy: {},
@@ -62,14 +66,15 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
       setOrderBy: this.setOrderBy,
       loading: this.props.loading,
       Loader: this.props.Loader,
-      onRowClick: this.props.onRowClick
+      onRowClick: this.props.onRowClick,
+      key: 'table'
     };
   }
 
   get Table(): React$Element<*> {
     return React.createElement(
       this.props.TableComponent,
-      this.tableProps
+      this.tableProps,
     )
   }
 
@@ -81,7 +86,8 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
         data: this.data,
         rowsPerPage: this.props.rowsPerPage,
         setCurrentPage: this.setCurrentPage,
-        currentPage: this.state.currentPage
+        currentPage: this.state.currentPage,
+        key: 'pager'
       }
     )
   }
@@ -121,23 +127,16 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
   };
 
   renderLayout(Table: React$Element<*>, Pager: ?React$Element<*>) {
-    return Pager ?  (
-      <div className={classNames('cb-datatable', this.props.className)} onClick={this.props.onClick}>
-        <div className="table-container">
-          {Table}
-        </div>
-        {Pager}
-      </div>
-    ) :  (
-      <div className={classNames('cb-datatable', this.props.className)} onClick={this.props.onClick}>
-        {Table}
-      </div>
-    )
+    return Pager ? [Table, Pager] :  Table;
   }
 
   render() {
-    return (this.props.renderLayout && this.props.renderLayout(this.Table, this.Pager))
-      || this.renderLayout(this.Table, this.Pager);
+    return (
+      <div className={classNames('cb-datatable', this.props.className)} onClick={this.props.onClick}>
+        {(this.props.renderLayout && this.props.renderLayout(this.Table, this.Pager))
+        || this.renderLayout(this.Table, this.Pager)}
+      </div>
+    )
   }
 }
 
