@@ -4,116 +4,120 @@ exports[`VirtualTable Columns visibility. Column 1 should be hidden 1`] = `
 <div
   className="cb-datatable"
 >
-  <div
-    className="fixed-header-table virtual-data-table"
+  <span
+    className="table-layout"
   >
     <div
-      className="fixed-header-table__header"
-    >
-      <table>
-        <thead>
-          <tr>
-            <th
-              className="sortable"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
-              >
-                column0
-              </div>
-            </th>
-            <th
-              className="sortable"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
-              >
-                column2
-              </div>
-            </th>
-            <th
-              className="sortable"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
-              >
-                column3
-              </div>
-            </th>
-            <th
-              className="sortable"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
-              >
-                column4
-              </div>
-            </th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <div
-      className="virtual-data-table__scroll-area"
+      className="fixed-header-table virtual-data-table"
     >
       <div
-        className="virtual-data-table__full-area"
+        className="fixed-header-table__header"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th
+                className="sortable"
+                onClick={[Function]}
+              >
+                <div
+                  className="th-content"
+                >
+                  column0
+                </div>
+              </th>
+              <th
+                className="sortable"
+                onClick={[Function]}
+              >
+                <div
+                  className="th-content"
+                >
+                  column2
+                </div>
+              </th>
+              <th
+                className="sortable"
+                onClick={[Function]}
+              >
+                <div
+                  className="th-content"
+                >
+                  column3
+                </div>
+              </th>
+              <th
+                className="sortable"
+                onClick={[Function]}
+              >
+                <div
+                  className="th-content"
+                >
+                  column4
+                </div>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div
+        className="virtual-data-table__scroll-area"
       >
         <div
-          className="fixed-header-table__body"
+          className="virtual-data-table__full-area"
         >
-          <table>
-            <tbody>
-              <tr
-                onClick={null}
-              >
-                <td
-                  className={null}
+          <div
+            className="fixed-header-table__body"
+          >
+            <table>
+              <tbody>
+                <tr
+                  onClick={null}
                 >
-                  <div
-                    className="table-cell-content"
+                  <td
+                    className={null}
                   >
-                    column0 0
-                  </div>
-                </td>
-                <td
-                  className={null}
-                >
-                  <div
-                    className="table-cell-content"
+                    <div
+                      className="table-cell-content"
+                    >
+                      column0 0
+                    </div>
+                  </td>
+                  <td
+                    className={null}
                   >
-                    column2 0
-                  </div>
-                </td>
-                <td
-                  className={null}
-                >
-                  <div
-                    className="table-cell-content"
+                    <div
+                      className="table-cell-content"
+                    >
+                      column2 0
+                    </div>
+                  </td>
+                  <td
+                    className={null}
                   >
-                    column3 0
-                  </div>
-                </td>
-                <td
-                  className={null}
-                >
-                  <div
-                    className="table-cell-content"
+                    <div
+                      className="table-cell-content"
+                    >
+                      column3 0
+                    </div>
+                  </td>
+                  <td
+                    className={null}
                   >
-                    column4 0
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    <div
+                      className="table-cell-content"
+                    >
+                      column4 0
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </span>
 </div>
 `;
 
@@ -121,6 +125,152 @@ exports[`VirtualTable orderBy asc Snapshot: should apply sort class and icon 1`]
 <div
   className="cb-datatable"
 >
+  <span
+    className="table-layout"
+  >
+    <div
+      className="fixed-header-table virtual-data-table"
+    >
+      <div
+        className="fixed-header-table__header"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th
+                className="sortable sort-asc"
+                onClick={[Function]}
+              >
+                <div
+                  className="th-content"
+                >
+                  <div
+                    className="th-content__label"
+                  >
+                    column 0
+                  </div>
+                  <span
+                    className="icon-sort icon-sort-asc"
+                  >
+                     ▲
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div
+        className="virtual-data-table__scroll-area"
+      >
+        <div
+          className="virtual-data-table__full-area"
+        >
+          <div
+            className="fixed-header-table__body"
+          >
+            <table>
+              <tbody>
+                <tr
+                  onClick={null}
+                >
+                  <td
+                    className={null}
+                  >
+                    <div
+                      className="table-cell-content"
+                    >
+                      column0 0
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`VirtualTable orderBy desc Snapshot: should apply sort class and icon 1`] = `
+<div
+  className="cb-datatable"
+>
+  <span
+    className="table-layout"
+  >
+    <div
+      className="fixed-header-table virtual-data-table"
+    >
+      <div
+        className="fixed-header-table__header"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th
+                className="sortable sort-desc"
+                onClick={[Function]}
+              >
+                <div
+                  className="th-content"
+                >
+                  <div
+                    className="th-content__label"
+                  >
+                    column 0
+                  </div>
+                  <span
+                    className="icon-sort icon-sort-desc"
+                  >
+                     ▼
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div
+        className="virtual-data-table__scroll-area"
+      >
+        <div
+          className="virtual-data-table__full-area"
+        >
+          <div
+            className="fixed-header-table__body"
+          >
+            <table>
+              <tbody>
+                <tr
+                  onClick={null}
+                >
+                  <td
+                    className={null}
+                  >
+                    <div
+                      className="table-cell-content"
+                    >
+                      column0 2
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`VirtualTable should apply renderLayout prop, it displays only table 1`] = `
+<span
+  className="table-layout"
+>
   <div
     className="fixed-header-table virtual-data-table"
   >
@@ -131,22 +281,13 @@ exports[`VirtualTable orderBy asc Snapshot: should apply sort class and icon 1`]
         <thead>
           <tr>
             <th
-              className="sortable sort-asc"
+              className="sortable"
               onClick={[Function]}
             >
               <div
                 className="th-content"
               >
-                <div
-                  className="th-content__label"
-                >
-                  column 0
-                </div>
-                <span
-                  className="icon-sort icon-sort-asc"
-                >
-                   ▲
-                </span>
+                column 0
               </div>
             </th>
           </tr>
@@ -183,130 +324,5 @@ exports[`VirtualTable orderBy asc Snapshot: should apply sort class and icon 1`]
       </div>
     </div>
   </div>
-</div>
-`;
-
-exports[`VirtualTable orderBy desc Snapshot: should apply sort class and icon 1`] = `
-<div
-  className="cb-datatable"
->
-  <div
-    className="fixed-header-table virtual-data-table"
-  >
-    <div
-      className="fixed-header-table__header"
-    >
-      <table>
-        <thead>
-          <tr>
-            <th
-              className="sortable sort-desc"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
-              >
-                <div
-                  className="th-content__label"
-                >
-                  column 0
-                </div>
-                <span
-                  className="icon-sort icon-sort-desc"
-                >
-                   ▼
-                </span>
-              </div>
-            </th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <div
-      className="virtual-data-table__scroll-area"
-    >
-      <div
-        className="virtual-data-table__full-area"
-      >
-        <div
-          className="fixed-header-table__body"
-        >
-          <table>
-            <tbody>
-              <tr
-                onClick={null}
-              >
-                <td
-                  className={null}
-                >
-                  <div
-                    className="table-cell-content"
-                  >
-                    column0 2
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`VirtualTable should apply renderLayout prop, it displays only table 1`] = `
-<div
-  className="fixed-header-table virtual-data-table"
->
-  <div
-    className="fixed-header-table__header"
-  >
-    <table>
-      <thead>
-        <tr>
-          <th
-            className="sortable"
-            onClick={[Function]}
-          >
-            <div
-              className="th-content"
-            >
-              column 0
-            </div>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    className="virtual-data-table__scroll-area"
-  >
-    <div
-      className="virtual-data-table__full-area"
-    >
-      <div
-        className="fixed-header-table__body"
-      >
-        <table>
-          <tbody>
-            <tr
-              onClick={null}
-            >
-              <td
-                className={null}
-              >
-                <div
-                  className="table-cell-content"
-                >
-                  column0 0
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+</span>
 `;

@@ -4,108 +4,112 @@ exports[`FixedHeaderTable Columns visibility. Column 1 should be hidden 1`] = `
 <div
   className="cb-datatable"
 >
-  <div
-    className="fixed-header-table"
+  <span
+    className="table-layout"
   >
     <div
-      className="fixed-header-table__header"
+      className="fixed-header-table"
     >
-      <table>
-        <thead>
-          <tr>
-            <th
-              className="sortable"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
+      <div
+        className="fixed-header-table__header"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th
+                className="sortable"
+                onClick={[Function]}
               >
-                column0
-              </div>
-            </th>
-            <th
-              className="sortable"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
+                <div
+                  className="th-content"
+                >
+                  column0
+                </div>
+              </th>
+              <th
+                className="sortable"
+                onClick={[Function]}
               >
-                column2
-              </div>
-            </th>
-            <th
-              className="sortable"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
+                <div
+                  className="th-content"
+                >
+                  column2
+                </div>
+              </th>
+              <th
+                className="sortable"
+                onClick={[Function]}
               >
-                column3
-              </div>
-            </th>
-            <th
-              className="sortable"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
+                <div
+                  className="th-content"
+                >
+                  column3
+                </div>
+              </th>
+              <th
+                className="sortable"
+                onClick={[Function]}
               >
-                column4
-              </div>
-            </th>
-          </tr>
-        </thead>
-      </table>
+                <div
+                  className="th-content"
+                >
+                  column4
+                </div>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div
+        className="fixed-header-table__body"
+      >
+        <table>
+          <tbody>
+            <tr
+              onClick={null}
+            >
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column0 0
+                </div>
+              </td>
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column2 0
+                </div>
+              </td>
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column3 0
+                </div>
+              </td>
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column4 0
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div
-      className="fixed-header-table__body"
-    >
-      <table>
-        <tbody>
-          <tr
-            onClick={null}
-          >
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
-                column0 0
-              </div>
-            </td>
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
-                column2 0
-              </div>
-            </td>
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
-                column3 0
-              </div>
-            </td>
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
-                column4 0
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  </span>
 </div>
 `;
 
@@ -113,86 +117,90 @@ exports[`FixedHeaderTable orderBy asc Snapshot: should apply sort class and icon
 <div
   className="cb-datatable"
 >
-  <div
-    className="fixed-header-table"
+  <span
+    className="table-layout"
   >
     <div
-      className="fixed-header-table__header"
+      className="fixed-header-table"
     >
-      <table>
-        <thead>
-          <tr>
-            <th
-              className="sortable sort-asc"
-              onClick={[Function]}
-            >
-              <div
-                className="th-content"
+      <div
+        className="fixed-header-table__header"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th
+                className="sortable sort-asc"
+                onClick={[Function]}
               >
                 <div
-                  className="th-content__label"
+                  className="th-content"
                 >
-                  column 0
+                  <div
+                    className="th-content__label"
+                  >
+                    column 0
+                  </div>
+                  <span
+                    className="icon-sort icon-sort-asc"
+                  >
+                     ▲
+                  </span>
                 </div>
-                <span
-                  className="icon-sort icon-sort-asc"
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div
+        className="fixed-header-table__body"
+      >
+        <table>
+          <tbody>
+            <tr
+              onClick={null}
+            >
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
                 >
-                   ▲
-                </span>
-              </div>
-            </th>
-          </tr>
-        </thead>
-      </table>
+                  column0 0
+                </div>
+              </td>
+            </tr>
+            <tr
+              onClick={null}
+            >
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column0 1
+                </div>
+              </td>
+            </tr>
+            <tr
+              onClick={null}
+            >
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column0 2
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div
-      className="fixed-header-table__body"
-    >
-      <table>
-        <tbody>
-          <tr
-            onClick={null}
-          >
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
-                column0 0
-              </div>
-            </td>
-          </tr>
-          <tr
-            onClick={null}
-          >
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
-                column0 1
-              </div>
-            </td>
-          </tr>
-          <tr
-            onClick={null}
-          >
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
-                column0 2
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  </span>
 </div>
 `;
 
@@ -200,6 +208,97 @@ exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and ico
 <div
   className="cb-datatable"
 >
+  <span
+    className="table-layout"
+  >
+    <div
+      className="fixed-header-table"
+    >
+      <div
+        className="fixed-header-table__header"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th
+                className="sortable sort-desc"
+                onClick={[Function]}
+              >
+                <div
+                  className="th-content"
+                >
+                  <div
+                    className="th-content__label"
+                  >
+                    column 0
+                  </div>
+                  <span
+                    className="icon-sort icon-sort-desc"
+                  >
+                     ▼
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div
+        className="fixed-header-table__body"
+      >
+        <table>
+          <tbody>
+            <tr
+              onClick={null}
+            >
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column0 2
+                </div>
+              </td>
+            </tr>
+            <tr
+              onClick={null}
+            >
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column0 1
+                </div>
+              </td>
+            </tr>
+            <tr
+              onClick={null}
+            >
+              <td
+                className={null}
+              >
+                <div
+                  className="table-cell-content"
+                >
+                  column0 0
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`FixedHeaderTable should apply renderLayout prop, it displays only table 1`] = `
+<span
+  className="table-layout"
+>
   <div
     className="fixed-header-table"
   >
@@ -210,22 +309,13 @@ exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and ico
         <thead>
           <tr>
             <th
-              className="sortable sort-desc"
+              className="sortable"
               onClick={[Function]}
             >
               <div
                 className="th-content"
               >
-                <div
-                  className="th-content__label"
-                >
-                  column 0
-                </div>
-                <span
-                  className="icon-sort icon-sort-desc"
-                >
-                   ▼
-                </span>
+                column 0
               </div>
             </th>
           </tr>
@@ -246,32 +336,6 @@ exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and ico
               <div
                 className="table-cell-content"
               >
-                column0 2
-              </div>
-            </td>
-          </tr>
-          <tr
-            onClick={null}
-          >
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
-                column0 1
-              </div>
-            </td>
-          </tr>
-          <tr
-            onClick={null}
-          >
-            <td
-              className={null}
-            >
-              <div
-                className="table-cell-content"
-              >
                 column0 0
               </div>
             </td>
@@ -280,53 +344,5 @@ exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and ico
       </table>
     </div>
   </div>
-</div>
-`;
-
-exports[`FixedHeaderTable should apply renderLayout prop, it displays only table 1`] = `
-<div
-  className="fixed-header-table"
->
-  <div
-    className="fixed-header-table__header"
-  >
-    <table>
-      <thead>
-        <tr>
-          <th
-            className="sortable"
-            onClick={[Function]}
-          >
-            <div
-              className="th-content"
-            >
-              column 0
-            </div>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    className="fixed-header-table__body"
-  >
-    <table>
-      <tbody>
-        <tr
-          onClick={null}
-        >
-          <td
-            className={null}
-          >
-            <div
-              className="table-cell-content"
-            >
-              column0 0
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+</span>
 `;

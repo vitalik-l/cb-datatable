@@ -5,7 +5,7 @@ import classNames from 'classnames';
 type Props = {
   data: Array<Object>,
   rowsPerPage: number,
-  currentPage?: number,
+  currentPage: number,
   setCurrentPage?: Function
 };
 
@@ -13,7 +13,8 @@ class Pager extends React.Component<Props> {
   props: Props;
 
   static defaultProps = {
-    rowsPerPage: 20
+    rowsPerPage: 20,
+    currentPage: 1
   };
 
   get pagesCount(): number {
@@ -25,7 +26,7 @@ class Pager extends React.Component<Props> {
   }
 
   goToPage(toPage: number) {
-    this.props.setCurrentPage(+toPage);
+    this.props.setCurrentPage && this.props.setCurrentPage(+toPage);
   }
 
   nextClickHandler = () => {

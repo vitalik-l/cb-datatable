@@ -1,10 +1,12 @@
 class FixedHeaderHelper {
   constructor({
+    tableContainer,
     tableBodyContainer,
     tableBody,
     tableHeaderContainer,
     tableHeader
   }) {
+    this.tableContainer = tableContainer;
     this.tableBodyContainer = tableBodyContainer;
     this.tableBody = tableBody;
     this.tableHeaderContainer = tableHeaderContainer;
@@ -23,6 +25,8 @@ class FixedHeaderHelper {
     if (!this.tableBody || !this.tableBody.rows.length) return;
     const tableBodyCells = this.tableBody.rows[0].cells;
 
+    this.tableContainer.classList.add('updating');
+
     for (let i = 0; i < tableBodyCells.length; i++) {
       const tableHeaderCell = this.tableHeader.rows[0].cells[i];
       const tableBodyCellWidth = tableBodyCells[i].getBoundingClientRect().width;
@@ -32,6 +36,8 @@ class FixedHeaderHelper {
       this.tableHeader.rows[0].cells[i].style['min-width'] = newWidth + 'px';
       tableBodyCells[i].style['min-width'] = newWidth + 'px';
     }
+
+    this.tableContainer.classList.remove('updating');
   }
 }
 

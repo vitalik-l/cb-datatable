@@ -1,3 +1,13 @@
+.table-layout {
+  &.updating {
+    th {
+      min-width: 0 !important;
+    }
+    td {
+      min-width: 0 !important;
+    }
+  }
+}
 .fixed-header-table {
   width: 700px;
   overflow: hidden;
@@ -5,6 +15,10 @@
   .fixed-header-table__body {
     height: 200px;
     overflow: auto;
+
+    table {
+      width: initial;
+    }
   }
 
   .table-cell-content {

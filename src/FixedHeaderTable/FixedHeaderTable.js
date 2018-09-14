@@ -8,6 +8,7 @@ import type {TableProps} from '../types';
 class FixedHeaderTable extends React.Component<TableProps> {
   props: TableProps;
   fixedHeaderHelper: FixedHeaderHelper;
+  tableContainer: HTMLElement;
   tableBodyContainer: ?HTMLElement;
   tableBody: ?HTMLElement;
   tableHeaderContainer: ?HTMLElement;
@@ -15,6 +16,7 @@ class FixedHeaderTable extends React.Component<TableProps> {
 
   componentDidMount() {
     this.fixedHeaderHelper = new FixedHeaderHelper({
+      tableContainer: this.tableContainer,
       tableBodyContainer: this.tableBodyContainer,
       tableBody: this.tableBody,
       tableHeaderContainer: this.tableHeaderContainer,
@@ -67,9 +69,13 @@ class FixedHeaderTable extends React.Component<TableProps> {
   }
 
   render() {
-    return this.props.renderTableLayout ?
-      this.props.renderTableLayout({Body: this.Body, Header: this.Header, Loader: this.Loader})
-      : this.renderLayout();
+    return (
+      <span className="table-layout" ref={el => this.tableContainer = el}>
+        {this.props.renderTableLayout ?
+        this.props.renderTableLayout({Body: this.Body, Header: this.Header, Loader: this.Loader})
+        : this.renderLayout()}
+      </span>
+    )
   }
 }
 

@@ -44,7 +44,14 @@ stories.add('test data', () => {
 
     onClearData = () => {
       this.setState({
-        data: []
+        data: [{
+          column0: '',
+          column1: '',
+          column2: '',
+          column3: '',
+          column4: '',
+          column5: '',
+        }]
       });
     };
 
