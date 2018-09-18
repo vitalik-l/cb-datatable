@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTable Columns visibility. Column 1 should be hidden 1`] = `
+<div
+  className="cb-datatable"
+>
+  <div
+    className="cb-datatable__table"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="sortable"
+            onClick={[Function]}
+          >
+            <div
+              className="th-content"
+            >
+              column0
+            </div>
+          </th>
+          <th
+            className="sortable"
+            onClick={[Function]}
+          >
+            <div
+              className="th-content"
+            >
+              column2
+            </div>
+          </th>
+          <th
+            className="sortable"
+            onClick={[Function]}
+          >
+            <div
+              className="th-content"
+            >
+              column3
+            </div>
+          </th>
+          <th
+            className="sortable"
+            onClick={[Function]}
+          >
+            <div
+              className="th-content"
+            >
+              column4
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          onClick={null}
+        >
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column0 0
+            </div>
+          </td>
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column2 0
+            </div>
+          </td>
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column3 0
+            </div>
+          </td>
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column4 0
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`DataTable orderBy asc Snapshot: should apply sort class and icon 1`] = `
+<div
+  className="cb-datatable"
+>
+  <div
+    className="cb-datatable__table"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="sortable sort-asc"
+            onClick={[Function]}
+          >
+            <div
+              className="th-content"
+            >
+              <div
+                className="th-content__label"
+              >
+                column 0
+              </div>
+              <span
+                className="icon-sort icon-sort-asc"
+              >
+                 ▲
+              </span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          onClick={null}
+        >
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column0 0
+            </div>
+          </td>
+        </tr>
+        <tr
+          onClick={null}
+        >
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column0 1
+            </div>
+          </td>
+        </tr>
+        <tr
+          onClick={null}
+        >
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column0 2
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`DataTable orderBy desc Snapshot: should apply sort class and icon 1`] = `
+<div
+  className="cb-datatable"
+>
+  <div
+    className="cb-datatable__table"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="sortable sort-desc"
+            onClick={[Function]}
+          >
+            <div
+              className="th-content"
+            >
+              <div
+                className="th-content__label"
+              >
+                column 0
+              </div>
+              <span
+                className="icon-sort icon-sort-desc"
+              >
+                 ▼
+              </span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          onClick={null}
+        >
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column0 2
+            </div>
+          </td>
+        </tr>
+        <tr
+          onClick={null}
+        >
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column0 1
+            </div>
+          </td>
+        </tr>
+        <tr
+          onClick={null}
+        >
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column0 0
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`DataTable should apply renderLayout prop, it displays only table 1`] = `
+<div
+  className="cb-datatable"
+>
+  <div
+    className="cb-datatable__table"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="sortable"
+            onClick={[Function]}
+          >
+            <div
+              className="th-content"
+            >
+              column 0
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          onClick={null}
+        >
+          <td
+            className={null}
+          >
+            <div
+              className="table-cell-content"
+            >
+              column0 0
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
