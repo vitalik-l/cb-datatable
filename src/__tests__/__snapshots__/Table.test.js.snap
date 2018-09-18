@@ -110,7 +110,7 @@ exports[`DataTable orderBy asc Snapshot: should apply sort class and icon 1`] = 
       <thead>
         <tr>
           <th
-            className="sortable sort-asc"
+            className="column0 sortable sort-asc"
             onClick={[Function]}
           >
             <div
@@ -135,7 +135,7 @@ exports[`DataTable orderBy asc Snapshot: should apply sort class and icon 1`] = 
           onClick={null}
         >
           <td
-            className={null}
+            className="column0"
           >
             <div
               className="table-cell-content"
@@ -148,7 +148,7 @@ exports[`DataTable orderBy asc Snapshot: should apply sort class and icon 1`] = 
           onClick={null}
         >
           <td
-            className={null}
+            className="column0"
           >
             <div
               className="table-cell-content"
@@ -161,7 +161,7 @@ exports[`DataTable orderBy asc Snapshot: should apply sort class and icon 1`] = 
           onClick={null}
         >
           <td
-            className={null}
+            className="column0"
           >
             <div
               className="table-cell-content"
@@ -187,7 +187,7 @@ exports[`DataTable orderBy desc Snapshot: should apply sort class and icon 1`] =
       <thead>
         <tr>
           <th
-            className="sortable sort-desc"
+            className="column0 sortable sort-desc"
             onClick={[Function]}
           >
             <div
@@ -212,7 +212,7 @@ exports[`DataTable orderBy desc Snapshot: should apply sort class and icon 1`] =
           onClick={null}
         >
           <td
-            className={null}
+            className="column0"
           >
             <div
               className="table-cell-content"
@@ -225,7 +225,7 @@ exports[`DataTable orderBy desc Snapshot: should apply sort class and icon 1`] =
           onClick={null}
         >
           <td
-            className={null}
+            className="column0"
           >
             <div
               className="table-cell-content"
@@ -238,7 +238,7 @@ exports[`DataTable orderBy desc Snapshot: should apply sort class and icon 1`] =
           onClick={null}
         >
           <td
-            className={null}
+            className="column0"
           >
             <div
               className="table-cell-content"
@@ -264,7 +264,7 @@ exports[`DataTable should apply renderLayout prop, it displays only table 1`] = 
       <thead>
         <tr>
           <th
-            className="sortable"
+            className="column0 sortable"
             onClick={[Function]}
           >
             <div
@@ -280,7 +280,7 @@ exports[`DataTable should apply renderLayout prop, it displays only table 1`] = 
           onClick={null}
         >
           <td
-            className={null}
+            className="column0"
           >
             <div
               className="table-cell-content"

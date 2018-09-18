@@ -16,6 +16,7 @@ class HeaderColumn extends React.Component<Props> {
   };
 
   get sorting(): ('asc'|'desc'|'') {
+    if (!this.props.orderBy) return '';
     return this.props.orderBy[this.props.name] || '';
   }
 
@@ -25,10 +26,10 @@ class HeaderColumn extends React.Component<Props> {
   };
 
   render() {
-    const {label, sortable, visible} = this.props;
+    const {label, sortable, visible, className} = this.props;
     if (visible === false) return null;
     return (
-      <th className={classNames({sortable, ['sort-' + this.sorting]: this.sorting})} onClick={this.onColumnClick}>
+      <th className={classNames(className, {sortable, ['sort-' + this.sorting]: this.sorting})} onClick={this.onColumnClick}>
         <div className="th-content">
           {this.sorting ? <div className="th-content__label">{label}</div> : label}
           {this.sorting ? <IconSort type={this.sorting} /> : null}

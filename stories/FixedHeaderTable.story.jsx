@@ -24,10 +24,11 @@ stories.add('test data', () => {
       if (i === 3) return 'longstringlongstring';
       return 'column' + i;
     },
-    columnsNumber: 6,
+    columnsNumber: 5,
     rowsNumber: 30,
     dataFunc: (column, i) => {
       if (column.name === 'column3') return '';
+      if (column.name === 'column2') return i;
       return column.name + ' long data' + i;
     }
   });

@@ -130,7 +130,7 @@ exports[`FixedHeaderTable orderBy asc Snapshot: should apply sort class and icon
           <thead>
             <tr>
               <th
-                className="sortable sort-asc"
+                className="column0 sortable sort-asc"
                 onClick={[Function]}
               >
                 <div
@@ -161,7 +161,7 @@ exports[`FixedHeaderTable orderBy asc Snapshot: should apply sort class and icon
               onClick={null}
             >
               <td
-                className={null}
+                className="column0"
               >
                 <div
                   className="table-cell-content"
@@ -174,7 +174,7 @@ exports[`FixedHeaderTable orderBy asc Snapshot: should apply sort class and icon
               onClick={null}
             >
               <td
-                className={null}
+                className="column0"
               >
                 <div
                   className="table-cell-content"
@@ -187,7 +187,7 @@ exports[`FixedHeaderTable orderBy asc Snapshot: should apply sort class and icon
               onClick={null}
             >
               <td
-                className={null}
+                className="column0"
               >
                 <div
                   className="table-cell-content"
@@ -221,7 +221,7 @@ exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and ico
           <thead>
             <tr>
               <th
-                className="sortable sort-desc"
+                className="column0 sortable sort-desc"
                 onClick={[Function]}
               >
                 <div
@@ -252,7 +252,7 @@ exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and ico
               onClick={null}
             >
               <td
-                className={null}
+                className="column0"
               >
                 <div
                   className="table-cell-content"
@@ -265,7 +265,7 @@ exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and ico
               onClick={null}
             >
               <td
-                className={null}
+                className="column0"
               >
                 <div
                   className="table-cell-content"
@@ -278,7 +278,7 @@ exports[`FixedHeaderTable orderBy desc Snapshot: should apply sort class and ico
               onClick={null}
             >
               <td
-                className={null}
+                className="column0"
               >
                 <div
                   className="table-cell-content"
@@ -312,7 +312,7 @@ exports[`FixedHeaderTable should apply renderLayout prop, it displays only table
           <thead>
             <tr>
               <th
-                className="sortable"
+                className="column0 sortable"
                 onClick={[Function]}
               >
                 <div
@@ -334,7 +334,7 @@ exports[`FixedHeaderTable should apply renderLayout prop, it displays only table
               onClick={null}
             >
               <td
-                className={null}
+                className="column0"
               >
                 <div
                   className="table-cell-content"

@@ -12,5 +12,23 @@ describe('HeaderColumn', () => {
     );
 
     expect(tree.getNode()).toBeNull();
+  });
+
+  it('Should have a className prop', () => {
+    const tree = shallow(
+      <HeaderColumn
+        className="test"
+      />
+    );
+
+    expect(tree.hasClass('test')).toBeTruthy();
+  });
+
+  it('Shouldn\'t have a className prop', () => {
+    const tree = shallow(
+      <HeaderColumn />
+    );
+
+    expect(tree.hasClass('test')).toBeFalsy();
   })
 });

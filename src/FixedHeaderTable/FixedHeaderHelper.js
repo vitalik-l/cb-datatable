@@ -39,6 +39,7 @@ class FixedHeaderHelper {
     }
 
     this.tableContainer.classList.remove('updating');
+    if (this.tableBody.offsetWidth > 0) this.tableHeaderContainer.style.width = this.tableBody.offsetWidth + 'px';
     this.tableBodyContainer.scrollLeft = savedScrollPosition;
   }
 }
