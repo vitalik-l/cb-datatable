@@ -1,0 +1,18 @@
+.cb-datatable {
+  tr, th {
+    border: 1px solid;
+    padding: 5px;
+  }
+
+  td {
+    border-right: 1px solid;
+  }
+
+  .fixed-header-table {
+    width: 600px;
+  }
+
+  .fixed-header-table__body {
+    height: 300px;
+  }
+}

@@ -9,13 +9,14 @@
   }
 
   td, th {
-    border: 1px solid;
-    padding: 5px;
     box-sizing: border-box;
   }
 
   .cb-datatable__table {
     &.updating {
+      table {
+        width: initial;
+      }
       th {
         min-width: 0 !important;
       }
@@ -25,16 +26,10 @@
     }
 
     .fixed-header-table {
-      width: 700px;
       overflow: hidden;
 
       .fixed-header-table__body {
-        height: 200px;
         overflow: auto;
-
-        table {
-          width: initial;
-        }
       }
 
       .table-cell-content {
@@ -42,9 +37,7 @@
       }
 
       .th-content {
-        display: flex;
         position: relative;
-        padding-right: 15px;
 
         .icon-sort {
           position: absolute;

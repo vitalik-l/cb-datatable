@@ -24,6 +24,7 @@ class FixedHeaderHelper {
   adjustColumns() {
     if (!this.tableBody || !this.tableBody.rows.length) return;
     const tableBodyCells = this.tableBody.rows[0].cells;
+    const savedScrollPosition = this.tableBodyContainer.scrollLeft;
 
     this.tableContainer.classList.add('updating');
 
@@ -38,6 +39,7 @@ class FixedHeaderHelper {
     }
 
     this.tableContainer.classList.remove('updating');
+    this.tableBodyContainer.scrollLeft = savedScrollPosition;
   }
 }
 
