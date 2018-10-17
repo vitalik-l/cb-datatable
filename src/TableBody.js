@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import BodyRowRenderer from './BodyRowRenderer';
+import Row from './Row';
 
 type Props = {
   BodyRowRenderer: Function,
@@ -19,8 +19,8 @@ function TableBody({
   return (
     <tbody>
     {
-      data ? data.map((row, i) => (
-        BodyRowRenderer({row, columns, onRowClick}).map(rowElement => rowElement))
+      data ? data.map((row, i) =>
+        React.createElement(BodyRowRenderer, {row, columns, onRowClick, key: i})
       ) : null
     }
     </tbody>
@@ -28,7 +28,7 @@ function TableBody({
 }
 
 TableBody.defaultProps = {
-  BodyRowRenderer: BodyRowRenderer
+  BodyRowRenderer: Row
 };
 
 export default TableBody;

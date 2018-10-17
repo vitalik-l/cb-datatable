@@ -3,9 +3,9 @@ import React from 'react';
 import type {RowProps} from './types';
 import Cell from './Cell';
 
-function Row({columns, row, onRowClick}: RowProps) {
+function Row({columns, row, onRowClick, className}: RowProps) {
   return (
-    <tr onClick={onRowClick ? e => onRowClick(e, row) : null}>
+    <tr className={className} onClick={onRowClick ? e => onRowClick(e, row) : null}>
       {columns.map((column, i) =>
         <Cell
           column={column}

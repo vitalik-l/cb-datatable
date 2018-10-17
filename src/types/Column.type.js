@@ -23,6 +23,11 @@ type Column = {
    * @public
    */
   visible: bool
+
+  /**
+   * @public
+   */
+  className: string
 };
 
 export default Column;
