@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import sinon from 'sinon';
 import {shallow} from 'enzyme';
 import HeaderColumn from '../HeaderColumn';
 
@@ -30,5 +30,15 @@ describe('HeaderColumn', () => {
     );
 
     expect(tree.hasClass('test')).toBeFalsy();
-  })
+  });
+
+  it('Shouldn\'t call sorting action', () => {
+    const clickHandler = sinon.spy();
+
+    const tree = shallow(
+      <HeaderColumn label="test" sortable={false} />
+    );
+    tree.simulate('click');
+    expect(clickHandler.called).toBeFalsy();
+  });
 });

@@ -27,7 +27,12 @@ type Column = {
   /**
    * @public
    */
-  className: string
+  className: string,
+
+  /**
+   * @public
+   */
+  setOrderBy: Function
 };
 
 export default Column;

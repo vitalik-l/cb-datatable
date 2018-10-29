@@ -21,6 +21,7 @@ class HeaderColumn extends React.Component<Props> {
   }
 
   onColumnClick = (e: Event) => {
+    if (!this.props.sortable) return;
     let newSorting = this.sorting === 'asc' ? 'desc' : 'asc';
     this.props.setOrderBy({[this.props.name]: newSorting});
   };
