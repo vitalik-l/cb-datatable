@@ -48,6 +48,12 @@ type TableProps = {
   onRowClick: Function,
 
   /**
+   * @public
+   * onSort event
+   */
+  onSort: Function,
+
+  /**
    * @private
    */
   setOrderBy: Function,
