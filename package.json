@@ -1,6 +1,6 @@
 {
   "name": "cb-datatable",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React DataTable component",
   "main": "./index.js",
   "dependencies": {
