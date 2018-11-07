@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row Should pass a data prop 1`] = `
+<tr
+  className="test"
+  data-tooltip="tooltip"
+  onClick={null}
+  onMouseOver={[Function]}
+/>
+`;
