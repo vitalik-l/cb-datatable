@@ -6,21 +6,23 @@ type Props = {
   BodyRowRenderer: Function,
   data: Array<Object>,
   columns: Array<Object>,
-  onRowClick: Function
+  onRowClick: Function,
+  children: any
 };
 
 function TableBody({
   BodyRowRenderer,
   data,
   columns,
-  onRowClick
+  onRowClick,
+  children
 }: Props)
 {
   return (
     <tbody>
     {
       data ? data.map((row, i) =>
-        React.createElement(BodyRowRenderer, {row, columns, onRowClick, key: i})
+        React.createElement(BodyRowRenderer, {row, columns, onRowClick, children, key: i})
       ) : null
     }
     </tbody>

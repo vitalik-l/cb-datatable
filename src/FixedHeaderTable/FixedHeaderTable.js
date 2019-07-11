@@ -29,10 +29,18 @@ class FixedHeaderTable extends React.Component<TableProps> {
   }
 
   get Header(): React$Element<*> {
+    let columns = this.props.columns;
+
+    if (!columns) {
+      columns = React.Children.map(this.props.children, (item) => {
+        return item.props;
+      });
+    }
+
     return (
       <div className="fixed-header-table__header" ref={el => this.tableHeaderContainer = el}>
         <table ref={el => this.tableHeader = el}>
-          <TableHeader orderBy={this.props.orderBy} setOrderBy={this.props.setOrderBy} columns={this.props.columns} />
+          <TableHeader orderBy={this.props.orderBy} setOrderBy={this.props.setOrderBy} columns={columns} />
         </table>
       </div>
     )
@@ -47,6 +55,7 @@ class FixedHeaderTable extends React.Component<TableProps> {
             columns={this.props.columns}
             data={this.props.displayData}
             onRowClick={this.props.onRowClick}
+            children={this.props.children}
           />
         </table>
       </div>

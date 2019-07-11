@@ -1,6 +1,6 @@
 {
   "name": "cb-datatable",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React DataTable component",
   "main": "./index.js",
   "dependencies": {
@@ -36,6 +36,7 @@
     "build:copy-styles": "babel-node ./scripts/copy-styles.js",
     "build:copy-files": "babel-node ./scripts/copy-files.js",
     "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./lib --ignore __test__,__tests__,stories,types",
+    "local": "npm run build && cross-env PROJECT_PATH=C:\\Users\\user\\WebstormProjects\\WeekendForex2 node ./scripts/local.js",
     "test": "jest",
     "flow": "flow",
     "prebuild": "rimraf lib",

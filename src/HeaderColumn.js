@@ -15,15 +15,23 @@ class HeaderColumn extends React.Component<Props> {
     sortable: true
   };
 
+  get label() {
+    return this.props.label || this.props.source;
+  }
+
+  get name() {
+    return this.props.name || this.props.source;
+  }
+
   get sorting(): ('asc'|'desc'|'') {
     if (!this.props.orderBy) return '';
-    return this.props.orderBy[this.props.name] || '';
+    return this.props.orderBy[this.name] || '';
   }
 
   onColumnClick = (e: Event) => {
     if (!this.props.sortable) return;
     let newSorting = this.sorting === 'asc' ? 'desc' : 'asc';
-    this.props.setOrderBy({[this.props.name]: newSorting});
+    this.props.setOrderBy({[this.name]: newSorting});
   };
 
   render() {
@@ -32,7 +40,7 @@ class HeaderColumn extends React.Component<Props> {
     return (
       <th className={classNames(className, {sortable, ['sort-' + this.sorting]: this.sorting})} onClick={this.onColumnClick}>
         <div className="th-content">
-          {this.sorting ? <div className="th-content__label">{label}</div> : label}
+          {this.sorting ? <div className="th-content__label">{this.label}</div> : this.label}
           {this.sorting ? <IconSort type={this.sorting} /> : null}
         </div>
       </th>

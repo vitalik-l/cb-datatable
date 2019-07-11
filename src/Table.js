@@ -12,16 +12,25 @@ class Table extends React.Component<TableProps> {
   };
 
   render() {
+    let columns = this.props.columns;
+
+    if (!columns) {
+      columns = React.Children.map(this.props.children, (item) => {
+        return item.props;
+      });
+    }
+
     return (
       <table>
         <TableHeader
           orderBy={this.props.orderBy}
           setOrderBy={this.props.setOrderBy}
-          columns={this.props.columns}
+          columns={columns}
         />
         <TableBody
           BodyRowRenderer={this.props.BodyRowRenderer}
-          columns={this.props.columns}
+          children={this.props.children}
+          columns={columns}
           data={this.props.displayData}
           onRowClick={this.props.onRowClick}
         />

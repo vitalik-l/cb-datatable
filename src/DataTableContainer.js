@@ -68,6 +68,7 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
       Loader: this.props.Loader,
       onRowClick: this.props.onRowClick,
       BodyRowRenderer: this.props.BodyRowRenderer,
+      children: this.props.children,
       key: 'table'
     };
   }

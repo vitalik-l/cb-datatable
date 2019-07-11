@@ -1,13 +1,15 @@
 import React from 'react';
 
-function Cell({column, row}) {
+function Cell({column, row, children}) {
   if (column.visible === false) return null;
   return (
     <td className={column.className ? column.className : null}>
       <div className="table-cell-content">
-        {column.renderer ?
+        {!children ?
+          column.renderer ?
           React.createElement(column.renderer, {column, row})
-          : row[column.name]}
+          : row[column.name]
+        : children}
       </div>
     </td>
   )
