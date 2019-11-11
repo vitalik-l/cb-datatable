@@ -22,7 +22,7 @@ function TableBody({
     <tbody>
     {
       data ? data.map((row, i) =>
-        React.createElement(BodyRowRenderer, {row, columns, onRowClick, children, key: i})
+        React.createElement(BodyRowRenderer, {row, columns, onRowClick, children, index: i, key: i})
       ) : null
     }
     </tbody>

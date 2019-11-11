@@ -3,7 +3,7 @@ import React from 'react';
 import type {RowProps} from './types';
 import Cell from './Cell';
 
-function Row({columns, row, onRowClick, className, children, ...rest}: RowProps) {
+function Row({columns, row, onRowClick, className, children, index, ...rest}: RowProps) {
   return (
     <tr className={className} onClick={onRowClick ? e => onRowClick(e, row) : null} {...rest}>
       {!children ?
@@ -11,6 +11,7 @@ function Row({columns, row, onRowClick, className, children, ...rest}: RowProps)
           <Cell
             column={column}
             row={row}
+            index={index}
             key={i}
           />
         ) :
@@ -22,7 +23,8 @@ function Row({columns, row, onRowClick, className, children, ...rest}: RowProps)
               key={i}
             >
               {React.cloneElement(child, {
-                row
+                row,
+                index
               })}
             </Cell>
           );
