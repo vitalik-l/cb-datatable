@@ -1,5 +1,6 @@
 import React from 'react';
 import sinon from 'sinon';
+import './configureEnzyme';
 import {shallow} from 'enzyme';
 import HeaderColumn from '../HeaderColumn';
 
@@ -11,7 +12,7 @@ describe('HeaderColumn', () => {
       />
     );
 
-    expect(tree.getNode()).toBeNull();
+    expect(tree.getElement()).toBeNull();
   });
 
   it('Should have a className prop', () => {

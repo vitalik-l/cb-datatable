@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import './configureEnzyme';
 import {shallow} from 'enzyme';
 import Cell from '../Cell';
 
@@ -30,6 +30,6 @@ describe('Cell', () => {
       />
     );
 
-    expect(tree.getNode()).toBeNull();
+    expect(tree.getElement()).toBeNull();
   })
 });

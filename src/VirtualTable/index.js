@@ -1,1 +1,2 @@
-export default from './VirtualTableContainer';
+import VirtualTableContainer from './VirtualTableContainer';
+export default VirtualTableContainer;

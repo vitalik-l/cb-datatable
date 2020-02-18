@@ -1,11 +1,13 @@
 {
   "plugins": [
-    "transform-runtime",
-    "transform-decorators-legacy"
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-flow-strip-types",
+    ["@babel/plugin-proposal-decorators", {"legacy": true}],
+    "@babel/plugin-proposal-class-properties"
   ],
   "presets": [
-    "es2015",
-    "stage-1",
-    "react"
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-flow"
   ]
 }

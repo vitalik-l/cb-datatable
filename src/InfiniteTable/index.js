@@ -1,1 +1,2 @@
-export default from './InfiniteTableContainer';
+import InfiniteTableContainer from './InfiniteTableContainer';
+export default InfiniteTableContainer;

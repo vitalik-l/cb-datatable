@@ -30,14 +30,14 @@ class VirtualTableContainer extends DataTableContainer {
   }
 
   get displayData(): DataType {
-    return this.data.slice(this.state.startIndex, this.state.endIndex);
+    return this.orderedData.slice(this.state.startIndex, this.state.endIndex);
   }
 
   setIndex = (start: number, end: number) => {
     if (start >= this.props.data.length) return;
     this.setState({
       startIndex: Math.max(start, 0),
-      endIndex: Math.min(end, this.data.length)
+      endIndex: Math.min(end, this.props.data.length)
     })
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './configureEnzyme';
 import {generateMockData, generateDataForColumns} from '../../testUtils';
 import sinon from 'sinon';
 import renderer from 'react-test-renderer';
@@ -31,7 +32,7 @@ export default function GeneralTableTests(TableComponent) {
 
     it('Wrapper div should have className from props', () => {
       const tree = shallow(
-        <TableComponent columns={columns} data={data} className="test"/>
+        <TableComponent columns={columns} data={data} className="test" />
       );
       expect(tree.hasClass('test')).toBeTruthy();
     });
@@ -61,7 +62,7 @@ export default function GeneralTableTests(TableComponent) {
       const {columns, data} = generateMockData({columnsNumber: 1, rowsNumber: 3});
       const tree = shallow(<TableComponent columns={columns} data={data} orderBy={{column0: 'asc'}}/>);
       const instance = tree.instance();
-      expect(instance.data).toEqual([
+      expect(instance.orderedData).toEqual([
         {column0: 'column0 0'},
         {column0: 'column0 1'},
         {column0: 'column0 2'},
@@ -85,7 +86,7 @@ export default function GeneralTableTests(TableComponent) {
       const {columns, data} = generateMockData({columnsNumber: 1, rowsNumber: 3});
       const tree = shallow(<TableComponent columns={columns} data={data} orderBy={{column0: 'desc'}}/>);
       const instance = tree.instance();
-      expect(instance.data).toEqual([
+      expect(instance.orderedData).toEqual([
         {column0: 'column0 2'},
         {column0: 'column0 1'},
         {column0: 'column0 0'},
@@ -108,12 +109,12 @@ export default function GeneralTableTests(TableComponent) {
     it('Should update data when data from props is changed, orderBy should be applied', () => {
       let {columns, data} = generateMockData({columnsNumber: 1, rowsNumber: 3});
       const tree = shallow(<TableComponent columns={columns} data={data} orderBy={{column0: 'desc'}}
-                                           PagerComponent={null}/>);
+                                           PagerComponent={null} />);
       const instance = tree.instance();
       const newData = generateMockData({columnsNumber: 1, rowsNumber: 4});
       data.push(newData.data[newData.data.length - 1]);
-      tree.setProps({data: data});
-      expect(instance.data[0]).toEqual({
+      tree.setProps({data: data.slice()});
+      expect(instance.displayData[0]).toEqual({
         column0: 'column0 3'
       });
     });

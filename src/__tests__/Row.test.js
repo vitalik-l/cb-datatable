@@ -1,8 +1,10 @@
 import React from 'react';
+import './configureEnzyme';
 import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
 import Row from '../Row';
 import TextField from '../Fields/TextField';
+
 describe('Row', () => {
   it('Should have className', () => {
     const tree = shallow(

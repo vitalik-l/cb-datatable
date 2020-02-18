@@ -1,1 +1,2 @@
-export default from './DataTableContainer';
+import DataTableContainer from './DataTableContainer';
+export default DataTableContainer;

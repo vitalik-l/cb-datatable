@@ -25,14 +25,13 @@ class InfiniteTableContainer extends DataTableContainer {
     }
 
     get displayData() {
-      return this.data.slice(0, this.state.countRows);
+      return this.orderedData.slice(0, this.state.countRows);
     }
 
     setCountRows = (value) => {
       if (this.state.countRows === value) return;
       this.setState({countRows: value});
     };
-
 }
 
 export default InfiniteTableContainer;

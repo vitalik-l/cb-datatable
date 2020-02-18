@@ -1,4 +1,5 @@
 import React from 'react';
+import './configureEnzyme';
 import {shallow} from 'enzyme';
 import Pager from '../Pager';
 
@@ -8,6 +9,6 @@ describe('Pager', () => {
       <Pager data={[]} />
     );
 
-    expect(tree.getNode()).toBeNull();
+    expect(tree.getElement()).toBeNull();
   });
 });

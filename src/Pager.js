@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 type Props = {
   data: Array<Object>,
@@ -59,14 +59,14 @@ class Pager extends React.Component<Props> {
 
     return (
       <div className="cb-datatable-pager">
-        <button className={classNames('cb-datatable-pager__previous')} style={styles.previous} onClick={this.previousClickHandler}>Previous</button>
+        <button className={clsx('cb-datatable-pager__previous')} style={styles.previous} onClick={this.previousClickHandler}>Previous</button>
         <div className="cb-datatable-pager__select">
           <select onChange={this.selectPageHandler} value={currentPage}>
             {pages.map(pageNumber => <option value={pageNumber} key={pageNumber}>{pageNumber}</option>)}
           </select>
           <span> / {pagesCount}</span>
         </div>
-        <button className={classNames('cb-datatable-pager__next')} style={styles.next} onClick={this.nextClickHandler}>Next</button>
+        <button className={clsx('cb-datatable-pager__next')} style={styles.next} onClick={this.nextClickHandler}>Next</button>
       </div>
     )
   }

@@ -1,1 +1,2 @@
-export default from './FixedHeaderTableContainer';
+import FixedHeaderTableContainer from './FixedHeaderTableContainer';
+export default FixedHeaderTableContainer;

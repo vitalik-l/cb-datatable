@@ -4,7 +4,8 @@ import Table from './Table';
 import Pager from './Pager';
 import Loader from './Loader';
 import {orderBy} from './utils';
-import classNames from 'classnames';
+import clsx from 'clsx';
+import memoize from 'memoize-one';
 import type {DataTableContainerProps, DataTableContainerState, TableProps, DataType} from './types';
 
 class DataTableContainer extends Component<DataTableContainerProps,DataTableContainerState>  {
@@ -32,29 +33,17 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
     } : {};
 
     this.state = {
-      data: [],
       orderBy: props.orderBy,
       ...pagerState
     };
-
-    if (props.orderBy) {
-      this.data = orderBy(props.data, props.orderBy);
-    } else {
-      this.data = props.data;
-    }
   }
 
-  componentWillReceiveProps(nextProps: DataTableContainerProps) {
-    this.data = this.setTableData(nextProps.data);
+  get orderedData() {
+    return this.orderData(this.props.data, this.state.orderBy);
   }
 
   get displayData(): Array<Object> {
-    if (this.props.PagerComponent) {
-      let rowsPerPage = this.props.rowsPerPage,
-      indexStart = (+this.state.currentPage - 1) * rowsPerPage;
-      return this.data.slice(indexStart, indexStart + rowsPerPage);
-    }
-    return this.data;
+    return this.props.PagerComponent ? this.getDataPerPage(this.orderedData, this.state.currentPage, this.props.rowsPerPage) : this.orderedData;
   }
 
   get tableProps(): TableProps {
@@ -85,7 +74,7 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
     return React.createElement(
       this.props.PagerComponent,
       {
-        data: this.data,
+        data: this.props.data,
         rowsPerPage: this.props.rowsPerPage,
         setCurrentPage: this.setCurrentPage,
         currentPage: this.state.currentPage,
@@ -94,14 +83,19 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
     )
   }
 
-  /**
-   * For changing data array with applying ordering, filter, etc.
-   * Using when data is changed from props
-   * @param data
-     */
-  setTableData(data: DataType): DataType {
-      return orderBy(data, this.state.orderBy);
-  }
+  getDataPerPage = memoize(
+    (data, page, rowsPerPage) => {
+      let indexStart = (+page - 1) * rowsPerPage;
+      return data.slice(indexStart, indexStart + rowsPerPage);
+    }
+  );
+
+  orderData = memoize(
+    (data, orderType) => {
+      const orderedData = orderBy(data, orderType);
+      return orderedData.slice();
+    }
+  );
 
   /**
    * Using when the sortable header column is clicked
@@ -112,8 +106,9 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
       this.props.onSort(type);
       return;
     }
-    this.data = orderBy(this.data, type);
-    this.setState({orderBy: type});
+    this.setState({
+      orderBy: type
+    });
   };
 
   /**
@@ -134,7 +129,7 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
 
   render() {
     return (
-      <div className={classNames('cb-datatable', this.props.className)} onClick={this.props.onClick}>
+      <div className={clsx('cb-datatable', this.props.className)} onClick={this.props.onClick}>
         {(this.props.renderLayout && this.props.renderLayout(this.Table, this.Pager))
         || this.renderLayout(this.Table, this.Pager)}
       </div>
