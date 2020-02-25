@@ -84,14 +84,14 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
   }
 
   getDataPerPage = memoize(
-    (data, page, rowsPerPage) => {
+    (data: any, page: number, rowsPerPage: number) => {
       let indexStart = (+page - 1) * rowsPerPage;
       return data.slice(indexStart, indexStart + rowsPerPage);
     }
   );
 
   orderData = memoize(
-    (data, orderType) => {
+    (data: any, orderType: any) => {
       const orderedData = orderBy(data, orderType);
       return orderedData.slice();
     }

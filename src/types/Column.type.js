@@ -22,7 +22,7 @@ type Column = {
   /**
    * @public
    */
-  visible: bool
+  visible: bool,
 
   /**
    * @public

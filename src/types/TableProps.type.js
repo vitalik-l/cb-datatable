@@ -27,7 +27,7 @@ type TableProps = {
    * @public
    * Display loader component
    */
-  loading: bool
+  loading: bool,
 
   /**
    * @public

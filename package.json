@@ -11,6 +11,7 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -33,7 +34,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "findit": "^2.0.0",
-    "flow-bin": "^0.80.0",
+    "flow-bin": "^0.118.0",
     "fs-extra": "^3.0.1",
     "jest": "^25.1.0",
     "node-sass": "^4.5.3",
@@ -47,7 +48,7 @@
     "build": "flow && npm test && npm run build:babel && npm run build:copy-styles && npm run build:copy-files",
     "build:copy-styles": "babel-node ./scripts/copy-styles.js",
     "build:copy-files": "babel-node ./scripts/copy-files.js",
-    "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./lib --ignore __test__,__tests__,stories,types",
+    "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./lib --ignore src/__tests__,src/**/*/__tests__,src/types",
     "local": "npm run build && cross-env PROJECT_PATH=C:\\Users\\user\\WebstormProjects\\WeekendForex2 node ./scripts/local.js",
     "test": "jest",
     "flow": "flow",
