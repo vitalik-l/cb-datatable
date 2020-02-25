@@ -34,10 +34,12 @@ export type DataTableContainerProps = TableProps & {
    * Render function. Can be used for organize your own main container layout
    */
   renderLayout: (Table: React$Element<*>, Pager: React$Element<*>) => {},
+
+  memoizeData: boolean,
+  data: DataType
 };
 
 export type DataTableContainerState = {
-  data: DataType,
   currentPage: number,
-  orderBy: Object
+  orderBy: ?Object
 };

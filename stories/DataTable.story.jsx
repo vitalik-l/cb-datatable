@@ -20,6 +20,21 @@ stories.add('default', () => {
   );
 });
 
+stories.add('memoize data', () => {
+  const {columns, data} = generateMockData({columnsNumber: 10, rowsNumber: 50});
+  return (
+    <span>
+      <DataTable
+        columns={columns}
+        data={data}
+        orderBy={{column1: 'asc'}}
+        onRowClick={action('onRowClick')}
+        memoizeData={true}
+      />
+    </span>
+  );
+});
+
 stories.add('Hidden column', () => {
   let columns = [];
   for (let i=0; i < 5; i++) {

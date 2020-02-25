@@ -14,6 +14,18 @@ const orderBy = (arr, orderBy) => {
   });
 };
 
+const getOrderedData = (data: any, orderType: any) => {
+  const orderedData = orderBy(data, orderType);
+  return orderedData.slice();
+};
+
+const getDataPerPage = (data: any, page: number, rowsPerPage: number) => {
+  let indexStart = (+page - 1) * rowsPerPage;
+  return data.slice(indexStart, indexStart + rowsPerPage);
+};
+
 export {
-  orderBy
+  orderBy,
+  getOrderedData,
+  getDataPerPage
 };

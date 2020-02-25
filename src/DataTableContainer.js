@@ -3,14 +3,13 @@ import React, {Component} from 'react';
 import Table from './Table';
 import Pager from './Pager';
 import Loader from './Loader';
-import {orderBy} from './utils';
+import {orderBy, getOrderedData, getDataPerPage} from './utils';
 import clsx from 'clsx';
 import memoize from 'memoize-one';
 import type {DataTableContainerProps, DataTableContainerState, TableProps, DataType} from './types';
 
 class DataTableContainer extends Component<DataTableContainerProps,DataTableContainerState>  {
   props: DataTableContainerProps;
-  data: DataType;
   state: DataTableContainerState;
 
   static defaultProps: Object = {
@@ -21,8 +20,9 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
     ),
     PagerComponent: Pager,
     Loader: <Loader />,
-    orderBy: {},
-    rowsPerPage: 20
+    orderBy: null,
+    rowsPerPage: 20,
+    memoizeData: false
   };
 
   constructor(props: DataTableContainerProps) {
@@ -38,8 +38,16 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
     };
   }
 
+  get getDataPerPage() {
+    return this.props.memoizeData ? memoize(getDataPerPage) : getDataPerPage;
+  }
+
+  get getOrderedData() {
+    return this.props.memoizeData ? memoize(getOrderedData) : getOrderedData;
+  }
+
   get orderedData() {
-    return this.orderData(this.props.data, this.state.orderBy);
+    return this.state.orderBy ? this.getOrderedData(this.props.data, this.state.orderBy) : this.props.data;
   }
 
   get displayData(): Array<Object> {
@@ -82,20 +90,6 @@ class DataTableContainer extends Component<DataTableContainerProps,DataTableCont
       }
     )
   }
-
-  getDataPerPage = memoize(
-    (data: any, page: number, rowsPerPage: number) => {
-      let indexStart = (+page - 1) * rowsPerPage;
-      return data.slice(indexStart, indexStart + rowsPerPage);
-    }
-  );
-
-  orderData = memoize(
-    (data: any, orderType: any) => {
-      const orderedData = orderBy(data, orderType);
-      return orderedData.slice();
-    }
-  );
 
   /**
    * Using when the sortable header column is clicked

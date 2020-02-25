@@ -13,7 +13,7 @@ stories.add('default', () => {
   const {columns, data} = generateMockData({columnsNumber: 10, rowsNumber: 500});
   return (
     <span>
-      <VirtualTable columns={columns} data={data} />
+      <VirtualTable columns={columns} data={data} memoizeData />
     </span>
   );
 });
