@@ -1,2 +1,2 @@
-import DataTableContainer from './DataTableContainer';
-export default DataTableContainer;
+import SimpleTable from './SimpleTable';
+export default SimpleTable;

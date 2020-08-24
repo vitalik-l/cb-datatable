@@ -1,42 +1,16 @@
-// @flow
 import React from 'react';
-import TableHeader from './TableHeader';
-import TableBody from './TableBody';
-import type {TableProps} from './types';
+import clsx from 'clsx';
 
-class Table extends React.Component<TableProps> {
-  props: TableProps;
+const Table = React.forwardRef((props, ref) => {
+  const { children, className, ...restProps } = props;
 
-  static defaultProps = {
-    orderBy: {}
-  };
+  return (
+    <div className={clsx('cb-Table', className)} ref={ref} {...restProps}>
+      {children}
+    </div>
+  )
+});
 
-  render() {
-    let columns = this.props.columns;
-
-    if (!columns) {
-      columns = React.Children.map(this.props.children, (item) => {
-        return item.props;
-      });
-    }
-
-    return (
-      <table>
-        <TableHeader
-          orderBy={this.props.orderBy}
-          setOrderBy={this.props.setOrderBy}
-          columns={columns}
-        />
-        <TableBody
-          BodyRowRenderer={this.props.BodyRowRenderer}
-          children={this.props.children}
-          columns={columns}
-          data={this.props.displayData}
-          onRowClick={this.props.onRowClick}
-        />
-      </table>
-    )
-  }
-}
+Table.displayName = 'Table';
 
 export default Table;

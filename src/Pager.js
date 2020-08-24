@@ -1,75 +1,51 @@
-// @flow
 import React from 'react';
 import clsx from 'clsx';
 
-type Props = {
-  data: Array<Object>,
-  rowsPerPage: number,
-  currentPage: number,
-  setCurrentPage?: Function
-};
+function Pager(props) {
+  const {rowsPerPage, currentPage, dataLength, onChange} = props;
+  const pagesCount = React.useMemo(() => Math.ceil(dataLength / rowsPerPage), [dataLength, rowsPerPage]);
+  const pages = React.useMemo(() => Array.from(new Array(pagesCount), (_, index) => index + 1), [pagesCount]);
 
-class Pager extends React.Component<Props> {
-  props: Props;
+  if (!pagesCount) return;
 
-  static defaultProps = {
-    rowsPerPage: 20,
-    currentPage: 1
+  const goToPage = React.useCallback((page) => {
+    if (onChange) onChange(+page);
+  }, [onChange]);
+
+  const nextClickHandler = () => {
+    goToPage(currentPage + 1);
   };
 
-  get pagesCount(): number {
-    return Math.ceil(this.props.data.length / this.props.rowsPerPage);
-  }
-
-  get pages(): Array<number> {
-    return Array.from(new Array(this.pagesCount), (val, index) => index + 1);
-  }
-
-  goToPage(toPage: number) {
-    this.props.setCurrentPage && this.props.setCurrentPage(+toPage);
-  }
-
-  nextClickHandler = () => {
-    this.goToPage(this.props.currentPage + 1);
+  const previousClickHandler = () => {
+    goToPage(currentPage - 1);
   };
 
-  previousClickHandler = () => {
-    this.goToPage(this.props.currentPage - 1);
-  };
-
-  selectPageHandler = (e: SyntheticInputEvent<*>) => {
+  const selectPageHandler = (e) => {
     e.preventDefault();
-    this.goToPage(+e.target.value);
+    goToPage(e.target.value);
   };
 
-  render() {
-    if (!this.pagesCount) return null;
+  const styles = {
+    previous: {
+      visibility: currentPage === 1 ? 'hidden' : 'initial'
+    },
+    next: {
+      visibility: pagesCount === 1 || pagesCount - currentPage === 0 ? 'hidden' : 'initial'
+    }
+  };
 
-    const currentPage = this.props.currentPage;
-    const pagesCount = this.pagesCount;
-    const pages = this.pages;
-    const styles = {
-      previous: {
-        visibility: currentPage === 1 ? 'hidden' : 'initial'
-      },
-      next: {
-        visibility: pagesCount === 1 || pagesCount - currentPage === 0 ? 'hidden' : 'initial'
-      }
-    };
-
-    return (
-      <div className="cb-datatable-pager">
-        <button className={clsx('cb-datatable-pager__previous')} style={styles.previous} onClick={this.previousClickHandler}>Previous</button>
-        <div className="cb-datatable-pager__select">
-          <select onChange={this.selectPageHandler} value={currentPage}>
-            {pages.map(pageNumber => <option value={pageNumber} key={pageNumber}>{pageNumber}</option>)}
-          </select>
-          <span> / {pagesCount}</span>
-        </div>
-        <button className={clsx('cb-datatable-pager__next')} style={styles.next} onClick={this.nextClickHandler}>Next</button>
+  return (
+    <div className="cb-Pager">
+      <button className={clsx('cb-Pager__previous')} style={styles.previous} onClick={previousClickHandler}>Previous</button>
+      <div className="cb-Pager__select">
+        <select onChange={selectPageHandler} value={currentPage}>
+          {pages.map(pageNumber => <option value={pageNumber} key={pageNumber}>{pageNumber}</option>)}
+        </select>
+        <span> / {pagesCount}</span>
       </div>
-    )
-  }
+      <button className={clsx('cb-Pager__next')} style={styles.next} onClick={nextClickHandler}>Next</button>
+    </div>
+  )
 }
 
 export default Pager;

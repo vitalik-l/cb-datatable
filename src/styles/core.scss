@@ -1,0 +1,31 @@
+.cb-Table {
+  display: table;
+}
+
+.cb-TableBody {
+  display: table-row-group;
+}
+
+.cb-TableHeader {
+  display: table-header-group;
+}
+
+.cb-TableRow {
+  display: table-row;
+}
+
+.cb-TableCell {
+  display: table-cell;
+}
+
+.cb-Table--fixed-header {
+  .cb-TableHeader {
+    .cb-TableRow {
+      .cb-TableCell {
+        position: sticky;
+        top: 0;
+      }
+    }
+  }
+}
+

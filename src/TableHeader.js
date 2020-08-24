@@ -1,23 +1,32 @@
-// @flow
 import React from 'react';
-import HeaderColumn from './HeaderColumn';
+import TableRow from './TableRow';
+import HeaderCell from './HeaderCell';
 
-type Props = {
-  columns: Array<Object>,
-  orderBy: Object,
-  setOrderBy: Function
-};
+const TableHeader = React.forwardRef((props, ref) => {
+  const { columns, orderBy, Row, Cell, onRowClick, sortable, setOrder, ...restProps } = props;
 
-function TableHeader({columns, orderBy, setOrderBy}: Props) {
   return (
-    <thead>
-      <tr>
-        {columns ? columns.map((column, i) =>
-          <HeaderColumn orderBy={orderBy} setOrderBy={setOrderBy} {...column} key={i} />
-        ) : null}
-      </tr>
-    </thead>
+    <div className="cb-TableHeader" ref={ref} {...restProps}>
+      <Row onClick={onRowClick}>
+        {columns.map((column, i) => (
+          <Cell
+            setOrder={setOrder}
+            orderBy={orderBy}
+            sortable={sortable}
+            {...column}
+            key={i}
+          />
+        ))}
+      </Row>
+    </div>
   );
-}
+});
+
+TableHeader.displayName = 'TableHeader';
+
+TableHeader.defaultProps = {
+  Row: TableRow,
+  Cell: HeaderCell
+};
 
 export default TableHeader;

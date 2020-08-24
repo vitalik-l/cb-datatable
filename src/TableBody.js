@@ -1,36 +1,30 @@
-// @flow
 import React from 'react';
-import Row from './Row';
+import TableRow from './TableRow';
+import TableCell from './TableCell';
 
-type Props = {
-  BodyRowRenderer: Function,
-  data: Array<Object>,
-  columns: Array<Object>,
-  onRowClick: Function,
-  children: any
-};
+const TableBody = React.forwardRef((props, ref) => {
+  const { data, columns, Row, Cell, onCellClick, onRowClick, ...restProps } = props;
 
-function TableBody({
-  BodyRowRenderer,
-  data,
-  columns,
-  onRowClick,
-  children
-}: Props)
-{
   return (
-    <tbody>
-    {
-      data ? data.map((row, i) =>
-        React.createElement(BodyRowRenderer, {row, columns, onRowClick, children, index: i, key: i})
-      ) : null
-    }
-    </tbody>
-  )
-}
+    <div className="cb-TableBody" ref={ref} {...restProps}>
+      {data.map((item, i) => (
+        <Row onClick={onRowClick} key={i}>
+          {columns.map((column, i) => (
+            <Cell onClick={onCellClick} key={i}>
+              {item[column.source]}
+            </Cell>
+          ))}
+        </Row>
+      ))}
+    </div>
+  );
+});
+
+TableBody.displayName = 'TableBody';
 
 TableBody.defaultProps = {
-  BodyRowRenderer: Row
+  Row: TableRow,
+  Cell: TableCell
 };
 
 export default TableBody;
