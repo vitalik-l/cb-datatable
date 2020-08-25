@@ -3,7 +3,7 @@ import Table from './Table';
 import TableBody from './TableBody';
 import TableHeader from './TableHeader';
 
-function InfiniteTable(props) {
+function VirtualTable(props) {
   const {data, children} = props;
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [offset, setOffset] = React.useState(0);
@@ -49,7 +49,7 @@ function InfiniteTable(props) {
   const columns = React.Children.map(children, item => item.props);
 
   return (
-    <div className="cb-DataTable cb-DataTable--infinite" ref={rootNode} onScroll={onScroll}>
+    <div className="cb-DataTable cb-DataTable--virtual" ref={rootNode} onScroll={onScroll}>
       <div className="cb-TableContainer" style={{height: containerHeight}} ref={tableContainerNode}>
         <Table ref={tableNode}>
           <TableHeader columns={columns} />
@@ -65,4 +65,4 @@ function InfiniteTable(props) {
   )
 }
 
-export default InfiniteTable;
+export default VirtualTable;

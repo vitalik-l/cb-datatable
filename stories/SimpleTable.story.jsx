@@ -37,7 +37,7 @@ stories.add('virtual', () => {
   const {columns, data} = generateMockData({columnsNumber: 10, rowsNumber: 500});
 
   return (
-    <span>
+    <span className="story-virtual">
       <VirtualTable
         data={data}
         orderBy={{column0: 'asc'}}
