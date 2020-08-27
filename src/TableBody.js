@@ -3,19 +3,38 @@ import TableRow from './TableRow';
 import TableCell from './TableCell';
 
 const TableBody = React.forwardRef((props, ref) => {
-  const { data, columns, Row, Cell, onCellClick, onRowClick, ...restProps } = props;
+  const {
+    cell,
+    row,
+    data,
+    currentIndex,
+    onRowClick,
+    children,
+    ...restProps
+  } = props;
 
   return (
     <div className="cb-TableBody" ref={ref} {...restProps}>
-      {data.map((item, i) => (
-        <Row onClick={onRowClick} key={i}>
-          {columns.map((column, i) => (
-            <Cell onClick={onCellClick} key={i}>
-              {item[column.source]}
-            </Cell>
-          ))}
-        </Row>
-      ))}
+      {data.map((record, recordIndex) => {
+        const index = recordIndex + currentIndex;
+        return (
+          React.cloneElement(row, {
+              onRowClick,
+              record,
+              index,
+              key: index
+            },
+            React.Children.map(children, (child, i) => {
+              if (!child) return;
+              return (
+                React.cloneElement(cell, {key: i},
+                  React.cloneElement(child, {record, index})
+                )
+              );
+            })
+          )
+        )
+      })}
     </div>
   );
 });
@@ -23,8 +42,9 @@ const TableBody = React.forwardRef((props, ref) => {
 TableBody.displayName = 'TableBody';
 
 TableBody.defaultProps = {
-  Row: TableRow,
-  Cell: TableCell
+  currentIndex: 0,
+  cell: <TableCell />,
+  row: <TableRow />,
 };
 
 export default TableBody;

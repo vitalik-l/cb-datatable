@@ -1,48 +1,52 @@
 import React from 'react';
 import Table from './Table';
-import TableBody from './TableBody';
 import TableHeader from './TableHeader';
+import TableBody from './TableBody';
+import TableCell from './TableCell';
+import useSorting from './useSorting';
 
 function VirtualTable(props) {
-  const {data, children} = props;
+  const {data, sortable, orderBy, onSort, children} = props;
+  const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [offset, setOffset] = React.useState(0);
   const [numberOfVisibleItems, setNumberOfVisibleItems] = React.useState(1);
-  const [containerHeight, setContainerHeight] = React.useState(0);
   const tableContainerNode = React.useRef();
+  const spacerHeight = React.useRef(0);
   const rootNode = React.useRef();
   const bodyNode = React.useRef();
   const tableNode = React.useRef();
   const itemsCount = data.length;
-  const displayData = React.useMemo(() => {
-    return data.slice(currentIndex, currentIndex + numberOfVisibleItems);
-  }, [currentIndex, numberOfVisibleItems]);
 
-  React.useEffect(() => {
+  const displayData = React.useMemo(() => {
+    return sortedData.slice(currentIndex, currentIndex + numberOfVisibleItems);
+  }, [sortedData, currentIndex, numberOfVisibleItems]);
+
+  React.useLayoutEffect(() => {
     if (displayData.length) {
       // calculate container height
-      const firstRowNode = tableContainerNode.current.querySelector('.cb-TableRow');
+      const firstRowNode = bodyNode.current.querySelector('.cb-TableRow');
       const rowHeight = firstRowNode.offsetHeight;
+      const newNumberOfVisibleElements = Math.ceil(rootNode.current.offsetHeight/rowHeight) + 3;
 
-      setContainerHeight(rowHeight * itemsCount);
-
-      //
-      const newValue = Math.ceil(rootNode.current.offsetHeight/rowHeight);
-      setNumberOfVisibleItems(newValue + 3);
+      spacerHeight.current = rowHeight * itemsCount - rowHeight * newNumberOfVisibleElements;
+      setNumberOfVisibleItems(newNumberOfVisibleElements);
     }
   }, [displayData]);
 
   function onScroll() {
-    const firstRowNode = tableContainerNode.current.querySelector('.cb-TableRow');
+    const firstRowNode = bodyNode.current.querySelector('.cb-TableRow');
     if (firstRowNode) {
-      const rowHeight = firstRowNode.offsetHeight;
       const scrollTop = rootNode.current.scrollTop;
-      const nextOffset = -1*(scrollTop % rowHeight);
-      const newIndex = Math.floor(scrollTop/rowHeight);
-      if (newIndex !== currentIndex) {
-        setCurrentIndex(newIndex);
+      if (scrollTop >= 0) {
+        const rowHeight = firstRowNode.offsetHeight;
+        const newIndex = Math.floor(scrollTop / rowHeight);
+        if (newIndex !== currentIndex) {
+          const newOffset = newIndex * rowHeight;
+          setCurrentIndex(newIndex);
+          setOffset(newOffset);
+        }
       }
-      setOffset(nextOffset);
     }
   }
 
@@ -50,15 +54,27 @@ function VirtualTable(props) {
 
   return (
     <div className="cb-DataTable cb-DataTable--virtual" ref={rootNode} onScroll={onScroll}>
-      <div className="cb-TableContainer" style={{height: containerHeight}} ref={tableContainerNode}>
-        <Table ref={tableNode}>
-          <TableHeader columns={columns} />
+      <div
+        className="cb-TableContainer"
+        ref={tableContainerNode}
+      >
+        <Table ref={tableNode} >
+          <TableHeader
+            setOrder={setOrder}
+            sortable={sortable}
+            orderBy={order}
+            columns={columns}
+          />
           <TableBody
             ref={bodyNode}
-            style={{transform: `translateY(${offset}px)`}}
             columns={columns}
             data={displayData}
-          />
+            currentIndex={currentIndex}
+            cell={<TableCell style={{transform: `translateY(${offset}px)`}} />}
+          >
+            {children}
+          </TableBody>
+          <div style={{height: spacerHeight.current}} />
         </Table>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function({row, source}) {
+export default function TextField({record, source}) {
   return (
-    <span>{row[source]}</span>
+    <span>{record[source]}</span>
   )
 }

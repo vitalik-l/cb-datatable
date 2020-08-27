@@ -5,20 +5,14 @@ import TableBody from './TableBody';
 import clsx from 'clsx';
 import Pager from './Pager';
 import usePager from './usePager';
-import {sortData} from './utils/index';
+import useSorting from './useSorting';
 
 function SimpleTable(props) {
   const {data, children, rowsPerPage, orderBy, className, fixedHeader, sortable, onSort} = props;
-  const [order, setOrder] = React.useState(orderBy);
-  const sortedData = React.useMemo(() => order && !onSort ? sortData(data, order) : data, [order, data]);
+  const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const pager = usePager(sortedData, rowsPerPage);
   const displayData = pager.dataPerPage;
-
-  React.useEffect(() => {
-    if (onSort) onSort(order);
-  }, [order]);
-
-  const columns = React.Children.map(children, item => item.props);
+  const columns = React.useMemo(() => React.Children.map(children, item => item.props), [children]);
 
   return (
     <div className="cb-DataTable">
@@ -31,8 +25,9 @@ function SimpleTable(props) {
         />
         <TableBody
           data={displayData}
-          columns={columns}
-        />
+        >
+          {children}
+        </TableBody>
       </Table>
       {rowsPerPage ? (
         <Pager

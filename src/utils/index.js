@@ -15,8 +15,7 @@ const orderBy = (arr, orderBy) => {
 };
 
 const sortData = (data: any, orderType: any) => {
-  const orderedData = orderBy(data, orderType);
-  return orderedData.slice();
+  return orderBy(data.slice(), orderType);
 };
 
 const getDataPerPage = (data: any, page: number, rowsPerPage: number) => {
