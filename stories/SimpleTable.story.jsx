@@ -22,6 +22,7 @@ stories.add('default', () => {
         data={data}
         fixedHeader={boolean('fixed header', false)}
         striped={boolean('striped', false)}
+        rowHover={boolean('row hover', false)}
         rowsPerPage={number('rows per page', 0)}
         orderBy={{column0: 'asc'}}
         sortable
@@ -43,6 +44,7 @@ stories.add('virtual', () => {
         data={data}
         orderBy={{column0: 'asc'}}
         striped={boolean('striped', false)}
+        rowHover={boolean('row hover', false)}
         sortable
       >
         <TextField source="column0" label="First column" />

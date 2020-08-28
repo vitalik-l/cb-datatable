@@ -7,7 +7,7 @@ import useSorting from './useSorting';
 import clsx from 'clsx';
 
 function VirtualTable(props) {
-  const {data, sortable, orderBy, onSort, children, striped, className} = props;
+  const {data, sortable, orderBy, onSort, children, striped, rowHover, className} = props;
   const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [offset, setOffset] = React.useState(0);
@@ -72,6 +72,7 @@ function VirtualTable(props) {
             striped={striped}
             data={displayData}
             currentIndex={currentIndex}
+            rowHover={rowHover}
             cell={<TableCell style={{transform: `translateY(${offset}px)`}} />}
           >
             {children}

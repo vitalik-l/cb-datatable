@@ -8,7 +8,7 @@ import usePager from './usePager';
 import useSorting from './useSorting';
 
 function SimpleTable(props) {
-  const {data, children, rowsPerPage, orderBy, className, fixedHeader, sortable, striped, onSort} = props;
+  const {data, children, rowsPerPage, orderBy, className, fixedHeader, sortable, striped, rowHover, onSort} = props;
   const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const pager = usePager(sortedData, rowsPerPage);
   const displayData = pager.dataPerPage;
@@ -26,6 +26,7 @@ function SimpleTable(props) {
         <TableBody
           striped={striped}
           data={displayData}
+          rowHover={rowHover}
         >
           {children}
         </TableBody>

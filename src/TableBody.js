@@ -1,6 +1,7 @@
 import React from 'react';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
+import clsx from 'clsx';
 
 const TableBody = React.forwardRef((props, ref) => {
   const {
@@ -11,11 +12,13 @@ const TableBody = React.forwardRef((props, ref) => {
     onRowClick,
     children,
     striped,
+    rowHover,
+    className,
     ...restProps
   } = props;
 
   return (
-    <div className="cb-TableBody" ref={ref} {...restProps}>
+    <div className={clsx('cb-TableBody', className, {'cb-TableBody--row-hover': rowHover})} ref={ref} {...restProps}>
       {data.map((record, recordIndex) => {
         const index = recordIndex + currentIndex;
         let oddEvenClassName;

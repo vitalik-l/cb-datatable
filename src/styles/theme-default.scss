@@ -68,12 +68,40 @@ $arrowUpIcon: url("data:image/svg+xml;utf8,<svg  xmlns='http://www.w3.org/2000/s
   }
 
   .cb-TableBody {
-    .cb-TableCell {
-      padding: 9px 6px 8px;
-      border-left: 1px solid #d4d4d4;
+    &.cb-TableBody--row-hover {
+      .cb-TableRow {
+        .cb-TableCell {
+          border-bottom: 1px solid transparent;
+          border-top: 1px solid transparent;
+        }
 
-      &:last-child {
-        border-right: 1px solid #d4d4d4;
+        &:hover {
+          .cb-TableCell {
+            border-bottom: 1px solid #2196f3;
+            border-top: 1px solid #2196f3;
+            cursor: pointer;
+
+            &:first-child {
+              border-left: 1px solid #2196f3;
+            }
+
+            &:last-child {
+              border-right: 1px solid #2196f3;
+            }
+          }
+        }
+      }
+    }
+
+    .cb-TableRow {
+      .cb-TableCell {
+        padding: 9px 6px 8px;
+        border-left: 1px solid #d4d4d4;
+        box-sizing: border-box;
+
+        &:last-child {
+          border-right: 1px solid #d4d4d4;
+        }
       }
     }
 
