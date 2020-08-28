@@ -67,7 +67,6 @@ function VirtualTable(props) {
           />
           <TableBody
             ref={bodyNode}
-            columns={columns}
             data={displayData}
             currentIndex={currentIndex}
             cell={<TableCell style={{transform: `translateY(${offset}px)`}} />}
