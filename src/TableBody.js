@@ -10,6 +10,7 @@ const TableBody = React.forwardRef((props, ref) => {
     currentIndex,
     onRowClick,
     children,
+    striped,
     ...restProps
   } = props;
 
@@ -17,13 +18,20 @@ const TableBody = React.forwardRef((props, ref) => {
     <div className="cb-TableBody" ref={ref} {...restProps}>
       {data.map((record, recordIndex) => {
         const index = recordIndex + currentIndex;
+        let oddEvenClassName;
+
+        if (striped) {
+          oddEvenClassName = index % 2 > 0 ? 'cb-TableRow--odd' : 'cb-TableRow--even';
+        }
+
         return (
           React.cloneElement(row, {
-              onRowClick,
-              record,
-              index,
-              key: index
-            },
+            className: oddEvenClassName,
+            onRowClick,
+            record,
+            index,
+            key: index
+          },
             React.Children.map(children, (child, i) => {
               if (!child) return;
               return (

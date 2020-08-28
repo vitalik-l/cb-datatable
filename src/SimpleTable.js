@@ -8,15 +8,15 @@ import usePager from './usePager';
 import useSorting from './useSorting';
 
 function SimpleTable(props) {
-  const {data, children, rowsPerPage, orderBy, className, fixedHeader, sortable, onSort} = props;
+  const {data, children, rowsPerPage, orderBy, className, fixedHeader, sortable, striped, onSort} = props;
   const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const pager = usePager(sortedData, rowsPerPage);
   const displayData = pager.dataPerPage;
   const columns = React.useMemo(() => React.Children.map(children, item => item.props), [children]);
 
   return (
-    <div className="cb-DataTable">
-      <Table className={clsx(className, {'cb-Table--fixed-header': fixedHeader})}>
+    <div className={clsx('cb-DataTable', className)}>
+      <Table className={clsx({'cb-Table--fixed-header': fixedHeader})}>
         <TableHeader
           setOrder={setOrder}
           sortable={sortable}
@@ -24,6 +24,7 @@ function SimpleTable(props) {
           columns={columns}
         />
         <TableBody
+          striped={striped}
           data={displayData}
         >
           {children}

@@ -4,14 +4,16 @@ import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import TableCell from './TableCell';
 import useSorting from './useSorting';
+import clsx from 'clsx';
 
 function VirtualTable(props) {
-  const {data, sortable, orderBy, onSort, children} = props;
+  const {data, sortable, orderBy, onSort, children, striped, className} = props;
   const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [offset, setOffset] = React.useState(0);
   const [numberOfVisibleItems, setNumberOfVisibleItems] = React.useState(1);
   const tableContainerNode = React.useRef();
+
   const spacerHeight = React.useRef(0);
   const rootNode = React.useRef();
   const bodyNode = React.useRef();
@@ -53,7 +55,7 @@ function VirtualTable(props) {
   const columns = React.Children.map(children, item => item.props);
 
   return (
-    <div className="cb-DataTable cb-DataTable--virtual" ref={rootNode} onScroll={onScroll}>
+    <div className={clsx('cb-DataTable cb-DataTable--virtual', className)} ref={rootNode} onScroll={onScroll}>
       <div
         className="cb-TableContainer"
         ref={tableContainerNode}
@@ -67,6 +69,7 @@ function VirtualTable(props) {
           />
           <TableBody
             ref={bodyNode}
+            striped={striped}
             data={displayData}
             currentIndex={currentIndex}
             cell={<TableCell style={{transform: `translateY(${offset}px)`}} />}
