@@ -1,5 +1,7 @@
 @import "../../src/styles/theme-default";
 
-.story-virtual {
-  @import "../../src/styles/VirtualTable";
+.story-infinite {
+  height: 200px;
+
+  @import "../../src/styles/InfiniteTable";
 }

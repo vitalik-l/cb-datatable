@@ -49,7 +49,7 @@
     "build:copy-styles": "babel-node ./scripts/copy-styles.js",
     "build:copy-files": "babel-node ./scripts/copy-files.js",
     "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./lib --ignore src/__tests__,src/**/*/__tests__,src/types",
-    "local": "npm run build && cross-env PROJECT_PATH=C:\\Users\\user\\WebstormProjects\\galileo node ./scripts/local.js",
+    "local": "npm run build && cross-env PROJECT_PATH=C:\\Users\\user\\WebstormProjects\\frontend_bo node ./scripts/local.js",
     "test": "jest",
     "flow": "flow",
     "prebuild": "rimraf lib",

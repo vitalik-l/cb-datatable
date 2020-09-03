@@ -5,7 +5,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import {generateMockData} from '../testUtils';
 import SimpleTable from '../src/SimpleTable';
-import VirtualTable from '../src/VirtualTable';
+import InfiniteTable from '../src/InfiniteTable';
 import TextField from '../src/Fields/TextField';
 
 const stories = storiesOf('DataTable', module);
@@ -35,22 +35,22 @@ stories.add('default', () => {
   );
 });
 
-stories.add('virtual', () => {
+stories.add('infinite', () => {
   const {data} = generateMockData({columnsNumber: 10, rowsNumber: 500});
 
   return (
-    <span className="story-virtual">
-      <VirtualTable
+    <div className="story-infinite">
+      <InfiniteTable
         data={data}
         orderBy={{column0: 'asc'}}
         striped={boolean('striped', false)}
         rowHover={boolean('row hover', false)}
         sortable
       >
-        <TextField source="column0" label="First column" />
+        <TextField source="column0" label="First column" className="TextField" />
         <TextField source="column1" label="Second column" />
         <TextField source="column2" label="Third column" />
-      </VirtualTable>
-    </span>
+      </InfiniteTable>
+    </div>
   );
 });

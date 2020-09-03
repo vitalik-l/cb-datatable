@@ -1,11 +1,8 @@
-.cb-DataTable--virtual {
-  height: 300px;
+.cb-DataTable--infinite {
+  height: 100%;
+  width: 100%;
   overflow: auto;
   position: relative;
-
-  .cb-TableContainer {
-    height: 100%;
-  }
 
   .cb-Table {
     width: 100%;
@@ -14,8 +11,11 @@
       .cb-TableCell {
         position: sticky;
         top: 0;
-        z-index: 1;
       }
     }
+  }
+
+  .cb-RowSpacer {
+    display: table-row;
   }
 }

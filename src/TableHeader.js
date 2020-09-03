@@ -3,21 +3,21 @@ import TableRow from './TableRow';
 import HeaderCell from './HeaderCell';
 
 const TableHeader = React.forwardRef((props, ref) => {
-  const { columns, orderBy, Row, Cell, onRowClick, sortable, setOrder, ...restProps } = props;
+  const { children, orderBy, Cell, sortable, setOrder, ...restProps } = props;
 
   return (
     <div className="cb-TableHeader" ref={ref} {...restProps}>
-      <Row onClick={onRowClick}>
-        {columns.map((column, i) => (
+      <div className="cb-TableRow">
+        {React.Children.map(children, (column, i) => (
           <Cell
             setOrder={setOrder}
             orderBy={orderBy}
             sortable={sortable}
-            {...column}
+            {...column.props}
             key={i}
           />
         ))}
-      </Row>
+      </div>
     </div>
   );
 });
@@ -25,7 +25,6 @@ const TableHeader = React.forwardRef((props, ref) => {
 TableHeader.displayName = 'TableHeader';
 
 TableHeader.defaultProps = {
-  Row: TableRow,
   Cell: HeaderCell
 };
 

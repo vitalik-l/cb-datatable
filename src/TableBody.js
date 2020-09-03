@@ -1,11 +1,9 @@
 import React from 'react';
 import TableRow from './TableRow';
-import TableCell from './TableCell';
 import clsx from 'clsx';
 
 const TableBody = React.forwardRef((props, ref) => {
   const {
-    cell,
     row,
     data,
     currentIndex,
@@ -14,11 +12,13 @@ const TableBody = React.forwardRef((props, ref) => {
     striped,
     rowHover,
     className,
+    offset,
     ...restProps
   } = props;
 
   return (
     <div className={clsx('cb-TableBody', className, {'cb-TableBody--row-hover': rowHover})} ref={ref} {...restProps}>
+      {offset >= 0 ? <div className="cb-RowSpacer" style={{height: offset}} /> : null}
       {data.map((record, recordIndex) => {
         const index = recordIndex + currentIndex;
         let oddEvenClassName;
@@ -30,19 +30,12 @@ const TableBody = React.forwardRef((props, ref) => {
         return (
           React.cloneElement(row, {
             className: oddEvenClassName,
-            onRowClick,
+            onClick: onRowClick,
             record,
             index,
             key: index
           },
-            React.Children.map(children, (child, i) => {
-              if (!child) return;
-              return (
-                React.cloneElement(cell, {key: i},
-                  React.cloneElement(child, {record, index})
-                )
-              );
-            })
+            children
           )
         )
       })}
@@ -53,8 +46,8 @@ const TableBody = React.forwardRef((props, ref) => {
 TableBody.displayName = 'TableBody';
 
 TableBody.defaultProps = {
+  data: [],
   currentIndex: 0,
-  cell: <TableCell />,
   row: <TableRow />,
 };
 

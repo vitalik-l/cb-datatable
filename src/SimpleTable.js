@@ -12,7 +12,6 @@ function SimpleTable(props) {
   const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const pager = usePager(sortedData, rowsPerPage);
   const displayData = pager.dataPerPage;
-  const columns = React.useMemo(() => React.Children.map(children, item => item.props), [children]);
 
   return (
     <div className={clsx('cb-DataTable', className)}>
@@ -21,8 +20,9 @@ function SimpleTable(props) {
           setOrder={setOrder}
           sortable={sortable}
           orderBy={order}
-          columns={columns}
-        />
+        >
+          {children}
+        </TableHeader>
         <TableBody
           striped={striped}
           data={displayData}
