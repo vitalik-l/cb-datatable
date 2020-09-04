@@ -57,7 +57,7 @@ function useInfinite(data) {
       currentIndex,
     },
     containerHeight: containerHeight.current
-}
+  }
 }
 
 export default useInfinite;

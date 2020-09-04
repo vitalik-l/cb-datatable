@@ -25,6 +25,7 @@ stories.add('default', () => {
         rowHover={boolean('row hover', false)}
         rowsPerPage={number('rows per page', 0)}
         orderBy={{column0: 'asc'}}
+        onRowClick={action('onRowClick')}
         sortable
       >
         <TextField source="column0" label="First column" />

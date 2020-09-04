@@ -8,14 +8,14 @@ import usePager from './usePager';
 import useSorting from './useSorting';
 
 function SimpleTable(props) {
-  const {data, children, rowsPerPage, orderBy, className, fixedHeader, sortable, striped, rowHover, onSort} = props;
+  const {data, children, rowsPerPage, orderBy, className, fixedHeader, sortable, striped, rowHover, onSort, onClick, onRowClick} = props;
   const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const pager = usePager(sortedData, rowsPerPage);
   const displayData = pager.dataPerPage;
 
   return (
     <div className={clsx('cb-DataTable', className)}>
-      <Table className={clsx({'cb-Table--fixed-header': fixedHeader})}>
+      <Table className={clsx({'cb-Table--fixed-header': fixedHeader})} onClick={onClick}>
         <TableHeader
           setOrder={setOrder}
           sortable={sortable}
@@ -27,6 +27,7 @@ function SimpleTable(props) {
           striped={striped}
           data={displayData}
           rowHover={rowHover}
+          onRowClick={onRowClick}
         >
           {children}
         </TableBody>
