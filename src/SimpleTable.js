@@ -8,7 +8,22 @@ import usePager from './usePager';
 import useSorting from './useSorting';
 
 function SimpleTable(props) {
-  const {data, children, rowsPerPage, orderBy, className, fixedHeader, sortable, striped, rowHover, onSort, onClick, onRowClick} = props;
+  const {
+    data,
+    children,
+    rowsPerPage,
+    orderBy,
+    className,
+    fixedHeader,
+    sortable,
+    striped,
+    rowHover,
+    onSort,
+    onClick,
+    onRowClick,
+    row
+  } = props;
+
   const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
   const pager = usePager(sortedData, rowsPerPage);
   const displayData = pager.dataPerPage;
@@ -28,6 +43,7 @@ function SimpleTable(props) {
           data={displayData}
           rowHover={rowHover}
           onRowClick={onRowClick}
+          row={row}
         >
           {children}
         </TableBody>
