@@ -23,7 +23,7 @@ function HeaderCell(props) {
     <TableCell
       onClick={onClick}
       className={clsx(
-        className, {
+        className, 'cb-TableHeaderCell', {
         [`cb-TableCell--sort-${sorting}`]: sorting,
         'cb-TableCell--sortable': sortable
       })}
