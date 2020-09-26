@@ -14,10 +14,14 @@ stories.addDecorator(withKnobs);
 import './styles/default.scss';
 
 stories.add('default', () => {
-  const {data} = generateMockData({columnsNumber: 10, rowsNumber: 500});
+  const {data} = generateMockData({columnsNumber: 10, rowsNumber: 50});
 
   return (
-    <span>
+    <div style={{
+      width: 400,
+      height: 200,
+      overflow: 'auto'
+    }}>
       <SimpleTable
         data={data}
         fixedHeader={boolean('fixed header', false)}
@@ -28,11 +32,15 @@ stories.add('default', () => {
         onRowClick={action('onRowClick')}
         sortable
       >
-        <TextField source="column0" label="First column" />
-        <TextField source="column1" label="Second column" />
+        <TextField source="column0" label={<span>&nbsp;</span>} fixed />
+        <TextField source="column1" label="Second column" fixed />
         <TextField source="column2" label="Third column" />
+        <TextField source="column3" label={<div>4 column</div>} />
+        <TextField source="column4" label={<div>5 column</div>} />
+        <TextField source="column5" label={<div>6 column</div>} />
+        <TextField source="column6" label={<div>7 column</div>} />
       </SimpleTable>
-    </span>
+    </div>
   );
 });
 

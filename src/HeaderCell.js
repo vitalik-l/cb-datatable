@@ -3,7 +3,7 @@ import TableCell from './TableCell';
 import clsx from 'clsx';
 
 function HeaderCell(props) {
-  const {onHeaderClick, className, setOrder, sortable, orderBy, label, source} = props;
+  const {onHeaderClick, className, setOrder, sortable, orderBy, label, source, ...restProps} = props;
   const sorting = orderBy ? orderBy[source] : '';
 
   const onClick = React.useMemo(() => {
@@ -27,6 +27,8 @@ function HeaderCell(props) {
         [`cb-TableCell--sort-${sorting}`]: sorting,
         'cb-TableCell--sortable': sortable
       })}
+      isHeader
+      {...restProps}
     >
       <div className="cb-HeaderCell">
         {label}

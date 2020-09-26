@@ -18,7 +18,7 @@ const TableRow = React.forwardRef((props, ref) => {
         React.Children.map(children, (child) => {
           if (!child) return;
           return (
-            React.cloneElement(cell, {className: child.props.className, key: child.props.source},
+            React.cloneElement(cell, {key: child.props.source, ...child.props},
               React.cloneElement(child, {record, index})
             )
           );
