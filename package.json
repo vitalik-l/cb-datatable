@@ -1,16 +1,15 @@
 {
   "name": "cb-datatable",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "React DataTable component",
   "main": "./index.js",
   "dependencies": {
-    "clsx": "^1.1.0",
-    "memoize-one": "^5.1.1",
-    "prop-types": "^15.5.10",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "clsx": "^1.1.0"
   },
   "devDependencies": {
+    "prop-types": "^15.5.10",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
