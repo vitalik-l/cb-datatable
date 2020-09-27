@@ -14,7 +14,7 @@ function SimpleTable(props) {
     rowsPerPage,
     orderBy,
     className,
-    fixedHeader,
+    stickyHeader,
     sortable,
     striped,
     rowHover,
@@ -30,7 +30,7 @@ function SimpleTable(props) {
 
   return (
     <div className={clsx('cb-DataTable', className)}>
-      <Table className={clsx({'cb-Table--fixed-header': fixedHeader})} onClick={onClick}>
+      <Table className={clsx({'cb-Table--sticky-header': stickyHeader})} onClick={onClick}>
         <TableHeader
           setOrder={setOrder}
           sortable={sortable}

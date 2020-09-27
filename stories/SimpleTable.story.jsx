@@ -24,7 +24,7 @@ stories.add('default', () => {
     }}>
       <SimpleTable
         data={data}
-        fixedHeader={boolean('fixed header', false)}
+        stickyHeader={boolean('sticky header', false)}
         striped={boolean('striped', false)}
         rowHover={boolean('row hover', false)}
         rowsPerPage={number('rows per page', 0)}
@@ -32,8 +32,8 @@ stories.add('default', () => {
         onRowClick={action('onRowClick')}
         sortable
       >
-        <TextField source="column0" label={<span>&nbsp;</span>} fixed />
-        <TextField source="column1" label="Second column" fixed />
+        <TextField source="column0" label={<span>&nbsp;</span>} sticky />
+        <TextField source="column1" label="Second column" sticky />
         <TextField source="column2" label="Third column" />
         <TextField source="column3" label={<div>4 column</div>} />
         <TextField source="column4" label={<div>5 column</div>} />
