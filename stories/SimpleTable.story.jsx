@@ -34,7 +34,7 @@ stories.add('default', () => {
       >
         <TextField source="column0" label={<span>&nbsp;</span>} sticky />
         <TextField source="column1" label="Second column" sticky />
-        <TextField source="column2" label="Third column" />
+        <TextField source="column2" label="Third column" colored />
         <TextField source="column3" label={<div>4 column</div>} />
         <TextField source="column4" label={<div>5 column</div>} />
         <TextField source="column5" label={<div>6 column</div>} />

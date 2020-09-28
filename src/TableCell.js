@@ -1,14 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 
-const sanitizeRestProps = ({
-  label,
-  source,
-  ...rest
-}) => rest;
-
 const TableCell = React.forwardRef((props, ref) => {
-  const { children, className, sticky, isHeader, ...restProps } = props;
+  const { children, className, sticky, isHeader } = props;
   const [style, setStyle] = React.useState({});
   const cellRef = React.useRef(null);
 
@@ -25,7 +19,7 @@ const TableCell = React.forwardRef((props, ref) => {
   }, [sticky, isHeader]);
 
   return (
-    <div className={clsx('cb-TableCell', className)} style={style} ref={cellRef} {...sanitizeRestProps(restProps)}>
+    <div className={clsx('cb-TableCell', className)} style={style} ref={cellRef}>
       {children}
     </div>
   )
