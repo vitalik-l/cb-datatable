@@ -1,5 +1,6 @@
 import React from 'react';
 import TableCell from './TableCell';
+import { get } from "./utils/get";
 import clsx from 'clsx';
 
 const TableRow = React.forwardRef((props, ref) => {
@@ -17,9 +18,11 @@ const TableRow = React.forwardRef((props, ref) => {
       {
         React.Children.map(children, (child) => {
           if (!child) return;
+          const source = child.props.source;
+
           return (
-            React.cloneElement(cell, {key: child.props.source, ...child.props},
-              React.cloneElement(child, {record, index})
+            React.cloneElement(cell, {key: source, ...child.props},
+              React.cloneElement(child, {record, index, value: get(record, source)})
             )
           );
         })
