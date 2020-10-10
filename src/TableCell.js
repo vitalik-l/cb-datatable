@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 const TableCell = React.forwardRef((props, ref) => {
-  const { children, className, sticky, isHeader } = props;
+  const { children, className, sticky, isHeader, onClick } = props;
   const [style, setStyle] = React.useState({});
   const cellRef = React.useRef(null);
 
@@ -19,7 +19,7 @@ const TableCell = React.forwardRef((props, ref) => {
   }, [sticky, isHeader]);
 
   return (
-    <div className={clsx('cb-TableCell', className)} style={style} ref={cellRef}>
+    <div className={clsx('cb-TableCell', className)} style={style} onClick={onClick} ref={cellRef}>
       {children}
     </div>
   )

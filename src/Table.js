@@ -13,12 +13,15 @@ function Table(props) {
     rowHover,
     onClick,
     onRowClick,
-    row
+    row,
+    sortable,
+    setSortBy,
+    sortBy
   } = props;
 
   return (
     <div className={clsx('cb-Table', className, {'cb-Table--sticky-header': stickyHeader})} onClick={onClick}>
-      <TableHeader>
+      <TableHeader sortable={sortable} setSortBy={setSortBy} sortBy={sortBy}>
         {children}
       </TableHeader>
       <TableBody

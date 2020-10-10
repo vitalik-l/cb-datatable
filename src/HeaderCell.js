@@ -3,8 +3,8 @@ import TableCell from './TableCell';
 import clsx from 'clsx';
 
 function HeaderCell(props) {
-  const {onHeaderClick, className, setOrder, sortable, orderBy, label, source, ...restProps} = props;
-  const sorting = orderBy ? orderBy[source] : '';
+  const {onHeaderClick, className, setSortBy, sortable, sortBy, label, source, ...restProps} = props;
+  const sorting = sortBy ? sortBy[source] : '';
 
   const onClick = React.useMemo(() => {
     if (onHeaderClick) return onHeaderClick;
@@ -15,7 +15,7 @@ function HeaderCell(props) {
         return;
       }
       let newSorting = sorting === 'asc' ? 'desc' : 'asc';
-      setOrder({[source]: newSorting});
+      setSortBy({[source]: newSorting});
     };
   }, [onHeaderClick, sortable, sorting]);
 

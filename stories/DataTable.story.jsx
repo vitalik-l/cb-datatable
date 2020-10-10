@@ -27,7 +27,7 @@ stories.add('default', () => {
         striped={boolean('striped', false)}
         rowHover={boolean('row hover', false)}
         rowsPerPage={number('rows per page', 0)}
-        orderBy={{column0: 'asc'}}
+        defaultSortBy={{column0: 'asc'}}
         onRowClick={action('onRowClick')}
         sortable
       >

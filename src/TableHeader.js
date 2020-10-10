@@ -3,15 +3,15 @@ import TableRow from './TableRow';
 import HeaderCell from './HeaderCell';
 
 const TableHeader = React.forwardRef((props, ref) => {
-  const { children, orderBy, Cell, sortable, setOrder, ...restProps } = props;
+  const { children, sortBy, Cell, sortable, setSortBy, ...restProps } = props;
 
   return (
     <div className="cb-TableHeader" ref={ref} {...restProps}>
       <div className="cb-TableRow">
         {React.Children.map(children, (column, i) => (
           <Cell
-            setOrder={setOrder}
-            orderBy={orderBy}
+            setSortBy={setSortBy}
+            sortBy={sortBy}
             sortable={sortable}
             {...column.props}
             key={i}

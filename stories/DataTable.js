@@ -1,25 +1,23 @@
 import React from 'react';
-import Table from '../src/Table';
 import PageNumbers from '../src/PageNumbers';
-import usePagination from '../src/usePagination';
-import useSorting from '../src/useSorting';
+import { usePagination, Table, useSortBy } from '../src';
 
 function DataTable(props) {
   const {
     data,
     rowsPerPage,
-    orderBy,
-    onSort,
+    defaultSortBy,
     ...tableProps
   } = props;
 
-  // const {order, setOrder, sortedData} = useSorting({data, orderBy, onSort});
-  const pager = usePagination({data, rowsPerPage});
+  const sorting = useSortBy({data, defaultSortBy});
+  const { sortedData } = sorting;
+  const pager = usePagination({data: sortedData, rowsPerPage});
   const { dataPerPage } = pager;
 
   return (
     <div className="cb-DataTable">
-      <Table data={dataPerPage} {...tableProps} />
+      <Table data={dataPerPage} {...sorting} {...tableProps} />
       {rowsPerPage && <PageNumbers {...pager} />}
     </div>
   )
