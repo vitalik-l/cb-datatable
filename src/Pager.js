@@ -2,22 +2,22 @@ import React from 'react';
 import clsx from 'clsx';
 
 function Pager(props) {
-  const {rowsPerPage, currentPage, dataLength, onChange} = props;
-  const pagesCount = React.useMemo(() => Math.ceil(dataLength / rowsPerPage), [dataLength, rowsPerPage]);
+  const {rowsPerPage, page, dataSize, setPage} = props;
+  const pagesCount = React.useMemo(() => Math.ceil(dataSize / rowsPerPage), [dataSize, rowsPerPage]);
   const pages = React.useMemo(() => Array.from(new Array(pagesCount), (_, index) => index + 1), [pagesCount]);
 
-  if (!pagesCount) return;
+  if (!pagesCount) return null;
 
   const goToPage = React.useCallback((page) => {
-    if (onChange) onChange(+page);
-  }, [onChange]);
+    if (setPage) setPage(+page);
+  }, [setPage]);
 
   const nextClickHandler = () => {
-    goToPage(currentPage + 1);
+    goToPage(page + 1);
   };
 
   const previousClickHandler = () => {
-    goToPage(currentPage - 1);
+    goToPage(page - 1);
   };
 
   const selectPageHandler = (e) => {
@@ -27,10 +27,10 @@ function Pager(props) {
 
   const styles = {
     previous: {
-      visibility: currentPage === 1 ? 'hidden' : 'initial'
+      visibility: page === 1 ? 'hidden' : 'initial'
     },
     next: {
-      visibility: pagesCount === 1 || pagesCount - currentPage === 0 ? 'hidden' : 'initial'
+      visibility: pagesCount === 1 || pagesCount - page === 0 ? 'hidden' : 'initial'
     }
   };
 
