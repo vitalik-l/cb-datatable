@@ -1,8 +1,6 @@
 import React from 'react';
 import {getDataPerPage} from './utils';
 
-const getArray = (numberTo) => Array.from(new Array(numberTo), (_, index) => index + 1);
-
 function usePagination({data, rowsPerPage}) {
   const [page, setPage] = React.useState(1);
   const dataPerPage =  React.useMemo(() => rowsPerPage ? getDataPerPage(data, page, rowsPerPage) : data, [page, rowsPerPage, data]);
@@ -61,7 +59,6 @@ function usePagination({data, rowsPerPage}) {
     setPage,
     dataSize,
     numberOfPages,
-    getArray,
     range,
     ...extraProps
   };
