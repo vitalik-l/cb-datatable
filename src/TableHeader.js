@@ -7,9 +7,10 @@ const TableHeader = React.forwardRef((props, ref) => {
   return (
     <thead className="cb-TableHeader" ref={ref} {...restProps}>
       <tr className="cb-TableRow">
-        {React.Children.map(children, (column, i) => (
-          React.cloneElement(headerCell, {...column.props, key: i})
-        ))}
+        {React.Children.map(children, (column, i) => {
+          if (!column) return;
+          return React.cloneElement(headerCell, {...column.props, key: i})
+        })}
       </tr>
     </thead>
   );

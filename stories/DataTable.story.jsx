@@ -42,3 +42,35 @@ stories.add('default', () => {
     </div>
   );
 });
+
+stories.add('selectable', () => {
+  const {data} = generateMockData({columnsNumber: 10, rowsNumber: 50});
+
+  return (
+    <div style={{
+      width: 400,
+      height: 200,
+      overflow: 'auto'
+    }}>
+      <DataTable
+        data={data}
+        stickyHeader={boolean('sticky header', false)}
+        striped={boolean('striped', false)}
+        rowHover={boolean('row hover', false)}
+        rowsPerPage={number('rows per page', 0)}
+        defaultSortBy={{column0: 'asc'}}
+        onRowClick={action('onRowClick')}
+        selectable
+        sortable
+      >
+        <Column source="column0" label={<span>&nbsp;</span>} />
+        <Column source="column1" label="Second column" sortable={false} />
+        <Column source="column2" label="Third column" colored />
+        <Column source="column3" label={<div>4 column</div>} />
+        <Column source="column4" label={<div>5 column</div>} />
+        <Column source="column5" label={<div>6 column</div>} />
+        <Column source="column6" label={<div>7 column</div>} />
+      </DataTable>
+    </div>
+  );
+});
