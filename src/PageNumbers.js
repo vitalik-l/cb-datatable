@@ -20,6 +20,7 @@ function PageNumbers(props) {
                 <button
                   onClick={() => setPage(pageNum)}
                   disabled={page === pageNum}
+                  key={pageNum}
                 >
                   {pageNum}
                 </button>

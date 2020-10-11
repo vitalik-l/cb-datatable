@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import {generateMockData} from '../testUtils';
-import DataTable from './DataTable';
+import DataTable from './DataTable/DataTable';
 import Field from '../src/Field';
 
 const stories = storiesOf('DataTable', module);

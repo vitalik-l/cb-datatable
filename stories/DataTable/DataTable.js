@@ -1,6 +1,6 @@
 import React from 'react';
-import PageNumbers from '../src/PageNumbers';
-import { usePagination, Table, useSortBy } from '../src';
+import PageNumbers from '../../src/PageNumbers';
+import { usePagination, Table, useSortBy } from '../../src/index';
 
 function DataTable(props) {
   const {
@@ -18,7 +18,7 @@ function DataTable(props) {
   return (
     <div className="cb-DataTable">
       <Table data={dataPerPage} {...sorting} {...tableProps} />
-      {rowsPerPage && <PageNumbers {...pager} />}
+      {!!rowsPerPage && <PageNumbers {...pager} />}
     </div>
   )
 }

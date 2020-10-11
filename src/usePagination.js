@@ -14,29 +14,29 @@ function usePagination({data, rowsPerPage}) {
     }
     const input = [];
     // display page links around the current page
-    if (page > 1) {
+    if (page > 2) {
       input.push(1);
     }
-    if (page === 3) {
+    if (page === 4) {
       input.push(2);
     }
-    if (page > 3) {
+    if (page > 4) {
       input.push('.');
     }
-    if (page > 0) {
-      input.push(page);
+    if (page > 1) {
+      input.push(page - 1);
     }
-    if (page !== numberOfPages) input.push(page + 1);
-    if (page < numberOfPages - 1) {
-      input.push(page + 2);
+    input.push(page);
+    if (page < numberOfPages) {
+      input.push(page + 1);
     }
-    if (page === numberOfPages - 4) {
+    if (page === numberOfPages - 3) {
       input.push(numberOfPages - 1);
     }
-    if (page < numberOfPages - 4) {
+    if (page < numberOfPages - 3) {
       input.push('.');
     }
-    if (page < numberOfPages - 2) {
+    if (page < numberOfPages - 1) {
       input.push(numberOfPages);
     }
 
