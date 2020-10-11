@@ -26,7 +26,6 @@ $arrowUpIcon: url("data:image/svg+xml;utf8,<svg  xmlns='http://www.w3.org/2000/s
         background-image: linear-gradient(180deg, #fafafa 2%, #efefef 98%);
         border-top: 1px solid #d4d4d4;
         border-bottom: 1px solid #d4d4d4;
-        border-left: 1px solid #d4d4d4;
         cursor: default;
         display: flex;
         align-items: center;
@@ -111,6 +110,18 @@ $arrowUpIcon: url("data:image/svg+xml;utf8,<svg  xmlns='http://www.w3.org/2000/s
     .cb-TableRow--odd {
       .cb-TableCell {
         background-color: #f5f5f5;
+      }
+    }
+  }
+
+  .cb-TableCell {
+    border-left: 1px solid #d4d4d4;
+
+    &--sticky {
+      border-right: 1px solid #d4d4d4;
+
+      + .cb-TableCell {
+        border-left: none !important;
       }
     }
   }

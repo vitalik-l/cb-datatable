@@ -1,12 +1,12 @@
 import Table from './Table';
-import Field from './Field';
+import Column from './Column';
 import TableRow from './TableRow';
 import usePagination from './usePagination';
 import useSortBy from './useSortBy';
 
 export {
   Table,
-  Field,
+  Column,
   TableRow,
   usePagination,
   useSortBy

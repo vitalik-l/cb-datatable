@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Field(props) {
+function Column(props) {
   const {children, ...restProps} = props;
 
   if (typeof children === 'function') {
@@ -11,4 +11,4 @@ function Field(props) {
   return <span>{value}</span>
 }
 
-export default Field;
+export default Column;

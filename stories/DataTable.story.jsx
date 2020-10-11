@@ -5,7 +5,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import {generateMockData} from '../testUtils';
 import DataTable from './DataTable/DataTable';
-import Field from '../src/Field';
+import Column from '../src/Column';
 
 const stories = storiesOf('DataTable', module);
 stories.addDecorator(withKnobs);
@@ -31,13 +31,13 @@ stories.add('default', () => {
         onRowClick={action('onRowClick')}
         sortable
       >
-        <Field source="column0" label={<span>&nbsp;</span>} sticky />
-        <Field source="column1" label="Second column" />
-        <Field source="column2" label="Third column" colored />
-        <Field source="column3" label={<div>4 column</div>} />
-        <Field source="column4" label={<div>5 column</div>} />
-        <Field source="column5" label={<div>6 column</div>} />
-        <Field source="column6" label={<div>7 column</div>} />
+        <Column source="column0" label={<span>&nbsp;</span>} sticky />
+        <Column source="column1" label="Second column" />
+        <Column source="column2" label="Third column" colored />
+        <Column source="column3" label={<div>4 column</div>} />
+        <Column source="column4" label={<div>5 column</div>} />
+        <Column source="column5" label={<div>6 column</div>} />
+        <Column source="column6" label={<div>7 column</div>} />
       </DataTable>
     </div>
   );

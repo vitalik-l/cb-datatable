@@ -20,7 +20,7 @@ const TableCell = React.forwardRef((props, ref) => {
   }, [sticky, isHeader]);
 
   return (
-    <Component className={clsx('cb-TableCell', className)} style={style} onClick={onClick} ref={cellRef}>
+    <Component className={clsx('cb-TableCell', className, {'cb-TableCell--sticky': sticky})} style={style} onClick={onClick} ref={cellRef}>
       {children}
     </Component>
   )
