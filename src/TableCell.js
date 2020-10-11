@@ -5,6 +5,7 @@ const TableCell = React.forwardRef((props, ref) => {
   const { children, className, sticky, isHeader, onClick } = props;
   const [style, setStyle] = React.useState({});
   const cellRef = React.useRef(null);
+  const Component = isHeader ? 'th' : 'td';
 
   React.useImperativeHandle(ref, () => cellRef.current);
 
@@ -19,9 +20,9 @@ const TableCell = React.forwardRef((props, ref) => {
   }, [sticky, isHeader]);
 
   return (
-    <div className={clsx('cb-TableCell', className)} style={style} onClick={onClick} ref={cellRef}>
+    <Component className={clsx('cb-TableCell', className)} style={style} onClick={onClick} ref={cellRef}>
       {children}
-    </div>
+    </Component>
   )
 });
 

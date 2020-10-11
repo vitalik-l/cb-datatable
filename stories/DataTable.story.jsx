@@ -32,7 +32,7 @@ stories.add('default', () => {
         sortable
       >
         <Field source="column0" label={<span>&nbsp;</span>} sticky />
-        <Field source="column1" label="Second column" sticky />
+        <Field source="column1" label="Second column" />
         <Field source="column2" label="Third column" colored />
         <Field source="column3" label={<div>4 column</div>} />
         <Field source="column4" label={<div>5 column</div>} />

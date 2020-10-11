@@ -14,7 +14,7 @@ const TableRow = React.forwardRef((props, ref) => {
   }, [onClick]);
 
   return (
-    <div className={clsx('cb-TableRow', className)} onClick={handleClick} ref={ref} {...restProps}>
+    <tr className={clsx('cb-TableRow', className)} onClick={handleClick} ref={ref} {...restProps}>
       {
         React.Children.map(children, (child) => {
           if (!child) return;
@@ -27,7 +27,7 @@ const TableRow = React.forwardRef((props, ref) => {
           );
         })
       }
-    </div>
+    </tr>
   )
 });
 

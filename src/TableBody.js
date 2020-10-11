@@ -17,7 +17,7 @@ const TableBody = React.forwardRef((props, ref) => {
   } = props;
 
   return (
-    <div className={clsx('cb-TableBody', className, {'cb-TableBody--row-hover': rowHover})} ref={ref} {...restProps}>
+    <tbody className={clsx('cb-TableBody', className, {'cb-TableBody--row-hover': rowHover})} ref={ref} {...restProps}>
       {offset >= 0 ? <div className="cb-RowSpacer" style={{height: offset}} /> : null}
       {data.map((record, recordIndex) => {
         const index = recordIndex + currentIndex;
@@ -39,7 +39,7 @@ const TableBody = React.forwardRef((props, ref) => {
           )
         )
       })}
-    </div>
+    </tbody>
   );
 });
 

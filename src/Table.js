@@ -20,7 +20,7 @@ function Table(props) {
   } = props;
 
   return (
-    <div className={clsx('cb-Table', className, {'cb-Table--sticky-header': stickyHeader})} onClick={onClick}>
+    <table className={clsx('cb-Table', className, {'cb-Table--sticky-header': stickyHeader})} onClick={onClick}>
       <TableHeader sortable={sortable} setSortBy={setSortBy} sortBy={sortBy}>
         {children}
       </TableHeader>
@@ -33,7 +33,7 @@ function Table(props) {
       >
         {children}
       </TableBody>
-    </div>
+    </table>
   )
 }
 

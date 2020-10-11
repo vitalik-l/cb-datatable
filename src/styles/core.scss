@@ -4,6 +4,8 @@
 
 .cb-Table {
   display: table;
+  border-spacing: 0;
+  border-collapse: separate;
 }
 
 .cb-TableBody {

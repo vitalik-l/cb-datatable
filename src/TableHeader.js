@@ -6,8 +6,8 @@ const TableHeader = React.forwardRef((props, ref) => {
   const { children, sortBy, Cell, sortable, setSortBy, ...restProps } = props;
 
   return (
-    <div className="cb-TableHeader" ref={ref} {...restProps}>
-      <div className="cb-TableRow">
+    <thead className="cb-TableHeader" ref={ref} {...restProps}>
+      <tr className="cb-TableRow">
         {React.Children.map(children, (column, i) => (
           <Cell
             setSortBy={setSortBy}
@@ -17,8 +17,8 @@ const TableHeader = React.forwardRef((props, ref) => {
             key={i}
           />
         ))}
-      </div>
-    </div>
+      </tr>
+    </thead>
   );
 });
 
