@@ -11,7 +11,7 @@ try {
     publishUtils.exec('npm pack');
     console.log(`cd ${projectPath}`);
     shell.cd(projectPath);
-    publishUtils.exec(`npm i ${path.resolve(__dirname, '..', 'lib', packageJson.name + '-' + packageJson.version + '.tgz')}`);
+    publishUtils.exec(`yarn add ${path.resolve(__dirname, '..', 'lib', packageJson.name + '-' + packageJson.version + '.tgz')}`);
     shell.cd(__dirname);
 } catch (err) {
     console.error(err);
