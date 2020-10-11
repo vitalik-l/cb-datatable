@@ -18,7 +18,7 @@ const TableBody = React.forwardRef((props, ref) => {
 
   return (
     <tbody className={clsx('cb-TableBody', className, {'cb-TableBody--row-hover': rowHover})} ref={ref} {...restProps}>
-      {offset >= 0 ? <div className="cb-RowSpacer" style={{height: offset}} /> : null}
+      {offset >= 0 ? <tr className="cb-RowSpacer" style={{height: offset}} /> : null}
       {data.map((record, recordIndex) => {
         const index = recordIndex + currentIndex;
         let oddEvenClassName;

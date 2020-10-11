@@ -16,13 +16,14 @@ const TableRow = React.forwardRef((props, ref) => {
   return (
     <tr className={clsx('cb-TableRow', className)} onClick={handleClick} ref={ref} {...restProps}>
       {
-        React.Children.map(children, (child) => {
+        React.Children.map(children, (child, childIndex) => {
           if (!child) return;
           const source = child.props.source;
+          const value = source ? get(record, source) : undefined;
 
           return (
-            React.cloneElement(cell, {key: source, ...child.props},
-              React.cloneElement(child, {record, index, value: get(record, source)})
+            React.cloneElement(cell, {key: childIndex, ...child.props},
+              React.cloneElement(child, {record, index, value})
             )
           );
         })
