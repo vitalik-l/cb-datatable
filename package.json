@@ -60,7 +60,7 @@
   "pre-commit": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/logvi/cb-datatable.git"
+    "url": "git+https://github.com/vitalik-ls/cb-datatable.git"
   },
   "keywords": [
     "datatable",
@@ -70,9 +70,9 @@
   "author": "Vitaly Logvinenko",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/logvi/cb-datatable/issues"
+    "url": "https://github.com/vitalik-ls/cb-datatable/issues"
   },
-  "homepage": "https://github.com/logvi/cb-datatable#readme",
+  "homepage": "https://github.com/vitalik-ls/cb-datatable#readme",
   "jest": {
     "testMatch": [
       "**/?(*.)(spec|test).js?(x)"
