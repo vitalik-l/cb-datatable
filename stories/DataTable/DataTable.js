@@ -15,12 +15,8 @@ function DataTable(props) {
   const [selected, setSelected] = React.useState([]);
   const sorting = useSortBy({data, defaultSortBy});
   const { sortedData, ...otherSortingProps } = sorting;
-  const pager = usePagination({data: sortedData, rowsPerPage});
-  const { dataPerPage, page } = pager;
-
-  React.useEffect(() => {
-    setSelected([]);
-  }, [page]);
+  const pagination = usePagination({data: sortedData, rowsPerPage});
+  const { dataPerPage } = pagination;
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
@@ -45,7 +41,7 @@ function DataTable(props) {
 
   const onSelectAll = () => {
     if (selected.length === dataPerPage.length) return setSelected([]);
-    setSelected(Array.from(new Array(dataPerPage.length), (_, index) => index + 1));
+    setSelected(Array.from(new Array(dataPerPage.length), (_, index) => index));
   };
 
   return (
@@ -61,7 +57,7 @@ function DataTable(props) {
         )}
         {children}
       </Table>
-      {!!rowsPerPage && <PageNumbers {...pager} />}
+      {!!rowsPerPage && <PageNumbers {...pagination} />}
     </div>
   )
 }

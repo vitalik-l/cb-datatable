@@ -19,12 +19,14 @@ function useInfinite(data) {
     if (displayData.length) {
       // calculate container height
       const firstRowNode = bodyNode.current.querySelector('.cb-TableRow');
-      const rowHeight = firstRowNode.offsetHeight;
-      const newNumberOfVisibleElements = Math.ceil(rootNode.current.offsetHeight/rowHeight) + 3 + EXTRA_ROWS_NUMBER;
+      if (firstRowNode) {
+        const rowHeight = firstRowNode.offsetHeight;
+        const newNumberOfVisibleElements = Math.ceil(rootNode.current.offsetHeight / rowHeight) + 3 + EXTRA_ROWS_NUMBER;
 
-      containerHeight.current = rowHeight * itemsCount;
-      if (newNumberOfVisibleElements !== numberOfVisibleItems) {
-        setNumberOfVisibleItems(newNumberOfVisibleElements);
+        containerHeight.current = rowHeight * itemsCount;
+        if (newNumberOfVisibleElements !== numberOfVisibleItems) {
+          setNumberOfVisibleItems(newNumberOfVisibleElements);
+        }
       }
     }
   }, [displayData]);
@@ -50,9 +52,11 @@ function useInfinite(data) {
       ref: rootNode,
       onScroll,
     },
+    tableProps: {
+      data: displayData,
+    },
     tableBodyProps: {
       ref: bodyNode,
-      data: displayData,
       offset,
       currentIndex,
     },

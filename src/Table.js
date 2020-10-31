@@ -15,24 +15,33 @@ function Table(props) {
     onRowClick,
     row,
     headerCell,
+    header,
+    body,
   } = props;
 
   return (
     <table className={clsx('cb-Table', className, {'cb-Table--sticky-header': stickyHeader})} onClick={onClick}>
-      <TableHeader headerCell={headerCell}>
-        {children}
-      </TableHeader>
-      <TableBody
-        striped={striped}
-        data={data}
-        rowHover={rowHover}
-        onRowClick={onRowClick}
-        row={row}
-      >
-        {children}
-      </TableBody>
+      {!!header &&
+        React.cloneElement(header, {
+          headerCell,
+        }, children)
+      }
+      {
+        React.cloneElement(body, {
+          striped,
+          data,
+          rowHover,
+          onRowClick,
+          row,
+        }, children)
+      }
     </table>
   )
 }
+
+Table.defaultProps = {
+  header: <TableHeader />,
+  body: <TableBody />
+};
 
 export default Table;
