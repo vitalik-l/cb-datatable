@@ -18,14 +18,14 @@ function DataTable(props) {
   const pagination = usePagination({data: sortedData, rowsPerPage});
   const { dataPerPage } = pagination;
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (id) => selected.indexOf(id) !== -1;
 
-  const onSelect = (name) => {
-    const selectedIndex = selected.indexOf(name);
+  const onSelect = (id) => {
+    const selectedIndex = selected.indexOf(id);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -41,7 +41,7 @@ function DataTable(props) {
 
   const onSelectAll = () => {
     if (selected.length === dataPerPage.length) return setSelected([]);
-    setSelected(Array.from(new Array(dataPerPage.length), (_, index) => index));
+    setSelected([...new Set([...selected, ...dataPerPage.map(item => item.column0)])]);
   };
 
   return (
@@ -50,8 +50,8 @@ function DataTable(props) {
       <Table data={dataPerPage} headerCell={<HeaderCell sortable={sortable} {...otherSortingProps} />} {...tableProps}>
         {selectable && (
           <Column label={<input type="checkbox" onClick={onSelectAll} checked={selected.length === dataPerPage.length} />} sortable={false}>
-            {({index}) => {
-              return <input type="checkbox" checked={isSelected(index)} onClick={() => onSelect(index)}/>;
+            {({record}) => {
+              return <input type="checkbox" checked={isSelected(record.column0)} onClick={() => onSelect(record.column0)}/>;
             }}
           </Column>
         )}
