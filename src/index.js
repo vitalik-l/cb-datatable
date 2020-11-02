@@ -7,6 +7,7 @@ import HeaderCell from './HeaderCell';
 import usePagination from './usePagination';
 import useSortBy from './useSortBy';
 import useInfinite from './useInfinite';
+import useRowSelect from './useRowSelect';
 
 export {
   Table,
@@ -18,6 +19,7 @@ export {
   usePagination,
   useSortBy,
   useInfinite,
+  useRowSelect,
 }
 
 
