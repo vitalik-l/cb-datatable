@@ -1,12 +1,18 @@
 import React from 'react';
 import {getDataPerPage} from './utils';
 
-function usePagination({data, rowsPerPage}) {
+function usePagination({data, rowsPerPage, resetOnDataChange = true}) {
   const [page, setPage] = React.useState(1);
   const dataPerPage =  React.useMemo(() => rowsPerPage ? getDataPerPage(data, page, rowsPerPage) : data, [page, rowsPerPage, data]);
   const numberOfPages = React.useMemo(() => Math.ceil(data.length / rowsPerPage), [data, rowsPerPage]);
   const dataSize = data.length;
   const extraProps = {};
+
+  React.useEffect(() => {
+    if (resetOnDataChange) {
+      setPage(1);
+    }
+  }, [data]);
 
   const range = React.useCallback(() => {
     if (isNaN(page) || numberOfPages === 1) {
@@ -49,7 +55,6 @@ function usePagination({data, rowsPerPage}) {
     extraProps.lastRowIndex = Math.min(dataSize, lastRowIndex);
     extraProps.hasPreviousPage = page > 1;
     extraProps.hasNextPage = numberOfPages > 1 && numberOfPages - page !== 0;
-
   }
 
   return {

@@ -3,8 +3,11 @@ import React from 'react';
 function Column(props) {
   const {children, ...restProps} = props;
 
-  if (typeof children === 'function') {
-    return children(restProps);
+  if (children) {
+    if (typeof children === 'function') {
+      return children(restProps);
+    }
+    return children;
   }
 
   const { value } = restProps;

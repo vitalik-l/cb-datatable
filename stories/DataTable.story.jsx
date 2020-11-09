@@ -39,6 +39,9 @@ stories.add('default', () => {
         <Column source="column4" label={<div>5 column</div>} />
         <Column source="column5" label={<div>6 column</div>} />
         <Column source="column6" label={<div>7 column</div>} />
+        <Column>
+          test children
+        </Column>
       </DataTable>
     </div>
   );
