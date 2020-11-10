@@ -2,10 +2,10 @@ import React from 'react';
 import clsx from 'clsx';
 
 const TableCell = React.forwardRef((props, ref) => {
-  const { children, className, sticky, isHeader, onClick } = props;
+  const { children, className, sticky, isHeader, onClick, useDiv } = props;
   const [style, setStyle] = React.useState({});
   const cellRef = React.useRef(null);
-  const Component = isHeader ? 'th' : 'td';
+  const Component = useDiv ? 'div' : isHeader ? 'th' : 'td';
 
   React.useImperativeHandle(ref, () => cellRef.current);
 

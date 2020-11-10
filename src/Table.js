@@ -17,13 +17,17 @@ function Table(props) {
     headerCell,
     header,
     body,
+    useDiv,
   } = props;
 
+  const Component = useDiv ? 'div' : 'table';
+
   return (
-    <table className={clsx('cb-Table', className, {'cb-Table--sticky-header': stickyHeader})} onClick={onClick}>
+    <Component className={clsx('cb-Table', className, {'cb-Table--sticky-header': stickyHeader})} onClick={onClick}>
       {!!header &&
         React.cloneElement(header, {
           headerCell,
+          useDiv,
         }, children)
       }
       {
@@ -33,9 +37,10 @@ function Table(props) {
           rowHover,
           onRowClick,
           row,
+          useDiv,
         }, children)
       }
-    </table>
+    </Component>
   )
 }
 

@@ -30,6 +30,7 @@ stories.add('default', () => {
         rowsPerPage={number('rows per page', 0)}
         defaultSortBy={{column0: 'asc'}}
         onRowClick={action('onRowClick')}
+        useDiv={boolean('use div', false)}
         sortable
       >
         <Column source="column0" label={<span>&nbsp;</span>} sticky />
