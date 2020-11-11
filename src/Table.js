@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
+import TableRow from './TableRow';
 
 function Table(props) {
   const {
@@ -46,7 +47,8 @@ function Table(props) {
 
 Table.defaultProps = {
   header: <TableHeader />,
-  body: <TableBody />
+  body: <TableBody />,
+  row: <TableRow />
 };
 
 export default Table;
