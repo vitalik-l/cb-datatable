@@ -14,7 +14,14 @@ stories.addDecorator(withKnobs);
 import './styles/default.scss';
 
 stories.add('default', () => {
-  const {data} = generateMockData({columnsNumber: 10, rowsNumber: 50});
+  const {data} = generateMockData({columnsNumber: 10, rowsNumber: 50,
+    dataFunc: (column, index) => {
+      if (column.name === 'column2') {
+        return `${index < 2 || index === 4}`;
+      }
+      return `${column.name} ${index}`;
+    }
+  });
 
   return (
     <div style={{
@@ -28,7 +35,7 @@ stories.add('default', () => {
         striped={boolean('striped', false)}
         rowHover={boolean('row hover', false)}
         rowsPerPage={number('rows per page', 0)}
-        defaultSortBy={{column0: 'asc'}}
+        sortBy={[{id: 'column0', desc: false}, {id: 'column2', desc: true}]}
         onRowClick={action('onRowClick')}
         useDiv={boolean('use div', false)}
         sortable

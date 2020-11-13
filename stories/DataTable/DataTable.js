@@ -6,13 +6,13 @@ function DataTable(props) {
   const {
     data,
     rowsPerPage,
-    defaultSortBy,
+    sortBy,
     sortable,
     selectable,
     children,
     ...tableProps
   } = props;
-  const sorting = useSortBy({data, defaultSortBy});
+  const sorting = useSortBy({data, sortBy});
   const { sortedData, ...otherSortingProps } = sorting;
   const pagination = usePagination({data: sortedData, rowsPerPage});
   const { dataPerPage } = pagination;

@@ -4,22 +4,29 @@ import clsx from 'clsx';
 
 function HeaderCell(props) {
   const {className, setSortBy, sortable, sortBy, label, source, ...restProps} = props;
-  const sorting = sortBy ? sortBy[source] : '';
+  const sorting = React.useMemo(() =>
+    sortBy && sortBy.length ? sortBy.find(item => item.id === source) || {} : {},
+  [sortBy]);
+  const { desc, id } = sorting;
 
   const onClick = React.useMemo(() => {
     if (!sortable) return;
     return () => {
-      let newSorting = sorting === 'asc' ? 'desc' : 'asc';
-      setSortBy({[source]: newSorting});
+      const newSortBy = [{
+        ...sorting,
+        id: source,
+        desc: !sorting.desc,
+      }];
+      setSortBy(newSortBy);
     };
-  }, [sortable, sorting]);
+  }, [sortable, sorting, sortBy, source]);
 
   return (
     <TableCell
       onClick={onClick}
       className={clsx(
         className, 'cb-TableHeaderCell', {
-        [`cb-TableCell--sort-${sorting}`]: sorting,
+        [`cb-TableCell--sort-${desc ? 'desc' : 'asc'}`]: id,
         'cb-TableCell--sortable': sortable
       })}
       isHeader
