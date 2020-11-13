@@ -12,11 +12,13 @@ function HeaderCell(props) {
   const onClick = React.useMemo(() => {
     if (!sortable) return;
     return () => {
-      const newSortBy = [{
+      const { desc, id } = sorting;
+      const nextDesc = !id ? true : !desc ? undefined : false;
+      const newSortBy = typeof nextDesc === 'boolean' ? [{
         ...sorting,
         id: source,
-        desc: !sorting.desc,
-      }];
+        desc: nextDesc,
+      }] : [];
       setSortBy(newSortBy);
     };
   }, [sortable, sorting, sortBy, source]);
