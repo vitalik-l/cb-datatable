@@ -10,6 +10,7 @@ function DataTable(props) {
     sortable,
     selectable,
     children,
+    multiSort,
     ...tableProps
   } = props;
   const sorting = useSortBy({data, sortBy});
@@ -21,7 +22,7 @@ function DataTable(props) {
   return (
     <div className="cb-DataTable">
       {!!selectedRowIds.length && <div>selected {selectedRowIds.length}</div>}
-      <Table data={dataPerPage} headerCell={<HeaderCell sortable={sortable} {...otherSortingProps} />} {...tableProps}>
+      <Table data={dataPerPage} headerCell={<HeaderCell sortable={sortable} multiSort={multiSort} {...otherSortingProps} />} {...tableProps}>
         {selectable && (
           <Column label={<input type="checkbox" onChange={toggleAllRowsSelected} checked={isAllRowsSelected()} />} sortable={false}>
             {({record}) => {

@@ -38,6 +38,7 @@ stories.add('default', () => {
         sortBy={[{id: 'column0', desc: false}]}
         onRowClick={action('onRowClick')}
         useDiv={boolean('use div', false)}
+        multiSort={boolean('multi sort', true)}
         sortable
       >
         <Column source="column0" label={<span>&nbsp;</span>} sticky />
