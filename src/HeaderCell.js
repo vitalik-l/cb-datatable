@@ -3,7 +3,7 @@ import TableCell from './TableCell';
 import clsx from 'clsx';
 
 function HeaderCell(props) {
-  const {className, setSortBy, sortable, sortBy, label, source, multiSort, ...restProps} = props;
+  const {className, setSortBy, sortable, sortBy, sortType, label, source, multiSort, ...restProps} = props;
   const sorting = React.useMemo(() =>
     sortBy && sortBy.length ? sortBy.find(item => item.id === source) || {} : {},
   [sortBy]);
@@ -18,16 +18,17 @@ function HeaderCell(props) {
         ...sorting,
         id: source,
         desc: nextDesc,
+        sortType
       }] : [];
 
       setSortBy(
-        multiSort ? [
+        multiSort && sortBy?.length ? [
           ...sortBy.filter(item => item.id !== source),
           ...newSortBy,
         ] : newSortBy
       );
     };
-  }, [sortable, sorting, sortBy, source]);
+  }, [sortable, sorting, sortBy, source, sortType]);
 
   return (
     <TableCell

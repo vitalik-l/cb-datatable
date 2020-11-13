@@ -54,18 +54,21 @@ export const alphanumeric = (rowA, rowB, columnId) => {
 };
 
 export function datetime(rowA, rowB, columnId) {
-  let a = getRowValueByColumnID(rowA, columnId)
-  let b = getRowValueByColumnID(rowB, columnId)
+  let a = getRowValueByColumnID(rowA, columnId);
+  let b = getRowValueByColumnID(rowB, columnId);
 
-  a = a.getTime()
-  b = b.getTime()
+  a = a.getTime();
+  b = b.getTime();
 
   return compareBasic(a, b)
 }
 
 export function basic(rowA, rowB, columnId) {
-  let a = getRowValueByColumnID(rowA, columnId)
-  let b = getRowValueByColumnID(rowB, columnId)
+  let a = getRowValueByColumnID(rowA, columnId);
+  let b = getRowValueByColumnID(rowB, columnId);
+
+  a = typeof a === 'string' ? a.toLowerCase() : a;
+  b = typeof b === 'string' ? b.toLowerCase() : b;
 
   return compareBasic(a, b)
 }

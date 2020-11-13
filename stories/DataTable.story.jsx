@@ -17,7 +17,7 @@ stories.add('default', () => {
   const {data} = generateMockData({columnsNumber: 10, rowsNumber: 50,
     dataFunc: (column, index) => {
       if (column.name === 'column2') {
-        return `${index < 2 || index === 4}`;
+        return index < 2 || index === 4;
       }
       return `${column.name} ${index}`;
     }
@@ -35,7 +35,6 @@ stories.add('default', () => {
         striped={boolean('striped', false)}
         rowHover={boolean('row hover', false)}
         rowsPerPage={number('rows per page', 0)}
-        sortBy={[{id: 'column0', desc: false}]}
         onRowClick={action('onRowClick')}
         useDiv={boolean('use div', false)}
         multiSort={boolean('multi sort', true)}
