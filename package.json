@@ -7,9 +7,6 @@
     "clsx": "^1.1.0"
   },
   "devDependencies": {
-    "prop-types": "^15.5.10",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
@@ -38,6 +35,10 @@
     "jest": "^25.1.0",
     "node-sass": "^4.14.1",
     "pre-commit": "^1.2.2",
+    "prettier": "^2.1.2",
+    "prop-types": "^15.5.10",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-test-renderer": "^16.9.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
@@ -55,7 +56,9 @@
     "storybook": "start-storybook -p 6006",
     "deploy-storybook": "storybook-to-ghpages",
     "build-storybook": "build-storybook",
-    "release": "babel-node ./scripts/release.js"
+    "release": "babel-node ./scripts/release.js",
+    "format": "prettier --write",
+    "format:all": "prettier --write src"
   },
   "pre-commit": [],
   "repository": {

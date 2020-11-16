@@ -1,15 +1,18 @@
 import React from 'react';
 import * as sortTypes from './utils/sortTypes';
 
-function useSortBy({data, sortBy}) {
+function useSortBy({ data, sortBy }) {
   const [sortByState, setSortBy] = React.useState(sortBy);
-  const sortedData = React.useMemo(() => sortByState ? orderBy(data, sortByState) : data, [sortByState, data]);
+  const sortedData = React.useMemo(() => (sortByState ? orderBy(data, sortByState) : data), [
+    sortByState,
+    data,
+  ]);
 
   React.useEffect(() => {
     setSortBy(sortBy);
   }, [sortBy]);
 
-  return {sortBy: sortByState, setSortBy, sortedData};
+  return { sortBy: sortByState, setSortBy, sortedData };
 }
 
 const orderBy = (data: any, dirs: any = []) => {
@@ -22,7 +25,7 @@ const orderBy = (data: any, dirs: any = []) => {
       const sortFn = sortTypes[sortType] || sortTypes.basic;
       const sortInt = sortFn(rowA, rowB, id);
       if (sortInt !== 0) {
-        return desc ? -sortInt : sortInt
+        return desc ? -sortInt : sortInt;
       }
     }
   });

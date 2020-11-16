@@ -20,8 +20,12 @@ const TableBody = React.forwardRef((props, ref) => {
   const Component = useDiv ? 'div' : 'tbody';
 
   return (
-    <Component className={clsx('cb-TableBody', className, {'cb-TableBody--row-hover': rowHover})} ref={ref} {...restProps}>
-      {offset >= 0 ? <tr className="cb-RowSpacer" style={{height: offset}} /> : null}
+    <Component
+      className={clsx('cb-TableBody', className, { 'cb-TableBody--row-hover': rowHover })}
+      ref={ref}
+      {...restProps}
+    >
+      {offset >= 0 ? <tr className="cb-RowSpacer" style={{ height: offset }} /> : null}
       {data.map((record, recordIndex) => {
         const index = recordIndex + currentIndex;
         let oddEvenClassName;
@@ -30,18 +34,18 @@ const TableBody = React.forwardRef((props, ref) => {
           oddEvenClassName = index % 2 > 0 ? 'cb-TableRow--odd' : 'cb-TableRow--even';
         }
 
-        return (
-          React.cloneElement(row, {
+        return React.cloneElement(
+          row,
+          {
             className: oddEvenClassName,
             onClick: onRowClick,
             record,
             index,
             useDiv,
-            key: index
+            key: index,
           },
-            children
-          )
-        )
+          children,
+        );
       })}
     </Component>
   );

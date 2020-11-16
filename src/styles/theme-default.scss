@@ -1,4 +1,4 @@
-@import "core";
+@import 'core';
 
 $arrowDownIcon: url("data:image/svg+xml;utf8,<svg  xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'></path></svg>");
 $arrowUpIcon: url("data:image/svg+xml;utf8,<svg  xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M7 14l5-5 5 5z'></path></svg>");
@@ -21,7 +21,7 @@ $arrowUpIcon: url("data:image/svg+xml;utf8,<svg  xmlns='http://www.w3.org/2000/s
         height: 37px;
         width: 100%;
         padding: 9px 6px 8px;
-        color: rgba(0,0,0,.54);
+        color: rgba(0, 0, 0, 0.54);
         font-weight: 700;
         background-image: linear-gradient(180deg, #fafafa 2%, #efefef 98%);
         border-top: 1px solid #d4d4d4;

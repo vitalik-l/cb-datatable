@@ -1,6 +1,6 @@
 import React from 'react';
 import './configureEnzyme';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import Cell from '../Cell';
 
 describe('Cell', () => {
@@ -9,10 +9,10 @@ describe('Cell', () => {
       <Cell
         column={{
           className: 'test',
-          name: 'test'
+          name: 'test',
         }}
-        row={{test: 'This is a test'}}
-      />
+        row={{ test: 'This is a test' }}
+      />,
     );
 
     expect(tree.hasClass('test')).toBeTruthy();
@@ -24,12 +24,12 @@ describe('Cell', () => {
         column={{
           className: 'test',
           name: 'test',
-          visible: false
+          visible: false,
         }}
-        row={{test: 'This is a test'}}
-      />
+        row={{ test: 'This is a test' }}
+      />,
     );
 
     expect(tree.getElement()).toBeNull();
-  })
+  });
 });

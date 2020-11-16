@@ -24,31 +24,39 @@ function Table(props) {
   const Component = useDiv ? 'div' : 'table';
 
   return (
-    <Component className={clsx('cb-Table', className, {'cb-Table--sticky-header': stickyHeader})} onClick={onClick}>
+    <Component
+      className={clsx('cb-Table', className, { 'cb-Table--sticky-header': stickyHeader })}
+      onClick={onClick}
+    >
       {!!header &&
-        React.cloneElement(header, {
-          headerCell,
-          useDiv,
-        }, children)
-      }
-      {
-        React.cloneElement(body, {
+        React.cloneElement(
+          header,
+          {
+            headerCell,
+            useDiv,
+          },
+          children,
+        )}
+      {React.cloneElement(
+        body,
+        {
           striped,
           data,
           rowHover,
           onRowClick,
           row,
           useDiv,
-        }, children)
-      }
+        },
+        children,
+      )}
     </Component>
-  )
+  );
 }
 
 Table.defaultProps = {
   header: <TableHeader />,
   body: <TableBody />,
-  row: <TableRow />
+  row: <TableRow />,
 };
 
 export default Table;

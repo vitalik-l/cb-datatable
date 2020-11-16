@@ -28,29 +28,29 @@ export const alphanumeric = (rowA, rowB, columnId) => {
     // Both are string
     if (isNaN(combo[0])) {
       if (aa > bb) {
-        return 1
+        return 1;
       }
       if (bb > aa) {
-        return -1
+        return -1;
       }
-      continue
+      continue;
     }
 
     // One is a string, one is a number
     if (isNaN(combo[1])) {
-      return isNaN(an) ? -1 : 1
+      return isNaN(an) ? -1 : 1;
     }
 
     // Both are numbers
     if (an > bn) {
-      return 1
+      return 1;
     }
     if (bn > an) {
-      return -1
+      return -1;
     }
   }
 
-  return a.length - b.length
+  return a.length - b.length;
 };
 
 export function datetime(rowA, rowB, columnId) {
@@ -60,7 +60,7 @@ export function datetime(rowA, rowB, columnId) {
   a = a.getTime();
   b = b.getTime();
 
-  return compareBasic(a, b)
+  return compareBasic(a, b);
 }
 
 export function basic(rowA, rowB, columnId) {
@@ -70,13 +70,13 @@ export function basic(rowA, rowB, columnId) {
   a = typeof a === 'string' ? a.toLowerCase() : a;
   b = typeof b === 'string' ? b.toLowerCase() : b;
 
-  return compareBasic(a, b)
+  return compareBasic(a, b);
 }
 
 // Utils
 
 function compareBasic(a, b) {
-  return a === b ? 0 : a > b ? 1 : -1
+  return a === b ? 0 : a > b ? 1 : -1;
 }
 
 function getRowValueByColumnID(row, columnId) {
@@ -86,12 +86,12 @@ function getRowValueByColumnID(row, columnId) {
 function toString(a) {
   if (typeof a === 'number') {
     if (isNaN(a) || a === Infinity || a === -Infinity) {
-      return ''
+      return '';
     }
-    return String(a)
+    return String(a);
   }
   if (typeof a === 'string') {
-    return a
+    return a;
   }
-  return ''
+  return '';
 }

@@ -11,7 +11,7 @@ const TableHeader = React.forwardRef((props, ref) => {
       <TR className="cb-TableRow">
         {React.Children.map(children, (column, i) => {
           if (!column) return;
-          return React.cloneElement(headerCell, {useDiv, ...column.props, key: i})
+          return React.cloneElement(headerCell, { useDiv, ...column.props, key: i });
         })}
       </TR>
     </THead>
@@ -21,7 +21,7 @@ const TableHeader = React.forwardRef((props, ref) => {
 TableHeader.displayName = 'TableHeader';
 
 TableHeader.defaultProps = {
-  headerCell: <HeaderCell />
+  headerCell: <HeaderCell />,
 };
 
 export default TableHeader;

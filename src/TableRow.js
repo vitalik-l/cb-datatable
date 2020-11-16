@@ -1,6 +1,6 @@
 import React from 'react';
 import TableCell from './TableCell';
-import { get } from "./utils/get";
+import { get } from './utils/get';
 import clsx from 'clsx';
 
 const TableRow = React.forwardRef((props, ref) => {
@@ -8,7 +8,7 @@ const TableRow = React.forwardRef((props, ref) => {
 
   const handleClick = React.useMemo(() => {
     if (!onClick) return;
-    return e => {
+    return (e) => {
       onClick(e, record, index);
     };
   }, [onClick]);
@@ -16,28 +16,31 @@ const TableRow = React.forwardRef((props, ref) => {
   const Component = useDiv ? 'div' : 'tr';
 
   return (
-    <Component className={clsx('cb-TableRow', className)} onClick={handleClick} ref={ref} {...restProps}>
-      {
-        React.Children.map(children, (child, childIndex) => {
-          if (!child) return;
-          const source = child.props.source;
-          const value = source ? get(record, source) : undefined;
+    <Component
+      className={clsx('cb-TableRow', className)}
+      onClick={handleClick}
+      ref={ref}
+      {...restProps}
+    >
+      {React.Children.map(children, (child, childIndex) => {
+        if (!child) return;
+        const source = child.props.source;
+        const value = source ? get(record, source) : undefined;
 
-          return (
-            React.cloneElement(cell, {key: childIndex, useDiv, ...child.props},
-              React.cloneElement(child, {record, index, value})
-            )
-          );
-        })
-      }
+        return React.cloneElement(
+          cell,
+          { key: childIndex, useDiv, ...child.props },
+          React.cloneElement(child, { record, index, value }),
+        );
+      })}
     </Component>
-  )
+  );
 });
 
 TableRow.displayName = 'TableRow';
 
 TableRow.defaultProps = {
-  cell: <TableCell />
+  cell: <TableCell />,
 };
 
 export default TableRow;

@@ -20,7 +20,4 @@ export {
   useSortBy,
   useInfinite,
   useRowSelect,
-}
-
-
-
+};

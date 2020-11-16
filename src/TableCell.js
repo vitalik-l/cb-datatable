@@ -14,16 +14,21 @@ const TableCell = React.forwardRef((props, ref) => {
       setStyle({
         position: 'sticky',
         left: cellRef.current.offsetLeft,
-        zIndex: isHeader ? 2 : 1
+        zIndex: isHeader ? 2 : 1,
       });
     }
   }, [sticky, isHeader]);
 
   return (
-    <Component className={clsx('cb-TableCell', className, {'cb-TableCell--sticky': sticky})} style={style} onClick={onClick} ref={cellRef}>
+    <Component
+      className={clsx('cb-TableCell', className, { 'cb-TableCell--sticky': sticky })}
+      style={style}
+      onClick={onClick}
+      ref={cellRef}
+    >
       {children}
     </Component>
-  )
+  );
 });
 
 TableCell.displayName = 'TableCell';

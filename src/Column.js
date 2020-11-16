@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Column(props) {
-  const {children, ...restProps} = props;
+  const { children, ...restProps } = props;
 
   if (children) {
     if (typeof children === 'function') {
@@ -11,7 +11,7 @@ function Column(props) {
   }
 
   const { value } = restProps;
-  return <span>{value}</span>
+  return <span>{value}</span>;
 }
 
 export default Column;

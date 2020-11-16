@@ -21,7 +21,8 @@ function useInfinite(data) {
       const firstRowNode = bodyNode.current.querySelector('.cb-TableRow');
       if (firstRowNode) {
         const rowHeight = firstRowNode.offsetHeight;
-        const newNumberOfVisibleElements = Math.ceil(rootNode.current.offsetHeight / rowHeight) + 3 + EXTRA_ROWS_NUMBER;
+        const newNumberOfVisibleElements =
+          Math.ceil(rootNode.current.offsetHeight / rowHeight) + 3 + EXTRA_ROWS_NUMBER;
 
         containerHeight.current = rowHeight * itemsCount;
         if (newNumberOfVisibleElements !== numberOfVisibleItems) {
@@ -37,7 +38,10 @@ function useInfinite(data) {
       const scrollTop = rootNode.current.scrollTop;
       if (scrollTop >= 0) {
         const rowHeight = firstRowNode.offsetHeight;
-        const newIndex = Math.max(0, Math.floor((scrollTop - EXTRA_ROWS_NUMBER*rowHeight)/rowHeight));
+        const newIndex = Math.max(
+          0,
+          Math.floor((scrollTop - EXTRA_ROWS_NUMBER * rowHeight) / rowHeight),
+        );
         if (newIndex !== currentIndex) {
           const newOffset = newIndex * rowHeight;
           setCurrentIndex(newIndex);
@@ -60,8 +64,8 @@ function useInfinite(data) {
       offset,
       currentIndex,
     },
-    containerHeight: containerHeight.current
-  }
+    containerHeight: containerHeight.current,
+  };
 }
 
 export default useInfinite;
