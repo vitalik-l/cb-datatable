@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import {generateMockData} from '../testUtils';
 import DataTable from './DataTable';
 import { InfiniteTable } from './InfiniteTable';
-import Column from '../src/Column';
+import { Column, TableRow } from '../src';
 
 const stories = storiesOf('DataTable', module);
 stories.addDecorator(withKnobs);
@@ -50,6 +50,66 @@ stories.add('default', () => {
         <Column>
           test children
         </Column>
+      </DataTable>
+    </div>
+  );
+});
+
+const Row = (props) => {
+  return (
+    <React.Fragment>
+      <TableRow {...props}>
+        <Column source="id" rowSpan={2} />
+        <Column source="title" colSpan={2} />
+        <Column rowSpan={2}>
+          <button>action</button>
+        </Column>
+      </TableRow>
+      <TableRow {...props}>
+        <Column source="name" />
+        <Column source="some"  />
+      </TableRow>
+    </React.Fragment>
+  )
+};
+
+stories.add('custom layout', () => {
+  const data = [
+    {
+      id: 1,
+      title: 'Title',
+      name: 'firstName lastName',
+      some: 'test string',
+    },
+    {
+      id: 2,
+      title: '2 Title',
+      name: 'firstName lastName another',
+      some: 'test string second column',
+    }
+  ];
+
+  return (
+    <div style={{
+      width: 400,
+      height: 200,
+      overflow: 'auto'
+    }}>
+      <DataTable
+        data={data}
+        stickyHeader={boolean('sticky header', false)}
+        striped={boolean('striped', false)}
+        rowHover={boolean('row hover', false)}
+        rowsPerPage={number('rows per page', 0)}
+        onRowClick={action('onRowClick')}
+        useDiv={boolean('use div', false)}
+        multiSort={boolean('multi sort', true)}
+        row={<Row />}
+        sortable
+      >
+        <Column source="id" label="id" />
+        <Column source="title" label="data" colSpan={2} />
+        <Column label="action" />
       </DataTable>
     </div>
   );
