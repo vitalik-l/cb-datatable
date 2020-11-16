@@ -1,7 +1,7 @@
-var shell = require('shelljs');
-var publishUtils = require('./utils');
-var path = require('path');
-var packageJson = require(path.resolve('./package.json'));
+const shell = require('shelljs');
+const publishUtils = require('./utils');
+const path = require('path');
+const packageJson = require(path.resolve('./package.json'));
 
 const TAG_NAME = 'v' + packageJson.version;
 
