@@ -13,7 +13,7 @@ const TableCell = React.forwardRef((props, ref) => {
     cellProps = {
       rowSpan,
       colSpan,
-    }
+    };
   }
 
   React.useImperativeHandle(ref, () => cellRef.current);
