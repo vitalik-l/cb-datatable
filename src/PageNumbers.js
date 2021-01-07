@@ -1,12 +1,7 @@
 import React from 'react';
 
 function PageNumbers(props) {
-  const {
-    page,
-    rowsPerPage,
-    dataSize,
-    setPage,
-  } = props;
+  const { page, rowsPerPage, dataSize, setPage } = props;
   const numberOfPages = React.useMemo(() => Math.ceil(dataSize / rowsPerPage), [
     dataSize,
     rowsPerPage,
