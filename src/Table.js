@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import TableRow from './TableRow';
+import HeaderCell from './HeaderCell';
 
 function Table(props) {
   const {
@@ -57,6 +58,7 @@ Table.defaultProps = {
   header: <TableHeader />,
   body: <TableBody />,
   row: <TableRow />,
+  headerCell: <HeaderCell />,
 };
 
 export default Table;

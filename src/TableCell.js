@@ -20,9 +20,12 @@ const TableCell = React.forwardRef((props, ref) => {
 
   React.useEffect(() => {
     if (sticky && cellRef.current) {
+      const isRightSticky = sticky === 'right';
+
       setStyle({
         position: 'sticky',
-        left: cellRef.current.offsetLeft,
+        left: isRightSticky ? undefined : cellRef.current.offsetLeft,
+        right: isRightSticky ? 0 : undefined,
         zIndex: isHeader ? 2 : 1,
       });
     }

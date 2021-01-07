@@ -40,13 +40,13 @@ stories.add('default', () => {
         multiSort={boolean('multi sort', true)}
         sortable
       >
-        <Column source="column0" label={<span>&nbsp;</span>} sticky />
+        <Column source="column0" label={<span>&nbsp;</span>} />
         <Column source="column1" label="Second column" sortable={false} />
         <Column source="column2" label="Third column" colored />
         <Column source="column3" label={<div>4 column</div>} />
         <Column source="column4" label={<div>5 column</div>} />
         <Column source="column5" label={<div>6 column</div>} />
-        <Column source="column6" label={<div>7 column</div>} />
+        <Column source="column6" label={<div>7 column</div>} sticky />
         <Column>
           test children
         </Column>
