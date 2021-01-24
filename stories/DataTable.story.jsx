@@ -184,6 +184,9 @@ stories.add('controled pagination', () => {
     }}>
       <DataTable
         data={data}
+        rowsPerPage={number('rows per page', 0)}
+        page={number('page')}
+        dataSize={number('dataSize')}
       >
         <Column source="column0" label={<span>&nbsp;</span>} />
         <Column source="column1" label="Second column" />

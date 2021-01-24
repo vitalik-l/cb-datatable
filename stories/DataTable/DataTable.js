@@ -20,7 +20,7 @@ function DataTable(props) {
   } = props;
   const sorting = useSortBy({data, sortBy});
   const { sortedData, ...otherSortingProps } = sorting;
-  const pagination = usePagination({ rowsPerPage, page, dataSize: data?.length, onChange: onPageChange, });
+  const pagination = usePagination({ rowsPerPage, page, dataSize: dataSize || data?.length, onChange: onPageChange, });
   const dataPerPage = useDataPerPage({ rowsPerPage, data, page: pagination.page });
   const { toggleAllRowsSelected, isAllRowsSelected, isRowSelected, toggleRowSelected, selectedRowIds } = useRowSelect({data: dataPerPage, idKey: 'column0'});
 
@@ -29,6 +29,7 @@ function DataTable(props) {
       pagination.setPage(1);
     }
   }, [data]);
+
   console.log(pagination);
   return (
     <div className="cb-DataTable">
