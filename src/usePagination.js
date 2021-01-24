@@ -1,7 +1,7 @@
 import React from 'react';
 
 function usePagination(props) {
-  const { page, defaultPage = 1, rowsPerPage, dataSize, onChange, resetOnDataChange = true } = props;
+  const { page, defaultPage = 1, rowsPerPage, dataSize, onChange, } = props;
   const { current: isControlled } = React.useRef(page !== undefined);
   const [pageState, setPageState] = React.useState(defaultPage);
   const value = isControlled ? page : pageState;
