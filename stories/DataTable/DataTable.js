@@ -1,11 +1,16 @@
 import React from 'react';
 import PageNumbers from '../../src/PageNumbers';
 import { usePagination, Table, useSortBy, HeaderCell, Column, useRowSelect } from '../../src/index';
+import {useDataPerPage} from '../../src/useDataPerPage';
 
 function DataTable(props) {
   const {
     data,
     rowsPerPage,
+    page,
+    onPageChange,
+    resetPageOnDataChange,
+    dataSize,
     sortBy,
     sortable,
     selectable,
@@ -15,10 +20,16 @@ function DataTable(props) {
   } = props;
   const sorting = useSortBy({data, sortBy});
   const { sortedData, ...otherSortingProps } = sorting;
-  const pagination = usePagination({data: sortedData, rowsPerPage});
-  const { dataPerPage } = pagination;
+  const pagination = usePagination({ rowsPerPage, page, dataSize: data?.length, onChange: onPageChange, });
+  const dataPerPage = useDataPerPage({ rowsPerPage, data, page: pagination.page });
   const { toggleAllRowsSelected, isAllRowsSelected, isRowSelected, toggleRowSelected, selectedRowIds } = useRowSelect({data: dataPerPage, idKey: 'column0'});
 
+  React.useEffect(() => {
+    if (resetPageOnDataChange) {
+      pagination.setPage(1);
+    }
+  }, [data]);
+  console.log(pagination);
   return (
     <div className="cb-DataTable">
       {!!selectedRowIds.length && <div>selected {selectedRowIds.length}</div>}
