@@ -1,7 +1,6 @@
 import React from 'react';
 import PageNumbers from '../../src/PageNumbers';
-import { usePagination, Table, useSortBy, HeaderCell, Column, useRowSelect } from '../../src/index';
-import {useDataPerPage} from '../../src/useDataPerPage';
+import { usePagination, Table, useSortBy, HeaderCell, Column, useRowSelect, useDataPerPage } from '../../src/index';
 
 function DataTable(props) {
   const {
@@ -30,7 +29,6 @@ function DataTable(props) {
     }
   }, [data]);
 
-  console.log(pagination);
   return (
     <div className="cb-DataTable">
       {!!selectedRowIds.length && <div>selected {selectedRowIds.length}</div>}

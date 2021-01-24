@@ -8,6 +8,7 @@ import usePagination from './usePagination';
 import useSortBy from './useSortBy';
 import useInfinite from './useInfinite';
 import useRowSelect from './useRowSelect';
+import useDataPerPage from './useDataPerPage';
 
 export {
   Table,
@@ -20,4 +21,5 @@ export {
   useSortBy,
   useInfinite,
   useRowSelect,
+  useDataPerPage,
 };
