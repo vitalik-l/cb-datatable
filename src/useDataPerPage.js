@@ -8,6 +8,6 @@ const useDataPerPage = ({ rowsPerPage, page, data }) => {
     () => (rowsPerPage && data ? getDataPerPage(data, page, rowsPerPage) : data),
     [page, rowsPerPage, data],
   );
-}
+};
 
 export default useDataPerPage;

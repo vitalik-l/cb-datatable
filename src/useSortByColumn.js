@@ -1,13 +1,6 @@
 import React from 'react';
 
-const useSortByColumn = ({
-  source,
-  setSortBy,
-  sortable,
-  sortBy,
-  sortType,
-  multiSort,
-}) => {
+const useSortByColumn = ({ source, setSortBy, sortable, sortBy, sortType, multiSort }) => {
   const sorting = React.useMemo(
     () => (sortBy && sortBy.length ? sortBy.find((item) => item.id === source) || {} : {}),
     [sortBy],
@@ -21,12 +14,12 @@ const useSortByColumn = ({
       const newSortBy =
         typeof nextDesc === 'boolean'
           ? [
-            {
-              id: source,
-              desc: nextDesc,
-              sortType,
-            },
-          ]
+              {
+                id: source,
+                desc: nextDesc,
+                sortType,
+              },
+            ]
           : [];
 
       setSortBy(
