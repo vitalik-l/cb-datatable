@@ -1,6 +1,10 @@
 import React from 'react';
-import TableCell from './TableCell';
 import clsx from 'clsx';
+
+// local files
+import TableCell from './TableCell';
+import useSortByColumn from './useSortByColumn';
+import ColumnPropsContext from './ColumnPropsContext';
 
 function HeaderCell(props) {
   const {
@@ -9,54 +13,48 @@ function HeaderCell(props) {
     sortable,
     sortBy,
     sortType,
+    multiSort,
+    sortIconAsc,
+    sortIconDesc,
     label,
     source,
-    multiSort,
     ...restProps
   } = props;
-  const sorting = React.useMemo(
-    () => (sortBy && sortBy.length ? sortBy.find((item) => item.id === source) || {} : {}),
-    [sortBy],
-  );
-  const { desc, id } = sorting;
-
-  const onClick = React.useMemo(() => {
-    if (!sortable) return;
-    return () => {
-      const { desc, id } = sorting;
-      const nextDesc = !id ? true : !desc ? undefined : false;
-      const newSortBy =
-        typeof nextDesc === 'boolean'
-          ? [
-              {
-                ...sorting,
-                id: source,
-                desc: nextDesc,
-                sortType,
-              },
-            ]
-          : [];
-
-      setSortBy(
-        multiSort && sortBy?.length
-          ? [...sortBy.filter((item) => item.id !== source), ...newSortBy]
-          : newSortBy,
-      );
-    };
-  }, [sortable, sorting, sortBy, source, sortType]);
+  const { handleSorting, desc } = useSortByColumn({
+    source,
+    setSortBy,
+    sortable,
+    sortBy,
+    sortType,
+    multiSort,
+  });
+  const sortIcon = desc ? sortIconDesc : sortIconAsc;
 
   return (
-    <TableCell
-      onClick={onClick}
-      className={clsx(className, 'cb-TableHeaderCell', {
-        [`cb-TableCell--sort-${desc ? 'desc' : 'asc'}`]: id,
-        'cb-TableCell--sortable': sortable,
-      })}
-      isHeader
-      {...restProps}
-    >
-      <div className="cb-HeaderCell">{label}</div>
-    </TableCell>
+    <ColumnPropsContext.Provider value={{
+      handleSorting, desc, source, sortable, ...restProps
+    }}>
+      <TableCell
+        onClick={handleSorting}
+        className={clsx(className, 'cb-TableHeaderCell', {
+          [`cb-TableCell--sort-${desc ? 'desc' : 'asc'}`]: typeof desc === "boolean",
+          'cb-TableCell--sortable': sortable,
+        })}
+        isHeader
+        {...restProps}
+      >
+        <div className="cb-HeaderCell">
+          <div className="cb-HeaderCell__label">
+            {label}
+          </div>
+          {!!sortIcon && (
+            <div className="cb-HeaderCell__icon">
+              {sortIcon}
+            </div>
+          )}
+        </div>
+      </TableCell>
+    </ColumnPropsContext.Provider>
   );
 }
 

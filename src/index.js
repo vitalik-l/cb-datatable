@@ -9,6 +9,9 @@ import useSortBy from './useSortBy';
 import useInfinite from './useInfinite';
 import useRowSelect from './useRowSelect';
 import useDataPerPage from './useDataPerPage';
+import ColumnPropsContext from './ColumnPropsContext';
+import useColumnProps from './useColumnProps';
+import useSortByColumn from './useSortByColumn';
 
 export {
   Table,
@@ -22,4 +25,7 @@ export {
   useInfinite,
   useRowSelect,
   useDataPerPage,
+  ColumnPropsContext,
+  useColumnProps,
+  useSortByColumn,
 };

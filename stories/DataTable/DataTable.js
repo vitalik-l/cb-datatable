@@ -20,7 +20,7 @@ function DataTable(props) {
   const sorting = useSortBy({data, sortBy});
   const { sortedData, ...otherSortingProps } = sorting;
   const pagination = usePagination({ rowsPerPage, page, dataSize: dataSize || data?.length, onChange: onPageChange, });
-  const dataPerPage = useDataPerPage({ rowsPerPage, data, page: pagination.page });
+  const dataPerPage = useDataPerPage({ rowsPerPage, data: sortedData, page: pagination.page });
   const { toggleAllRowsSelected, isAllRowsSelected, isRowSelected, toggleRowSelected, selectedRowIds } = useRowSelect({data: dataPerPage, idKey: 'column0'});
 
   React.useEffect(() => {
