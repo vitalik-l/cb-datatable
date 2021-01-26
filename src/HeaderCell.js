@@ -28,7 +28,7 @@ function HeaderCell(props) {
     sortType,
     multiSort,
   });
-  const sortIcon = desc ? sortIconDesc : sortIconAsc;
+  const sortIcon = desc === true ? sortIconDesc : desc === false ? sortIconAsc : undefined;
 
   return (
     <ColumnPropsContext.Provider
