@@ -17,10 +17,8 @@ function DataTable(props) {
     multiSort,
     ...tableProps
   } = props;
-  const sorting = useSortBy({data, sortBy});
-  const { sortedData, ...otherSortingProps } = sorting;
-  const pagination = usePagination({ rowsPerPage, page, dataSize: dataSize || data?.length, onChange: onPageChange, });
-  const dataPerPage = useDataPerPage({ rowsPerPage, data: sortedData, page: pagination.page });
+  const { sortedData, ...sorting } = useSortBy({data, sortBy});
+  const { dataPerPage, ...pagination } = usePagination({ data: sortedData, rowsPerPage, page, dataSize: dataSize || data?.length, onChange: onPageChange, });
   const { toggleAllRowsSelected, isAllRowsSelected, isRowSelected, toggleRowSelected, selectedRowIds } = useRowSelect({data: dataPerPage, idKey: 'column0'});
 
   React.useEffect(() => {
@@ -32,7 +30,7 @@ function DataTable(props) {
   return (
     <div className="cb-DataTable">
       {!!selectedRowIds.length && <div>selected {selectedRowIds.length}</div>}
-      <Table data={dataPerPage} headerCell={<HeaderCell sortable={sortable} multiSort={multiSort} {...otherSortingProps} />} {...tableProps}>
+      <Table data={dataPerPage} headerCell={<HeaderCell sortable={sortable} multiSort={multiSort} {...sorting} />} {...tableProps}>
         {selectable && (
           <Column label={<input type="checkbox" onChange={toggleAllRowsSelected} checked={isAllRowsSelected()} />} sortable={false}>
             {({record}) => {

@@ -1,7 +1,8 @@
 import React from 'react';
+import {getDataPerPage} from './utils';
 
 function usePagination(props) {
-  const { page, defaultPage = 1, rowsPerPage, dataSize, onChange } = props;
+  const { data, page, defaultPage = 1, rowsPerPage, dataSize, onChange } = props;
   const { current: isControlled } = React.useRef(page !== undefined);
   const [pageState, setPageState] = React.useState(defaultPage);
   const value = isControlled ? page : pageState;
@@ -62,6 +63,12 @@ function usePagination(props) {
     return input;
   }, [value, numberOfPages]);
 
+  const dataPerPage =
+    Array.isArray(data) ? React.useMemo(
+    () => (rowsPerPage && data ? getDataPerPage(data, value, rowsPerPage) : data),
+    [value, rowsPerPage, data],
+  ) : undefined;
+
   let lastRowIndex = value * rowsPerPage;
   const firstRowIndex = lastRowIndex - rowsPerPage + 1;
   lastRowIndex = Math.min(dataSize, lastRowIndex);
@@ -79,6 +86,7 @@ function usePagination(props) {
     hasNextPage,
     range,
     numberOfPages,
+    dataPerPage,
   };
 }
 
