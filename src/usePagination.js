@@ -63,11 +63,10 @@ function usePagination(props) {
     return input;
   }, [value, numberOfPages]);
 
-  const dataPerPage =
-    Array.isArray(data) ? React.useMemo(
+  const dataPerPage = React.useMemo(
     () => (rowsPerPage && data ? getDataPerPage(data, value, rowsPerPage) : data),
     [value, rowsPerPage, data],
-  ) : undefined;
+  );
 
   let lastRowIndex = value * rowsPerPage;
   const firstRowIndex = lastRowIndex - rowsPerPage + 1;

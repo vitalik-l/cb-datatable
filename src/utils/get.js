@@ -1,4 +1,5 @@
 export const get = (value, path, defaultValue) => {
+  if (value[path]) return value[path];
   return String(path)
     .split('.')
     .reduce((acc, v) => {

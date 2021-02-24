@@ -1,6 +1,6 @@
 import React from 'react';
 import PageNumbers from '../../src/PageNumbers';
-import { usePagination, Table, useSortBy, HeaderCell, Column, useRowSelect, useDataPerPage } from '../../src/index';
+import { usePagination, Table, useSortBy, HeaderCell, Column, useRowSelect } from '../../src/index';
 
 function DataTable(props) {
   const {
