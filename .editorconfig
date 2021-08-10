@@ -1,0 +1,9 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# http://editorconfig.org
+
+[*.{js,jsx,ts,tsx}]
+# Change these settings to your own preference
+indent_style = space
+indent_size = 2
+ij_typescript_use_double_quotes = false

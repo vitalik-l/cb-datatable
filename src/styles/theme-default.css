@@ -1,0 +1,99 @@
+.cb-Table {
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.cb-HeaderCell {
+  padding: 0;
+  min-height: 1px;
+}
+
+.cb-HeaderCell_sortable .cb-HeaderCellContent {
+  cursor: pointer;
+}
+
+.cb-HeaderCellContent {
+  height: 37px;
+  width: 100%;
+  padding: 9px 6px 8px;
+  color: rgba(0, 0, 0, 0.54);
+  font-weight: 700;
+  background-image: linear-gradient(180deg, #fafafa 2%, #efefef 98%);
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.cb-HeaderCell:last-child .cb-HeaderCellContent {
+  border-right: 1px solid #d4d4d4;
+}
+
+.cb-HeaderCell_sort_asc .cb-HeaderCellContent:after,
+.cb-HeaderCell_sort_desc .cb-HeaderCellContent:after {
+  content: '';
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.cb-HeaderCell_sort_asc .cb-HeaderCellContent:after {
+  background-image: url("data:image/svg+xml;utf8,<svg  xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M7 14l5-5 5 5z'></path></svg>");
+}
+
+.cb-HeaderCell_sort_desc .cb-HeaderCellContent:after {
+  background-image: url("data:image/svg+xml;utf8,<svg  xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'></path></svg>");
+}
+
+.cb-TableBody_row_hover .cb-TableCell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+.cb-TableBody_row_hover .cb-TableRow:hover .cb-TableCell {
+  border-bottom: 1px solid #2196f3;
+  border-top: 1px solid #2196f3;
+  cursor: pointer;
+}
+
+.cb-TableBody_row_hover .cb-TableRow:hover .cb-TableCell:first-child {
+  border-left: 1px solid #2196f3;
+}
+
+.cb-TableBody_row_hover .cb-TableRow:hover .cb-TableCell:last-child {
+  border-right: 1px solid #2196f3;
+}
+
+.cb-TableBody .cb-TableCell {
+  padding: 9px 6px 8px;
+  border-left: 1px solid #d4d4d4;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.cb-TableBody .cb-TableCell:last-child {
+  border-right: 1px solid #d4d4d4;
+}
+
+.cb-TableBody .cb-TableRow_odd .cb-TableCell {
+  background-color: #f5f5f5;
+}
+
+.cb-TableCell {
+  border-left: 1px solid #d4d4d4;
+}
+
+.cb-TableCell_sticky {
+  border-right: 1px solid #d4d4d4;
+}
+
+.cb-TableCell_sticky + .cb-TableCell {
+  border-left: none !important;
+}

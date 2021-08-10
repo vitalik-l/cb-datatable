@@ -1,0 +1,58 @@
+.cb-Table {
+  display: table;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.cb-TableBody {
+  display: table-row-group;
+}
+
+.cb-TableHeader {
+  display: table-header-group;
+}
+
+.cb-TableRow {
+  display: table-row;
+}
+
+.cb-TableCell {
+  display: table-cell;
+}
+
+.cb-Table_sticky .cb-HeaderCell {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.cb-VirtualTable {
+  display: block;
+  position: relative;
+  overflow: auto;
+  contain: strict;
+  transform: translateZ(0);
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cb-VirtualTable .cb-Table {
+  width: 100%;
+}
+
+.cb-VirtualTable-table-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  contain: content;
+  min-width: 100%;
+}
+
+.cb-VirtualTable__height {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 1px;
+  transform-origin: 0 0;
+}
