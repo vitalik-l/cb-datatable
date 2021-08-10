@@ -1,2 +1,0 @@
-# cb-datatable
-test
