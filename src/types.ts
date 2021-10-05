@@ -8,7 +8,7 @@ export type onRowClickType = (
 
 export type SortType = (...args: any) => any | string;
 
-export type SortByElement = {
+export type SortBy = {
   id?: string | number;
   desc?: boolean;
   sortType?: SortType;

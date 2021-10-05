@@ -2,13 +2,13 @@ import React from 'react';
 
 // local files
 import * as sortTypes from '../utils/sortTypes';
-import { SortByElement } from '../types';
+import { SortBy } from '../types';
 
 type useSortByParams = {
   data?: Array<any>;
-  sortBy?: Array<SortByElement>;
-  defaultSortBy?: Array<SortByElement>;
-  onSort?: (value: Array<SortByElement>) => void;
+  sortBy?: Array<SortBy>;
+  defaultSortBy?: Array<SortBy>;
+  onSort?: (value: Array<SortBy>) => void;
 };
 
 export const useSortBy = ({ data, sortBy, defaultSortBy, onSort }: useSortByParams) => {
@@ -16,9 +16,10 @@ export const useSortBy = ({ data, sortBy, defaultSortBy, onSort }: useSortByPara
   const [sortByState, setSortByState] = React.useState(defaultSortBy);
   const value = isControlled ? sortBy : sortByState;
 
-  const sortedData =
-    data !== undefined &&
-    React.useMemo(() => (value ? orderBy(data, value) : data), [sortByState, data]);
+  const sortedData = React.useMemo(() => (!!data && value ? orderBy(data, value) : data), [
+    sortByState,
+    data,
+  ]);
 
   const setValueIfUncontrolled = React.useCallback(
     (newValue: any) => {

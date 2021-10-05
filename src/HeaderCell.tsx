@@ -37,10 +37,6 @@ export const HeaderCell = React.forwardRef((props: Props, ref: any) => {
   });
   const sortIcon = desc === true ? sortIconDesc : desc === false ? sortIconAsc : undefined;
 
-  React.useEffect(() => {
-    console.log('mounted');
-  }, []);
-
   return (
     <ColumnPropsContext.Provider
       value={{

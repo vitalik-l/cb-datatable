@@ -1,15 +1,15 @@
 import React from 'react';
 
 // local files
-import { SortType, SortByElement } from '../types';
+import { SortType, SortBy } from '../types';
 
 type Params = {
   source?: string | number;
   sortable?: boolean;
   multiSort?: boolean;
-  sortBy?: Array<SortByElement>;
+  sortBy?: Array<SortBy>;
   sortType?: SortType;
-  setSortBy?: (arg: Array<SortByElement> | SortByElement) => void;
+  setSortBy?: (arg: Array<SortBy> | SortBy) => void;
 };
 
 export const useSortByColumn = ({
@@ -20,7 +20,7 @@ export const useSortByColumn = ({
   sortType,
   multiSort,
 }: Params) => {
-  const sorting: SortByElement = React.useMemo(
+  const sorting: SortBy = React.useMemo(
     () => (sortBy && sortBy.length ? sortBy.find((item) => item.id === source) || {} : {}),
     [sortBy],
   );
