@@ -8,7 +8,7 @@ import { TableRow } from './TableRow';
 import { HeaderCell } from './HeaderCell';
 import { onRowClickType } from './types';
 
-type Props = React.ComponentProps<'table'> & {
+export type TableProps = React.ComponentProps<'table'> & {
   /** Make the header to be sticky */
   stickyHeader?: boolean;
   /** Make rows striped */
@@ -23,7 +23,7 @@ type Props = React.ComponentProps<'table'> & {
   data?: Array<any>;
 };
 
-export const Table = (props: Props) => {
+export const Table = (props: TableProps) => {
   const {
     data,
     children,
