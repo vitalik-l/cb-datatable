@@ -1,4 +1,5 @@
 import React from 'react';
+import { mapChildren } from './utils/mapChildren';
 
 // local files
 import { HeaderCell } from './HeaderCell';
@@ -17,9 +18,8 @@ export const TableHeader = React.forwardRef((props: Props, ref: any) => {
     <THead className="cb-TableHeader" ref={ref} {...restProps}>
       <TR className="cb-TableRow">
         {!!headerCell &&
-          React.Children.map(children, (column: any, i) => {
-            if (!column) return;
-            return React.cloneElement(headerCell, { useDiv, ...column.props, key: i });
+          mapChildren(children, (column: any, index) => {
+            return React.cloneElement(headerCell, { useDiv, ...column.props, key: index });
           })}
       </TR>
     </THead>

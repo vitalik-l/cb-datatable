@@ -1,19 +1,23 @@
-import React from 'react';
 import { Story } from '@storybook/react';
 import faker from 'faker/locale/en';
-
-// local
-import { Table } from '../../src/Table';
+import React from 'react';
 import { Column } from '../../src/Column';
+import { HeaderCell } from '../../src/HeaderCell';
+import { InfiniteTable } from '../../src/InfiniteTable';
+import { Table } from '../../src/Table';
+import { VirtualTable } from '../../src/VirtualTable';
 import { usePagination } from '../../src/hooks/usePagination';
 import { useSortBy } from '../../src/hooks/useSortBy';
-import { HeaderCell } from '../../src/HeaderCell';
-import { VirtualTable } from '../../src/VirtualTable';
-import { InfiniteTable } from '../../src/InfiniteTable';
 import './index.css';
 
-const sampleData = [];
-for (let i = 0; i < 500; i++) {
+type Item = {
+  id: number;
+  name: string;
+  lastName: string;
+};
+
+const sampleData: Item[] = [];
+for (let i = 0; i < 20; i++) {
   sampleData.push({
     id: i + 1,
     name: faker.name.firstName(),
@@ -27,9 +31,13 @@ for (let i = 0; i < 500; i++) {
   });
 }
 
-const columns = Object.keys(sampleData[0]).map((key) => (
-  <Column key={key} source={key} label={key} />
-));
+const columns = (
+  <React.Fragment>
+    <Column source="id" label="id" />
+    <Column<Item> source="name" label="name" />
+    <Column<Item> label="children fn">{({ record }) => <span>{record?.lastName}</span>}</Column>
+  </React.Fragment>
+);
 
 export default {
   title: 'Demos',
@@ -101,10 +109,10 @@ export const Virtual: Story = ({ data, sortBy: sortByProp, ...args }) => {
       {columns}
     </VirtualTable>
   );
-}
+};
 Virtual.args = {
   stickyHeader: true,
-}
+};
 
 export const Infinite: Story = ({ data, sortBy: sortByProp, ...args }) => {
   const { sortedData, setSortBy, sortBy } = useSortBy({ data, defaultSortBy: sortByProp });
@@ -119,7 +127,7 @@ export const Infinite: Story = ({ data, sortBy: sortByProp, ...args }) => {
       {columns}
     </InfiniteTable>
   );
-}
+};
 Infinite.args = {
   stickyHeader: true,
-}
+};

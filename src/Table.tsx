@@ -1,11 +1,9 @@
-import React from 'react';
 import clsx from 'clsx';
-
-// local files
-import { TableHeader } from './TableHeader';
-import { TableBody } from './TableBody';
-import { TableRow } from './TableRow';
+import React from 'react';
 import { HeaderCell } from './HeaderCell';
+import { TableBody } from './TableBody';
+import { TableHeader } from './TableHeader';
+import { TableRow } from './TableRow';
 import { onRowClickType } from './types';
 
 export type TableProps = React.ComponentProps<'table'> & {

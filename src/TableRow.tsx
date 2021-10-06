@@ -1,10 +1,9 @@
-import React from 'react';
 import clsx from 'clsx';
-
-// local files
-import { get } from './utils/get';
+import React from 'react';
 import { TableCell } from './TableCell';
 import { onRowClickType } from './types';
+import { get } from './utils/get';
+import { mapChildren } from './utils/mapChildren';
 
 type Props = {
   cell?: React.ReactElement;
@@ -33,17 +32,17 @@ export const TableRow = React.forwardRef((props: Props, ref: any) => {
       ref={ref}
       {...restProps}
     >
-      {React.Children.map(children, (child: any, childIndex) => {
-        if (!child || !cell) return;
-        const source = child.props.source;
-        const value = source ? get(record, source) : undefined;
+      {!!cell &&
+        mapChildren(children, (child: any, childIndex) => {
+          const source = child.props.source;
+          const value = source ? get(record, source) : undefined;
 
-        return React.cloneElement(
-          cell,
-          { key: childIndex, useDiv, ...child.props },
-          React.cloneElement(child, { record, index, value }),
-        );
-      })}
+          return React.cloneElement(
+            cell,
+            { key: childIndex, useDiv, ...child.props },
+            React.cloneElement(child, { record, index, value }),
+          );
+        })}
     </Component>
   );
 });

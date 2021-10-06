@@ -1,6 +1,19 @@
 import React from 'react';
+import { Leaves } from './types';
 
-export const Column = (props: any) => {
+export type ColumnProps<T> = {
+  label?: string;
+  value?: any;
+  index?: number;
+  source?: (T extends object ? Leaves<T> : string) | number;
+  record?: T;
+};
+
+export type ColumnPropsWithChildren<T> = ColumnProps<T> & {
+  children?: React.ReactNode | ((args: ColumnProps<T>) => React.ReactNode);
+};
+
+export function Column<T>(props: ColumnPropsWithChildren<T>) {
   const { children, ...restProps } = props;
 
   if (children) {
@@ -11,4 +24,4 @@ export const Column = (props: any) => {
   }
 
   return <span>{restProps.value}</span>;
-};
+}
