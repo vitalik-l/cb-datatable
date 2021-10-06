@@ -8,10 +8,14 @@ type Join<K, P> = K extends string | number
 
 type Prev = [never, 0, 1, 2, 3, 4, ...0[]];
 
-export type Leaves<T, D extends number = 5> = [D] extends [never]
+export type Paths<T, D extends number = 5> = [D] extends [never]
   ? never
+  : T extends Date
+  ? ''
   : T extends object
-  ? { [K in keyof T]-?: Join<K, Leaves<T[K], Prev[D]>> }[keyof T]
+  ? {
+      [K in keyof T]-?: K extends string | number ? `${K}` | Join<K, Paths<T[K], Prev[D]>> : never;
+    }[keyof T]
   : '';
 
 export type onRowClickType = (

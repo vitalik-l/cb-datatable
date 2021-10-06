@@ -1,11 +1,11 @@
 import React from 'react';
-import { Leaves } from './types';
+import { Paths } from './types';
 
 export type ColumnProps<T> = {
   label?: string;
   value?: any;
   index?: number;
-  source?: (T extends object ? Leaves<T> : string) | number;
+  source?: (T extends object ? Paths<T> : string) | number;
   record?: T;
 };
 
