@@ -7,6 +7,9 @@ export type ColumnProps<T> = {
   index?: number;
   source?: (T extends object ? Paths<T> : string) | number;
   record?: T;
+  className?: string;
+  colSpan?: number;
+  rowSpan?: number;
 };
 
 export type ColumnPropsWithChildren<T> = ColumnProps<T> & {
