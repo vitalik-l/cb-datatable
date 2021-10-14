@@ -1,5 +1,4 @@
 import React from 'react';
-
 // local files
 import { SortType, SortBy } from '../types';
 
@@ -20,6 +19,16 @@ export const useSortByColumn = ({
   sortType,
   multiSort,
 }: Params) => {
+  if (process.env.NODE_ENV !== 'production') {
+    React.useEffect(() => {
+      if (sortable && !source) {
+        console.error(
+          'A column has the "sortable" prop without the "source" prop. Define the "source" prop to make the sorting working for this column',
+        );
+      }
+    }, [sortable, source]);
+  }
+
   const sorting: SortBy = React.useMemo(
     () => (sortBy && sortBy.length ? sortBy.find((item) => item.id === source) || {} : {}),
     [sortBy],
@@ -27,7 +36,7 @@ export const useSortByColumn = ({
   const { desc, id } = sorting;
 
   const handleSorting = React.useMemo(() => {
-    if (!sortable || !setSortBy) return;
+    if (!sortable || !setSortBy || !source) return;
     return () => {
       const nextDesc = !id ? true : !desc ? undefined : false;
       const newSortBy =

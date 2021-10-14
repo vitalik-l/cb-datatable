@@ -35,7 +35,9 @@ const columns = (
   <React.Fragment>
     <Column source="id" label="id" />
     <Column<Item> source="name" label="name" />
-    <Column<Item> label="children fn">{({ record }) => <span>{record?.lastName}</span>}</Column>
+    <Column<Item> label="children fn" sortable={false}>
+      {({ record }) => <span>{record?.lastName}</span>}
+    </Column>
   </React.Fragment>
 );
 

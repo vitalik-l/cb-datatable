@@ -6,6 +6,7 @@ export type ColumnProps<T> = {
   value?: any;
   index?: number;
   source?: (T extends object ? Paths<T> : string) | number;
+  sortable?: boolean;
   record?: T;
   className?: string;
   colSpan?: number;

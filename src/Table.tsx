@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { HeaderCell } from './HeaderCell';
 import { TableBody } from './TableBody';
+import { TableCell } from './TableCell';
 import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
 import { onRowClickType } from './types';
@@ -15,6 +16,7 @@ export type TableProps = React.ComponentProps<'table'> & {
   useDiv?: boolean;
   onRowClick?: onRowClickType;
   row?: React.ReactElement;
+  cell?: React.ReactElement;
   headerCell?: React.ReactElement;
   header?: React.ReactElement;
   body?: React.ReactElement;
@@ -36,6 +38,7 @@ export const Table = (props: TableProps) => {
     header,
     body,
     useDiv,
+    cell,
   } = props;
 
   const Component = useDiv ? 'div' : 'table';
@@ -63,6 +66,7 @@ export const Table = (props: TableProps) => {
             rowHover,
             onRowClick,
             row,
+            cell,
             useDiv,
           },
           children,
@@ -76,5 +80,6 @@ Table.defaultProps = {
   body: <TableBody />,
   row: <TableRow />,
   headerCell: <HeaderCell />,
+  cell: <TableCell />,
   data: [],
 };

@@ -1,13 +1,13 @@
-import React from 'react';
 import clsx from 'clsx';
-
-// local files
+import React from 'react';
+import { TableCell } from './TableCell';
 import { TableRow } from './TableRow';
 import { onRowClickType } from './types';
 
 type Props = React.ComponentProps<'tbody'> & {
   useDiv?: boolean;
   row?: React.ReactElement;
+  cell?: React.ReactElement;
   data?: any;
   currentIndex?: number;
   onRowClick?: onRowClickType;
@@ -26,6 +26,7 @@ export const TableBody = React.forwardRef((props: Props, ref: any) => {
     rowHover,
     className,
     useDiv,
+    cell,
     ...restProps
   } = props;
 
@@ -54,6 +55,7 @@ export const TableBody = React.forwardRef((props: Props, ref: any) => {
               record,
               index,
               useDiv,
+              cell,
               key: index,
             },
             children,
@@ -67,4 +69,5 @@ TableBody.defaultProps = {
   data: [],
   currentIndex: 0,
   row: <TableRow />,
+  cell: <TableCell />,
 };
