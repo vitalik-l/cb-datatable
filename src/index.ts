@@ -1,7 +1,7 @@
 export * from './types';
 export * from './hooks';
 export * from './Table';
-export { Column } from './Column';
+export * from './Column';
 export { HeaderCell } from './HeaderCell';
 export { TableBody } from './TableBody';
 export { TableCell } from './TableCell';
