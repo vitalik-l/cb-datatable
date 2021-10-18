@@ -18,7 +18,7 @@ export type Paths<T, D extends number = 5> = [D] extends [never]
     }[keyof T]
   : '';
 
-export type onRowClickType = (
+export type OnRowClick = (
   event: React.MouseEvent<HTMLTableRowElement>,
   record: any,
   index?: number,

@@ -5,7 +5,7 @@ import { TableBody } from './TableBody';
 import { TableCell } from './TableCell';
 import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
-import { onRowClickType } from './types';
+import { OnRowClick } from './types';
 
 export type TableProps = React.ComponentProps<'table'> & {
   /** Make the header to be sticky */
@@ -14,7 +14,7 @@ export type TableProps = React.ComponentProps<'table'> & {
   striped?: boolean;
   rowHover?: boolean;
   useDiv?: boolean;
-  onRowClick?: onRowClickType;
+  onRowClick?: OnRowClick;
   row?: React.ReactElement;
   cell?: React.ReactElement;
   headerCell?: React.ReactElement;

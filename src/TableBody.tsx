@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { TableCell } from './TableCell';
 import { TableRow } from './TableRow';
-import { onRowClickType } from './types';
+import { OnRowClick } from './types';
 
 type Props = React.ComponentProps<'tbody'> & {
   useDiv?: boolean;
@@ -10,7 +10,7 @@ type Props = React.ComponentProps<'tbody'> & {
   cell?: React.ReactElement;
   data?: any;
   currentIndex?: number;
-  onRowClick?: onRowClickType;
+  onRowClick?: OnRowClick;
   striped?: boolean;
   rowHover?: boolean;
 };

@@ -1,19 +1,19 @@
 import clsx from 'clsx';
 import React from 'react';
 import { TableCell } from './TableCell';
-import { onRowClickType } from './types';
+import { OnRowClick } from './types';
 import { get } from './utils/get';
 import { mapChildren } from './utils/mapChildren';
 
-type Props = {
+export type TableRowProps<T> = {
   cell?: React.ReactElement;
-  record?: any;
+  record?: T;
   index?: number;
   useDiv?: boolean;
-  onClick?: onRowClickType;
+  onClick?: OnRowClick;
 } & React.ComponentProps<'tr'>;
 
-export const TableRow = React.forwardRef((props: Props, ref: any) => {
+export const TableRow = React.forwardRef(function TableRow<T>(props: TableRowProps<T>, ref: any) {
   const { children, cell, className, record, index, onClick, useDiv, ...restProps } = props;
 
   const handleClick = React.useMemo(() => {
