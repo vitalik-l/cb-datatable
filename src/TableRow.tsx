@@ -5,13 +5,14 @@ import { OnRowClick } from './types';
 import { get } from './utils/get';
 import { mapChildren } from './utils/mapChildren';
 
-export type TableRowProps<T> = {
+export type TableRowProps<T = {}> = {
   cell?: React.ReactElement;
   record?: T;
   index?: number;
   useDiv?: boolean;
   onClick?: OnRowClick;
-} & React.ComponentProps<'tr'>;
+  ref?: any;
+} & React.HTMLAttributes<HTMLTableRowElement>;
 
 export const TableRow = React.forwardRef(function TableRow<T>(props: TableRowProps<T>, ref: any) {
   const { children, cell, className, record, index, onClick, useDiv, ...restProps } = props;
