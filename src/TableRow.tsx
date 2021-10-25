@@ -12,10 +12,21 @@ export type TableRowProps<T = {}> = {
   useDiv?: boolean;
   onClick?: OnRowClick;
   ref?: any;
+  columnProps?: any;
 } & React.HTMLAttributes<HTMLTableRowElement>;
 
 export const TableRow = React.forwardRef(function TableRow<T>(props: TableRowProps<T>, ref: any) {
-  const { children, cell, className, record, index, onClick, useDiv, ...restProps } = props;
+  const {
+    children,
+    cell,
+    className,
+    record,
+    index,
+    onClick,
+    useDiv,
+    columnProps,
+    ...restProps
+  } = props;
 
   const handleClick = React.useMemo(() => {
     if (!onClick) return;
@@ -41,7 +52,7 @@ export const TableRow = React.forwardRef(function TableRow<T>(props: TableRowPro
           return React.cloneElement(
             cell,
             { key: childIndex, useDiv, ...child.props },
-            React.cloneElement(child, { record, index, value }),
+            React.cloneElement(child, { record, index, value, ...columnProps }),
           );
         })}
     </Component>
