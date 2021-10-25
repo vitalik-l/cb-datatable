@@ -1,6 +1,4 @@
 import React from 'react';
-
-// local files
 import { getDataPerPage } from '../utils/getDataPerPage';
 
 export const useDataPerPage = ({
@@ -10,7 +8,7 @@ export const useDataPerPage = ({
 }: {
   rowsPerPage: number;
   page: number;
-  data: Array<any>;
+  data?: Array<any> | null;
 }) => {
   return React.useMemo(
     () => (rowsPerPage && data ? getDataPerPage(data, page, rowsPerPage) : data),
