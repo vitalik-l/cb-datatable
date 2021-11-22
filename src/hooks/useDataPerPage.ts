@@ -1,14 +1,14 @@
 import React from 'react';
 import { getDataPerPage } from '../utils/getDataPerPage';
 
-export const useDataPerPage = ({
+export const useDataPerPage = <T extends any[]>({
   rowsPerPage,
   page,
   data,
 }: {
   rowsPerPage: number;
   page: number;
-  data?: Array<any> | null;
+  data?: T;
 }) => {
   return React.useMemo(
     () => (rowsPerPage && data ? getDataPerPage(data, page, rowsPerPage) : data),
