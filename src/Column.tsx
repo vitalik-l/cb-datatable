@@ -1,4 +1,5 @@
 import React from 'react';
+import { TableCellProps } from './TableCell';
 import { Paths } from './types';
 
 export type ColumnProps<T> = {
@@ -9,9 +10,7 @@ export type ColumnProps<T> = {
   sortable?: boolean;
   record?: T;
   className?: string;
-  colSpan?: number;
-  rowSpan?: number;
-};
+} & Pick<TableCellProps, 'rowSpan' | 'colSpan' | 'sticky'>;
 
 export type ColumnPropsWithChildren<T> = ColumnProps<T> & {
   children?: React.ReactNode | ((args: ColumnProps<T>) => React.ReactNode);

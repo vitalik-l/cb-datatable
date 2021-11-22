@@ -1,7 +1,7 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 
-type Props = {
+export type TableCellProps = {
   sticky?: boolean | 'right';
   isHeader?: boolean;
   useDiv?: boolean;
@@ -9,7 +9,7 @@ type Props = {
   colSpan?: string | number;
 } & React.ComponentProps<'div'>;
 
-export const TableCell = React.forwardRef((props: Props, ref) => {
+export const TableCell = React.forwardRef((props: TableCellProps, ref) => {
   const {
     children,
     className,
