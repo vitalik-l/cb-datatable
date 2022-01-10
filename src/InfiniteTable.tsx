@@ -1,5 +1,5 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { useInfiniteTable } from './hooks/useInfiniteTable';
