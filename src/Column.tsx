@@ -3,7 +3,7 @@ import { TableCellProps } from './TableCell';
 import { Paths } from './types';
 
 export type ColumnProps<T> = {
-  label?: string;
+  label?: React.ReactNode;
   value?: any;
   index?: number;
   source?: (T extends object ? Paths<T> : string) | number;
