@@ -56,7 +56,7 @@ export const useSortByColumn = ({
           : newSortBy,
       );
     };
-  }, [sortable, sortBy, source, sortType]);
+  }, [sortable, sortBy, source, sortType, setSortBy]);
 
   return { handleSorting, desc };
 };
