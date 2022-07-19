@@ -18,7 +18,7 @@ export type TableProps = React.ComponentProps<'table'> & {
   row?: React.ReactElement;
   cell?: React.ReactElement;
   headerCell?: React.ReactElement;
-  header?: React.ReactElement;
+  header?: React.ReactElement | null | false;
   body?: React.ReactElement;
   data?: Array<any>;
 };

@@ -28,7 +28,7 @@ export const TableBody = React.forwardRef((props: Props, ref: any) => {
     className,
     useDiv,
     cell,
-    offset = 0,
+    offset,
     ...restProps
   } = props;
 
@@ -40,7 +40,7 @@ export const TableBody = React.forwardRef((props: Props, ref: any) => {
       ref={ref}
       {...restProps}
     >
-      {offset >= 0 && <tr className="cb-RowSpacer" style={{ height: offset }} />}
+      {!!offset && offset >= 0 && <tr className="cb-RowSpacer" style={{ height: offset }} />}
       {!!row &&
         data.map((record: any, recordIndex: number) => {
           const index = recordIndex + currentIndex;
