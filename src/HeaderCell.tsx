@@ -1,19 +1,18 @@
-import React from 'react';
 import clsx from 'clsx';
-
-// local files
-import { TableCell } from './TableCell';
-import { useSortByColumn } from './hooks/useSortByColumn';
+import React from 'react';
 import { ColumnPropsContext } from './ColumnPropsContext';
+import { TableCell } from './TableCell';
+import { useSortByColumn } from './hooks';
 
-type Props = React.ComponentProps<typeof TableCell> &
+export type HeaderCellProps = React.ComponentProps<typeof TableCell> &
   Parameters<typeof useSortByColumn>[0] & {
     sortIconAsc?: React.ReactElement;
     sortIconDesc?: React.ReactElement;
     label?: React.ReactNode;
+    icon?: React.ReactElement;
   };
 
-export const HeaderCell = React.forwardRef((props: Props, ref: any) => {
+export const HeaderCell = React.forwardRef((props: HeaderCellProps, ref: any) => {
   const {
     className,
     setSortBy,
@@ -23,6 +22,7 @@ export const HeaderCell = React.forwardRef((props: Props, ref: any) => {
     multiSort,
     sortIconAsc,
     sortIconDesc,
+    icon,
     label,
     source,
     ...restProps
@@ -35,7 +35,7 @@ export const HeaderCell = React.forwardRef((props: Props, ref: any) => {
     sortType,
     multiSort,
   });
-  const sortIcon = desc === true ? sortIconDesc : desc === false ? sortIconAsc : undefined;
+  const sortIcon = desc === true ? sortIconDesc : desc === false ? sortIconAsc : icon;
 
   return (
     <ColumnPropsContext.Provider

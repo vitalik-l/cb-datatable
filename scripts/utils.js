@@ -1,5 +1,4 @@
 var shell = require('shelljs');
-// var parseGitUrl = require('git-url-parse');
 
 module.exports.exec = function exec(command) {
   console.log('   executing: ' + command);
