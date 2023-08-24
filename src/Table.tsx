@@ -45,7 +45,10 @@ export const Table = (props: TableProps) => {
 
   return (
     <Component
-      className={clsx('cb-Table', className, { 'cb-Table_sticky': stickyHeader })}
+      className={clsx('cb-Table', className, {
+        'cb-Table_sticky': stickyHeader,
+        'cb-Table_noData': !data?.length,
+      })}
       onClick={onClick}
     >
       {!!header &&
